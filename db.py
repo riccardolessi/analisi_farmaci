@@ -18,6 +18,15 @@ def setup_db():
     )
     """)
 
+    cursor.execute("""
+    CREATE TABLE IF NOT EXISTS esiti_saggi (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        id_molecola INTEGER NOT NULL,
+        id_saggio INTEGER NOT NULL,
+        esito_saggio TEXT NOT NULL              
+    )
+    """)
+
     conn.commit()
     conn.close()
     print("Database creato con successo!")
