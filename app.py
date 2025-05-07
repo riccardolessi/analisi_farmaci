@@ -45,6 +45,14 @@ app_ui = ui.page_navbar(
                 )
             )
         )
+    ),
+
+    ui.nav_panel(
+        "associazioni",
+        ui.card(
+            ui.h2("Associazioni"),
+            ui.output_data_frame("associazioni_df"),
+        )
     )
     
 )
@@ -107,8 +115,24 @@ def server(input, output, session):
     @reactive.effect
     @reactive.event(input.aggiungi_reagente)
     def _():
-        result = query.new_reagente(input.input_reagenti())
-        print(result)
+        if input.input_reagenti() != "":
+            result = query.new_reagente(input.input_reagenti())
+        else:
+            result = {
+                "status": "failed",
+                "message": "Inserisci un reagente"
+            }
+
+        if result['status'] == "success":
+            ui.notification_show(
+                result['message'],
+                type = "message"
+            )
+        else:
+            ui.notification_show(
+                result['message'],
+                type = "error"
+            )
 
     @reactive.effect
     def selectize_saggi():
@@ -127,9 +151,31 @@ def server(input, output, session):
     def _():
         id_saggio = input.selectize_saggi()
         id_reagenti = input.selectize_reagenti()
+
+        if id_saggio != "" and len(id_reagenti) != 0:
+            for id_reagente in id_reagenti:
+                result = query.saggi_reagenti(id_saggio, id_reagente)
+                
+                if result['status'] == "success":
+                    ui.notification_show(
+                        result['message'],
+                        type = "message"
+                    )
+                else:
+                    ui.notification_show(
+                        result['message'],
+                        type = "error"
+                    )
+        else:
+            ui.notification_show(
+                "Compila entrambi i campi",
+                type = "error"
+            )
+
+    @render.data_frame
+    def associazioni_df():
+        df = query.associazioni()
         
-        for id_reagente in id_reagenti:
-            result = query.saggi_reagenti(id_saggio, id_reagente)
-            print(result)
+        return render.DataTable(df)
 
 app = App(app_ui, server)

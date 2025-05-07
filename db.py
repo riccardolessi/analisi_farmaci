@@ -27,9 +27,9 @@ def setup_db():
 
     cursor.execute("""
     CREATE TABLE saggi_reagenti (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,   
         saggio_id INTEGER,
         reagente_id INTEGER,
-        PRIMARY KEY (saggio_id, reagente_id),
         FOREIGN KEY (saggio_id) REFERENCES saggi(id) ON DELETE CASCADE,
         FOREIGN KEY (reagente_id) REFERENCES reagenti(id) ON DELETE CASCADE
     );
