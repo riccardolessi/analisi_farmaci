@@ -13,9 +13,10 @@ def molecole(id_saggio = None):
         JOIN molecole
         ON esiti_saggi.id_molecola = molecole.id
         WHERE esiti_saggi.id_saggio = ?
+        ORDER BY molecole.nome ASC
         """, (id_saggio,))
     else:
-        cursor.execute("SELECT * FROM molecole")
+        cursor.execute("SELECT * FROM molecole ORDER BY nome ASC")
 
     molecole = cursor.fetchall()
 
@@ -144,6 +145,29 @@ def associazioni():
     conn.close()
 
     return df
+
+def reagenti_da_saggio(id_saggio):
+
+    conn = sqlite3.connect('analisi_farmaci.db')
+
+    cursor = conn.cursor()
+
+    cursor.execute("""
+        SELECT reagenti.id, reagenti.reagente 
+        FROM saggi_reagenti 
+        JOIN reagenti 
+        ON saggi_reagenti.reagente_id = reagenti.id 
+        WHERE saggi_reagenti.saggio_id = ?
+    """, (id_saggio,))
+
+    reagenti = cursor.fetchall()
+
+    colonne = ['Id', 'Reagente']
+
+    df = pd.DataFrame(reagenti, columns=colonne)
+
+    return df
+
 
 # QUERY PER I REAGENTI DI UN SAGGIO
 # SELECT reagenti.reagente 

@@ -1,5 +1,6 @@
 from shiny import App, reactive, render, ui
 import query
+import pandas as pd
 
 app_ui = ui.page_navbar(
     ui.nav_panel(
@@ -53,11 +54,77 @@ app_ui = ui.page_navbar(
             ui.h2("Associazioni"),
             ui.output_data_frame("associazioni_df"),
         )
-    )
+    ),
     
+    ui.nav_panel(
+        "Cerca reagenti",
+        ui.input_select("saggi_reagenti", "Seleziona il saggio", choices = []),
+        ui.input_action_button("cerca_reagenti", "Cerca"),
+        ui.output_data_frame("reagenti")
+    ),
+
+    ui.nav_panel(
+        "Cerca reagenti 2",
+        ui.input_select("molecole_reagenti", "Seleziona la molecola", choices = []),
+        ui.input_action_button("cerca_saggi", "Cerca"),
+        ui.output_data_frame("saggi_reag"),
+        ui.input_action_button("cerca_reagenti_mol", "Cerca"),
+        ui.card(
+            ui.output_ui("reagenti_mol"),
+        )
+    ),
 )
 
 def server(input, output, session):
+    val = reactive.Value()
+
+    @render.ui
+    @reactive.event(input.cerca_reagenti_mol)
+    def reagenti_mol():
+        messaggio = ""
+        for saggio in val.get():
+            id_saggio = saggio[1]
+            reagenti = query.reagenti_da_saggio(id_saggio)
+            
+            lista_reagenti = reagenti['Reagente'].tolist()
+            
+            if lista_reagenti:
+                messaggio += f"Il saggio {saggio[2]} richiede: "
+                for mol in lista_reagenti:
+                    messaggio += f"{mol}, "
+            
+            messaggio += "<br>"
+        
+        return ui.HTML(messaggio)
+
+    @render.data_frame
+    @reactive.event(input.cerca_saggi)
+    def saggi_reag():
+        saggi = query.saggi(input.molecole_reagenti())
+        val.set(saggi)
+        df = pd.DataFrame(saggi, columns=['id esito', 'id saggio', 'saggio'])
+        return df
+
+
+    @reactive.effect
+    def molecole_reagenti():
+        molecole = query.molecole()
+        mol = {mol[0]: mol[1] for mol in molecole}
+        ui.update_select("molecole_reagenti", choices = mol)
+
+    @render.data_frame
+    @reactive.event(input.cerca_reagenti)
+    def reagenti():
+        reag = query.reagenti_da_saggio(input.saggi_reagenti())
+        print(reag)
+        return reag
+
+
+    @reactive.effect
+    def saggi_reagenti():
+        saggi = query.saggi()
+        x = {saggio[0]: saggio[1] for saggio in saggi}
+        ui.update_select("saggi_reagenti", choices = x)
 
     @reactive.effect
     @reactive.event(input.molecole)
