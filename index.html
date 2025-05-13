@@ -21,155 +21,331 @@
 
 <script>
     const data = {
-        name: "root",
-        children: [
+        'name': 'root', 
+        'children': [
             {
-                name: "Acidi e Basi",
-                children: [
-                    { name: "prova",
-                        children: [
-                            {name: "prova", value : 1},
-                            {name: "prova1", value : 1}
-                        ]
-                    },
-                    { name: "prova2", value: 1 },
-                    { name: "prova3", value: 1 }
+                'name': 'N-aromatici', 
+                'children': [
+                    {'name': 'METRONIDAZOLO', 'value': 1}, 
+                    {'name': 'ACIDO NICOTINICO', 'value': 1}, 
+                    {'name': 'NICOTINAMIDE', 'value': 1}, 
+                    {'name': 'ISONIAZIDE', 'value': 1}, 
+                    {'name': 'PIRIDOSSINA HCl', 'value': 1}, 
+                    {'name': 'PAPAVERINA HCl', 'value': 1}
                 ]
-            },
+            }, 
             {
-                name: "Steroidi",
-                children: [
-                    { name: "prova", value: 1 },
-                    { name: "prova2", value: 1 },
-                    { name: "prova3", value: 1 }
+                'name': 'acidi e sali', 
+                'children': [
+                    {'name': 'PREDNISONE', 'value': 1}, 
+                    {'name': 'SODIO CITRATO', 'value': 1}, 
+                    {'name': 'SODIO ACETATO', 'value': 1}, 
+                    {'name': 'IDROCORTISONE', 'value': 1}, 
+                    {'name': 'POTASSIO TARTRATO', 'value': 1}, 
+                    {'name': 'ACIDO ASCORBICO', 'value': 1}, 
+                    {'name': 'ACIDO SORBICO', 'value': 1}, 
+                    {'name': 'POTASSIO SORBATO', 'value': 1}, 
+                    {'name': 'SACCARINA SODICA', 'value': 1}, 
+                    {'name': 'CALCIO PANTOTENATO', 'value': 1}, 
+                    {'name': 'SODIO P-AMMINO SALICILATO', 'value': 1}, 
+                    {'name': 'CALCIO GLICEROFOSFATO', 'value': 1}, 
+                    {'name': 'ACIDO CITRICO', 'value': 1}, 
+                    {'name': 'CALCIO LATTATO', 'value': 1}, 
+                    {'name': 'ACIDO TARTARICO', 'value': 1}, 
+                    {'name': 'LITIO CITRATO', 'value': 1}, 
+                    {'name': 'POTASSIO CITRATO', 'value': 1}, 
+                    {'name': 'SODIO SALICILATO', 'value': 1}, 
+                    {'name': 'CORTISONE ACETATO', 'value': 1}, 
+                    {'name': 'ACIDO ACETILSALICILICO', 'value': 1}, 
+                    {'name': 'ACIDO BENZOICO', 'value': 1}, 
+                    {'name': 'SODIO BENZOATO', 'value': 1}, 
+                    {'name': 'ACIDO SALICILICO', 'value': 1}, 
+                    {'name': 'MAGNESIO LATTATO', 'value': 1}, 
+                    {'name': 'CLORAMINA T', 'value': 1}, 
+                    {'name': 'SODIO ASCORBATO', 'value': 1}, 
+                    {'name': 'SACCARINA', 'value': 1}, 
+                    {'name': 'CALCIO GLUCONATO', 'value': 1}
                 ]
-            },
+            }, 
             {
-            name: "Fenotiazine",
-            children: [
-                { name: "prova", value: 1 },
-                { name: "prova2", value: 1 },
-                { name: "prova3", value: 1 }
-            ]
+                'name': 'alcaloidi', 
+                'children': [
+                    {'name': 'CHINIDINA SOLFATO', 'value': 1}, 
+                    {'name': 'BENZOCAINA', 'value': 1}, 
+                    {'name': 'EFEDRINA HCl', 'value': 1}, 
+                    {'name': 'LIDOCAINA HCl', 'value': 1}, 
+                    {'name': 'PROCAINA HCl', 'value': 1}, 
+                    {'name': 'PROCAINAMMIDE HCl', 'value': 1}, 
+                    {'name': 'CHININA SOLFATO', 'value': 1}, 
+                    {'name': 'FENILEFRINA HCl', 'value': 1}, 
+                    {'name': 'CHININA HCl', 'value': 1}, 
+                    {'name': 'SCOPOLAMINA HBr', 'value': 1}, 
+                    {'name': 'CLOROCHINA BIFOSFATO', 'value': 1}
+                ]
+            }, 
+            {
+                'name': 'amminoacidi', 
+                'children': [
+                    {'name': 'FENILALANINA', 'value': 1}, 
+                    {'name': 'GLICINA', 'value': 1}, 
+                    {'name': 'PROLINA', 'value': 1}, 
+                    {'name': 'CISTEINA HCl', 'value': 1}, 
+                    {'name': 'LISINA HCl', 'value': 1}, 
+                    {'name': 'ACETILCISTEINA', 'value': 1}, 
+                    {'name': 'ALANINA', 'value': 1}, 
+                    {'name': 'TREONINA', 'value': 1}, 
+                    {'name': 'MAGNESIO ASPARTATO', 'value': 1}, 
+                    {'name': 'POTASSIO ASPARTATO', 'value': 1}, 
+                    {'name': 'LEUCINA', 'value': 1}, 
+                    {'name': 'SERINA', 'value': 1}, 
+                    {'name': 'TRIPTOFANO', 'value': 1}, 
+                    {'name': 'ASPARTAME', 'value': 1}, 
+                    {'name': 'CAPTOPRIL', 'value': 1}, 
+                    {'name': 'METIONINA', 'value': 1}, 
+                    {'name': 'VALINA', 'value': 1}
+                ]
+            }, 
+            {
+                'name': 'carboidrati', 
+                'children': [
+                    {'name': 'MANNITOLO', 'value': 1}, 
+                    {'name': 'SUCRALOSIO', 'value': 1}, 
+                    {'name': 'SACCAROSIO', 'value': 1}, 
+                    {'name': 'SORBITOLO', 'value': 1}, 
+                    {'name': 'FRUTTOSIO', 'value': 1}, 
+                    {'name': 'LATTOSIO', 'value': 1}, 
+                    {'name': 'GLUCOSIO', 'value': 1}
+                ]
+            }, 
+            {
+                'name': 'farmaci vari', 
+                'children': [
+                    {'name': 'CLORBUTANOLO', 'value': 1}, 
+                    {'name': 'PROPIFENAZONE', 'value': 1}, 
+                    {'name': 'FENAZONE', 'value': 1}, 
+                    {'name': 'METFORMINA HCl', 'value': 1}, 
+                    {'name': 'ECONAZOLO NITRATO', 'value': 1}, 
+                    {'name': 'INDOMETACINA', 'value': 1}, 
+                    {'name': 'NICLOSAMIDE', 'value': 1}, 
+                    {'name': 'CLORALIO IDRATO', 'value': 1}, 
+                    {'name': 'NIFEDIPINA', 'value': 1}
+                ]
+            }, 
+            {
+                'name': 'fenoli', 
+                'children': [
+                    {'name': 'VANILLINA', 'value': 1}, 
+                    {'name': 'METILPARABEN', 'value': 1}, 
+                    {'name': 'TIMOLO', 'value': 1}, 
+                    {'name': 'ACIDO TANNICO', 'value': 1}, 
+                    {'name': 'FENOLO', 'value': 1}, 
+                    {'name': 'PARACETAMOLO', 'value': 1}, 
+                    {'name': 'PROPILPARABEN', 'value': 1}
+                ]
+            }, 
+            {
+                'name': 'fenotiazine e altri con S', 
+                'children': [
+                    {'name': 'FENOTIAZINA', 'value': 1}, 
+                    {'name': 'CLORPROMAZINA HCl', 'value': 1}, 
+                    {'name': 'PROMETAZINA HCl', 'value': 1}, 
+                    {'name': 'TIAMINA HCl', 'value': 1}
+                ]
+            }, 
+            {
+                'name': 'solfonamidi', 
+                'children': [
+                    {'name': 'DAPSONE', 'value': 1}, 
+                    {'name': 'IDROCLOROTIAZIDE', 'value': 1}, 
+                    {'name': 'FUROSEMIDE', 'value': 1}, 
+                    {'name': 'PROBENECID', 'value': 1}, 
+                    {'name': 'TOLBUTAMIDE', 'value': 1}
+                ]
+            }, 
+            {
+                'name': 'steroidi', 
+                'children': [
+                    {'name': 'IDROCORTISONE ACETATO', 'value': 1}, 
+                    {'name': 'DESAMETASONE SODIO FOSFATO', 'value': 1}, 
+                    {'name': 'PROGESTERONE', 'value': 1}, 
+                    {'name': 'SPIRONOLATTONE', 'value': 1}, 
+                    {'name': 'DESAMETASONE ACETATO', 'value': 1}
+                ]
+            }, 
+            {
+                'name': 'sulfamidici', 
+                'children': [
+                    {'name': 'SULFADIAZINA', 'value': 1}, 
+                    {'name': 'SULFAGUANIDINA', 'value': 1}, 
+                    {'name': 'FTALILSULFATIAZOLO', 'value': 1}, 
+                    {'name': 'SULFAMERAZINA', 'value': 1}, 
+                    {'name': 'SULFANILAMIDE', 'value': 1}, 
+                    {'name': 'SULFATIAZOLO', 'value': 1}, 
+                    {'name': 'SULFAMETOSSIPIRIDAZINA', 'value': 1}
+                ]
+            }, 
+            {
+                'name': 'xantine e altri con N', 
+                'children': [
+                    {'name': 'CAFFEINA', 'value': 1}, 
+                    {'name': 'TEOBROMINA', 'value': 1}, 
+                    {'name': 'DIFENIDRAMINA HCl', 'value': 1}, 
+                    {'name': 'IMIPRAMINA HCl', 'value': 1}, 
+                    {'name': 'TEOFILLINA', 'value': 1}
+                ]
             }
         ]
-    };
+    }
+    // const data = {
+    //     name: "root",
+    //     children: [
+    //         {
+    //             name: "Acidi e Basi",
+    //             children: [
+    //                 { name: "prova",
+    //                     children: [
+    //                         {name: "prova", value : 1},
+    //                         {name: "prova1", value : 1}
+    //                     ]
+    //                 },
+    //                 { name: "prova2", value: 1 },
+    //                 { name: "prova3", value: 1 }
+    //             ]
+    //         },
+    //         {
+    //             name: "Steroidi",
+    //             children: [
+    //                 { name: "prova", value: 1 },
+    //                 { name: "prova2", value: 1 },
+    //                 { name: "prova3", value: 1 }
+    //             ]
+    //         },
+    //         {
+    //         name: "Fenotiazine",
+    //         children: [
+    //             { name: "prova", value: 1 },
+    //             { name: "prova2", value: 1 },
+    //             { name: "prova3", value: 1 }
+    //         ]
+    //         }
+    //     ]
+    // };
   
-const chart = () => {
-    const pippo = window.innerHeight
-    const width = 600;
-    const height = width;
-    const radius = width / 6;
+    const chart = () => {
+        const pippo = window.innerHeight
+        const width = 600;
+        const height = width;
+        const radius = width / 6;
 
-    const color = d3.scaleOrdinal(d3.quantize(d3.interpolateRainbow, data.children.length + 1));
+        const color = d3.scaleOrdinal(d3.quantize(d3.interpolateRainbow, data.children.length + 1));
 
-    const hierarchy = d3.hierarchy(data)
-        .sum(d => d.value)
-        .sort((a, b) => b.value - a.value);
+        const hierarchy = d3.hierarchy(data)
+            .sum(d => d.value)
+            .sort((a, b) => b.value - a.value);
 
-    const root = d3.partition()
-        .size([2 * Math.PI, hierarchy.height + 1])
-        (hierarchy);
+        const root = d3.partition()
+            .size([2 * Math.PI, hierarchy.height + 1])
+            (hierarchy);
 
-    root.each(d => d.current = d);
+        root.each(d => d.current = d);
 
-    const arc = d3.arc()
-        .startAngle(d => d.x0)
-        .endAngle(d => d.x1)
-        .padAngle(d => Math.min((d.x1 - d.x0) / 2, 0.005))
-        .padRadius(radius * 1.5)
-        .innerRadius(d => d.y0 * radius)
-        .outerRadius(d => Math.max(d.y0 * radius, d.y1 * radius - 1));
+        const arc = d3.arc()
+            .startAngle(d => d.x0)
+            .endAngle(d => d.x1)
+            .padAngle(d => Math.min((d.x1 - d.x0) / 2, 0.005))
+            .padRadius(radius * 1.5)
+            .innerRadius(d => d.y0 * radius)
+            .outerRadius(d => Math.max(d.y0 * radius, d.y1 * radius - 1));
 
-    const svg = d3.create("svg")
-        .attr("viewBox", [-width / 2, -height / 2, width, width])
-        .attr("width", pippo - 20)
-        .attr("height", pippo - 20)
-        .style("font", "10px sans-serif");
+        const svg = d3.create("svg")
+            .attr("viewBox", [-width / 2, -height / 2, width, width])
+            .attr("width", pippo - 20)
+            .attr("height", pippo - 20)
+            .style("font", "10px sans-serif");
 
-    const path = svg.append("g")
-        .selectAll("path")
-        .data(root.descendants().slice(1))
-        .join("path")
-        .attr("fill", d => { while (d.depth > 1) d = d.parent; return color(d.data.name); })
-        .attr("fill-opacity", d => arcVisible(d.current) ? (d.children ? 0.6 : 0.4) : 0)
-        .attr("pointer-events", d => arcVisible(d.current) ? "auto" : "none")
-        .attr("d", d => arc(d.current));
+        const path = svg.append("g")
+            .selectAll("path")
+            .data(root.descendants().slice(1))
+            .join("path")
+            .attr("fill", d => { while (d.depth > 1) d = d.parent; return color(d.data.name); })
+            .attr("fill-opacity", d => arcVisible(d.current) ? (d.children ? 0.6 : 0.4) : 0)
+            .attr("pointer-events", d => arcVisible(d.current) ? "auto" : "none")
+            .attr("d", d => arc(d.current));
 
-    path.filter(d => d.children)
-        .style("cursor", "pointer")
-        .on("click", clicked);
+        path.filter(d => d.children)
+            .style("cursor", "pointer")
+            .on("click", clicked);
 
-    const format = d3.format(",d");
-    path.append("title")
-        .text(d => `${d.ancestors().map(d => d.data.name).reverse().join("/")}\n${format(d.value)}`);
+        const format = d3.format(",d");
+        path.append("title")
+            .text(d => `${d.ancestors().map(d => d.data.name).reverse().join("/")}\n${format(d.value)}`);
 
-    const label = svg.append("g")
-        .attr("pointer-events", "none")
-        .attr("text-anchor", "middle")
-        .style("user-select", "none")
-        .selectAll("text")
-        .data(root.descendants().slice(1))
-        .join("text")
-        .attr("dy", "0.35em")
-        .attr("fill-opacity", d => +labelVisible(d.current))
-        .attr("transform", d => labelTransform(d.current))
-        .text(d => d.data.name);
+        const label = svg.append("g")
+            .attr("pointer-events", "none")
+            .attr("text-anchor", "middle")
+            .style("user-select", "none")
+            .selectAll("text")
+            .data(root.descendants().slice(1))
+            .join("text")
+            .attr("dy", "0.35em")
+            .attr("fill-opacity", d => +labelVisible(d.current))
+            .attr("transform", d => labelTransform(d.current))
+            .text(d => d.data.name);
 
-    const parent = svg.append("circle")
-        .datum(root)
-        .attr("r", radius)
-        .attr("fill", "none")
-        .attr("pointer-events", "all")
-        .on("click", clicked);
+        const parent = svg.append("circle")
+            .datum(root)
+            .attr("r", radius)
+            .attr("fill", "none")
+            .attr("pointer-events", "all")
+            .on("click", clicked);
 
-    function clicked(event, p) {
-        parent.datum(p.parent || root);
+        function clicked(event, p) {
+            parent.datum(p.parent || root);
 
-        root.each(d => d.target = {
-        x0: Math.max(0, Math.min(1, (d.x0 - p.x0) 
-        / (p.x1 - p.x0))) * 2 * Math.PI,
-        x1: Math.max(0, Math.min(1, (d.x1 - p.x0) / (p.x1 - p.x0))) * 2 * Math.PI,
-        y0: Math.max(0, d.y0 - p.depth),
-        y1: Math.max(0, d.y1 - p.depth)
-        });
+            root.each(d => d.target = {
+            x0: Math.max(0, Math.min(1, (d.x0 - p.x0) 
+            / (p.x1 - p.x0))) * 2 * Math.PI,
+            x1: Math.max(0, Math.min(1, (d.x1 - p.x0) / (p.x1 - p.x0))) * 2 * Math.PI,
+            y0: Math.max(0, d.y0 - p.depth),
+            y1: Math.max(0, d.y1 - p.depth)
+            });
 
-        const t = svg.transition().duration(event.altKey ? 7500 : 750);
+            const t = svg.transition().duration(event.altKey ? 7500 : 750);
 
-        path.transition(t)
-        .tween("data", d => {
-            const i = d3.interpolate(d.current, d.target);
-            return t => d.current = i(t);
-        })
-        .filter(function(d) {
-            return +this.getAttribute("fill-opacity") || arcVisible(d.target);
-        })
-        .attr("fill-opacity", d => arcVisible(d.target) ? (d.children ? 0.6 : 0.4) : 0)
-        .attr("pointer-events", d => arcVisible(d.target) ? "auto" : "none")
-        .attrTween("d", d => () => arc(d.current));
+            path.transition(t)
+            .tween("data", d => {
+                const i = d3.interpolate(d.current, d.target);
+                return t => d.current = i(t);
+            })
+            .filter(function(d) {
+                return +this.getAttribute("fill-opacity") || arcVisible(d.target);
+            })
+            .attr("fill-opacity", d => arcVisible(d.target) ? (d.children ? 0.6 : 0.4) : 0)
+            .attr("pointer-events", d => arcVisible(d.target) ? "auto" : "none")
+            .attrTween("d", d => () => arc(d.current));
 
-        label.filter(function(d) {
-        return +this.getAttribute("fill-opacity") || labelVisible(d.target);
-        }).transition(t)
-        .attr("fill-opacity", d => +labelVisible(d.target))
-        .attrTween("transform", d => () => labelTransform(d.current));
-    }
+            label.filter(function(d) {
+            return +this.getAttribute("fill-opacity") || labelVisible(d.target);
+            }).transition(t)
+            .attr("fill-opacity", d => +labelVisible(d.target))
+            .attrTween("transform", d => () => labelTransform(d.current));
+        }
 
-    function arcVisible(d) {
-        return d.y1 <= 3 && d.y0 >= 1 && d.x1 > d.x0;
-    }
+        function arcVisible(d) {
+            return d.y1 <= 3 && d.y0 >= 1 && d.x1 > d.x0;
+        }
 
-    function labelVisible(d) {
-        return d.y1 <= 3 && d.y0 >= 1 && (d.y1 - d.y0) * (d.x1 - d.x0) > 0.03;
-    }
+        function labelVisible(d) {
+            return d.y1 <= 3 && d.y0 >= 1 && (d.y1 - d.y0) * (d.x1 - d.x0) > 0.03;
+        }
 
-    function labelTransform(d) {
-        const x = (d.x0 + d.x1) / 2 * 180 / Math.PI;
-        const y = (d.y0 + d.y1) / 2 * radius;
-        return `rotate(${x - 90}) translate(${y},0) rotate(${x < 180 ? 0 : 180})`;
-    }
+        function labelTransform(d) {
+            const x = (d.x0 + d.x1) / 2 * 180 / Math.PI;
+            const y = (d.y0 + d.y1) / 2 * radius;
+            return `rotate(${x - 90}) translate(${y},0) rotate(${x < 180 ? 0 : 180})`;
+        }
 
-    return svg.node();
+        return svg.node();
     };
 
     document.body.appendChild(chart());

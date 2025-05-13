@@ -8,8 +8,11 @@ def setup_db():
     CREATE TABLE IF NOT EXISTS molecole (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         nome TEXT UNIQUE
+        tipologia_id INT NOT NULL
     )
     """)
+    # nel db attuable tipologia_id è un text, 
+    # cambiare la funzione nuova_tipologia
 
     cursor.execute("""
     CREATE TABLE IF NOT EXISTS saggi (
@@ -26,7 +29,7 @@ def setup_db():
     """)
 
     cursor.execute("""
-    CREATE TABLE saggi_reagenti (
+    CREATE TABLE IF NOT EXISTS saggi_reagenti (
         id INTEGER PRIMARY KEY AUTOINCREMENT,   
         saggio_id INTEGER,
         reagente_id INTEGER,
@@ -41,6 +44,13 @@ def setup_db():
         id_molecola INTEGER NOT NULL,
         id_saggio INTEGER NOT NULL,
         esito_saggio TEXT NOT NULL              
+    )
+    """)
+
+    cursor.execute("""
+    CREATE TABLE IF NOT EXISTS tipologia_molecola (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        tipo_molecola TEXT NOT NULL
     )
     """)
 

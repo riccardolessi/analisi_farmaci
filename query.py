@@ -1,5 +1,6 @@
 import sqlite3
 import pandas as pd
+from collections import defaultdict
 
 def molecole(id_saggio = None):
     conn = sqlite3.connect('analisi_farmaci.db')
@@ -169,6 +170,134 @@ def reagenti_da_saggio(id_saggio):
     return df
 
 
+def tipologia_molecola():
+    
+    conn = sqlite3.connect('analisi_farmaci.db')
+    cursor = conn.cursor()
+
+    cursor.execute("SELECT * FROM tipologia_molecola")
+
+    tipologie = cursor.fetchall()
+    conn.close()
+
+    return tipologie
+
+def nuova_tipologia(tipologia_id, molecola_ids):
+
+    conn = sqlite3.connect('analisi_farmaci.db')
+    cursor = conn.cursor()
+
+    molecola_ids = tuple(int(x) for x in molecola_ids)
+
+    print("tipologia_id: ", tipologia_id)
+    print("molecole: ", molecola_ids)
+    
+
+    try: 
+        # Genera il numero giusto di placeholder "?, ?, ?, ..."
+        placeholders = ', '.join('?' for _ in molecola_ids)
+
+        print("placeholders: ", placeholders)
+
+        # Costruisci la query SQL in modo sicuro
+        query = f"""
+        UPDATE molecole
+        SET tipologia_id = ?
+        WHERE id IN ({placeholders})
+        """
+        print("query: ", query)
+        params = (tipologia_id,) + molecola_ids
+
+        # Esegui la query
+        cursor.execute(query, params)
+        conn.commit()
+
+        # Chiudi la connessione
+        cursor.close()
+        conn.close()
+
+        return {
+            "status": "message",
+            "message": "Tipologia inserita correttamente"
+        }
+    
+    except Exception as e:
+        return {
+            "status": "error",
+            "message": e
+        }
+
+
+def molecole_tipologia():
+    conn = sqlite3.connect('analisi_farmaci.db')
+
+    cursor = conn.cursor()
+
+    cursor.execute("SELECT * FROM molecole ORDER BY nome ASC")
+   
+    molecole = cursor.fetchall()
+
+    molecole_filtrate = [riga for riga in molecole if riga[2] is None]
+
+    conn.close()
+    return molecole_filtrate
+
+
+def esegui_query_molecole():
+    try:
+        # Connessione al database
+        conn = sqlite3.connect('analisi_farmaci.db')
+        cursor = conn.cursor()
+
+        # La query SQL
+        query = """
+        SELECT tipologia_molecola.tipo_molecola, molecole.nome
+        FROM molecole
+        JOIN tipologia_molecola
+        ON molecole.tipologia_id = tipologia_molecola.id
+        ORDER BY tipologia_molecola.tipo_molecola ASC
+        """
+
+        # Esegui la query
+        cursor.execute(query)
+
+        # Recupera tutti i risultati
+        risultati = cursor.fetchall()
+
+        # Chiudi la connessione
+        cursor.close()
+        conn.close()
+
+        raggruppati = raggruppa_molecole(risultati)
+
+        return raggruppati
+
+    except sqlite3.Error as e:
+        print("Errore SQL:", e)
+        return None
+
+
+def raggruppa_molecole(molecole_tuplas):
+    struttura = {
+        "name": "root",
+        "children": []
+    }
+
+    # Raggruppa le molecole per tipologia
+    gruppi = defaultdict(list)
+    for tipologia, molecola in molecole_tuplas:
+        gruppi[tipologia].append(molecola)
+
+    # Costruisci la struttura finale
+    for tipologia, molecole_list in gruppi.items():
+        children = [{"name": nome, "value": 1} for nome in molecole_list]
+        struttura["children"].append({
+            "name": tipologia,
+            "children": children
+        })
+
+    return struttura
+
 # QUERY PER I REAGENTI DI UN SAGGIO
 # SELECT reagenti.reagente 
 # FROM saggi_reagenti 
@@ -182,3 +311,10 @@ def reagenti_da_saggio(id_saggio):
 # JOIN saggi 
 # ON saggi_reagenti.saggio_id = saggi.id 
 # WHERE saggi_reagenti.reagente_id = 4;
+
+# QUERY PER VEDERE TIPOLOGIA MOLECOLE E MOLECOLE
+# SELECT tipologia_molecola.tipo_molecola, molecole.nome
+# FROM molecole
+# JOIN tipologia_molecola
+# ON molecole.tipologia_id = tipologia_molecola.id
+# ORDER BY tipoogia_molecola.tipo_molecola ASC

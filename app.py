@@ -73,10 +73,50 @@ app_ui = ui.page_navbar(
             ui.output_ui("reagenti_mol"),
         )
     ),
+    ui.nav_panel(
+        "Tipologia molecola",
+        ui.input_selectize("molecole_tip", "Seleziona le molecole", choices = [], multiple = True),
+        ui.input_selectize("tipologia_id", "Seleziona la tipologia", choices = []),
+        ui.input_action_button("salva_tipologia", "Salva"),
+        ui.output_text_verbatim("text"),
+    )
 )
 
 def server(input, output, session):
     val = reactive.Value()
+
+    @reactive.effect
+    def _():
+        risultati = query.esegui_query_molecole()
+        print(risultati)
+
+    @reactive.effect
+    @reactive.event(input.salva_tipologia)
+    def _():
+        molecole = input.molecole_tip()
+        tipologia = input.tipologia_id()
+
+        result = query.nuova_tipologia(tipologia, molecole)
+
+        ui.notification_show(
+            result['message'],
+            type = result['status']
+        )
+
+
+    @reactive.effect
+    def _():
+        molecole = query.molecole_tipologia()
+        mol = {mol[0]: mol[1] for mol in molecole}
+        ui.update_selectize("molecole_tip", choices = mol)
+        
+        @render.text
+        def text():
+            return f"Rimangono {len(molecole)} molecole"
+
+        tipologie = query.tipologia_molecola()
+        tip = {tip[0]: tip[1] for tip in tipologie}
+        ui.update_selectize("tipologia_id", choices = tip)
 
     @render.ui
     @reactive.event(input.cerca_reagenti_mol)
