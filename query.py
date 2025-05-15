@@ -315,6 +315,31 @@ def ottieni_saggi_positivi(molecola_id):
     except sqlite3.Error as e:
         print("Errore nel recupero dei saggi:", e)
         return []
+    
+
+
+
+
+
+
+
+def pippo(molecola, saggio, reagente):
+    conn = sqlite3.connect("analisi_farmaci.db")
+    cursor = conn.cursor()
+
+    if saggio and molecola and not reagente:
+        query = "SELECT * FROM esiti_saggi WHERE id_saggio = ? AND id_molecola = ?"
+        params = (saggio, molecola)
+    elif saggio and not molecola and not reagente:
+        query = "SELECT reagenti.reagente FROM saggi_reagenti JOIN reagenti ON saggi_reagenti.reagente_id = reagenti.id WHERE saggio_id = ?"
+        params = (saggio,)
+
+    if query and params:
+        cursor.execute(query, params)
+        return cursor.fetchall()
+    
+    return "Problema"
+    
 
 
 # def esegui_query_molecole():

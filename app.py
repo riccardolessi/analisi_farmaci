@@ -1,6 +1,10 @@
 from shiny import App, reactive, render, ui
 import query
 import pandas as pd
+from pathlib import Path
+import asyncio
+
+script_file =  Path(__file__).parent / "prova" / "www" / "script.js"
 
 app_ui = ui.page_navbar(
     ui.nav_panel(
@@ -17,7 +21,6 @@ app_ui = ui.page_navbar(
         ui.input_action_button("cerca_2", "Cerca"),
         ui.output_text("esito_saggio_2"),
     ),
-
     ui.nav_panel(
         "DB",
         ui.navset_card_tab(
@@ -47,7 +50,6 @@ app_ui = ui.page_navbar(
             )
         )
     ),
-
     ui.nav_panel(
         "associazioni",
         ui.card(
@@ -55,14 +57,12 @@ app_ui = ui.page_navbar(
             ui.output_data_frame("associazioni_df"),
         )
     ),
-    
     ui.nav_panel(
         "Cerca reagenti",
         ui.input_select("saggi_reagenti", "Seleziona il saggio", choices = []),
         ui.input_action_button("cerca_reagenti", "Cerca"),
         ui.output_data_frame("reagenti")
     ),
-
     ui.nav_panel(
         "Cerca reagenti 2",
         ui.input_select("molecole_reagenti", "Seleziona la molecola", choices = []),
@@ -79,7 +79,38 @@ app_ui = ui.page_navbar(
         ui.input_selectize("tipologia_id", "Seleziona la tipologia", choices = []),
         ui.input_action_button("salva_tipologia", "Salva"),
         ui.output_text_verbatim("text"),
-    )
+    ),
+    ui.nav_panel(
+        "Grafico",
+        ui.tags.head(
+            ui.tags.script(src="https://d3js.org/d3.v7.min.js"),
+        ),
+        ui.HTML("<h2>Grafico Sunburst con D3.js</h2>"),
+        ui.tags.div(id="chart-container"),
+        ui.include_js(script_file),
+    ),
+    ui.nav_panel(
+        "Ricerca",
+        ui.card(
+            ui.input_checkbox("checkbox_molecola", "Cerca le molecole"),
+            ui.panel_conditional(
+                "input.checkbox_molecola",
+                ui.input_select("select_molecola", "Seleziona la molecola", choices = [])
+            ),
+            ui.input_checkbox("checkbox_saggio", "Cerca i saggi"),
+            ui.panel_conditional(
+                "input.checkbox_saggio",
+                ui.input_select("select_saggio", "Seleziona i saggi", choices = [])
+            ),
+            ui.input_checkbox("checkbox_reagente", "Cerca i reagenti"),
+            ui.panel_conditional(
+                "input.checkbox_reagente",
+                ui.input_select("select_reagente", "Seleziona i reagenti", choices = [])
+            ),
+            ui.input_action_button("ricerca_bottone", "Cerca"),
+            
+        )
+    ),
 )
 
 def server(input, output, session):
@@ -87,8 +118,33 @@ def server(input, output, session):
 
     @reactive.effect
     def _():
-        risultati = query.esegui_query_molecole()
-        print(risultati)
+        molecole = query.molecole()
+        molecole = {mol[0]: mol[1] for mol in molecole}
+        saggi = query.saggi()
+        saggi = {saggio[0]: saggio[1] for saggio in saggi}
+        reagenti = query.reagenti()
+        reagenti = {reagente[0]: reagente[1] for reagente in reagenti}
+
+        ui.update_select("select_molecola", choices = molecole)
+        ui.update_select("select_saggio", choices = saggi)
+        ui.update_select("select_reagente", choices = reagenti)
+
+    @reactive.effect
+    @reactive.event(input.ricerca_bottone)
+    def _():
+        molecola = input.select_molecola() if input.checkbox_molecola() else None
+        saggio = input.select_saggio() if input.checkbox_saggio() else None
+        reagente = input.select_reagente() if input.checkbox_reagente() else None
+
+        risultato = query.pippo(molecola, saggio, reagente)
+        print(risultato)
+
+
+    @reactive.effect
+    async def send_data():
+        data = query.esegui_query_molecole()
+        
+        await session.send_custom_message("d3data", data)
 
     @reactive.effect
     @reactive.event(input.salva_tipologia)
