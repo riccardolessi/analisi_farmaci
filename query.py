@@ -243,60 +243,163 @@ def molecole_tipologia():
     return molecole_filtrate
 
 
+import sqlite3
+from collections import defaultdict
+
 def esegui_query_molecole():
     try:
         # Connessione al database
         conn = sqlite3.connect('analisi_farmaci.db')
         cursor = conn.cursor()
 
-        # La query SQL
+        # La query SQL per molecole e tipologie
         query = """
-        SELECT tipologia_molecola.tipo_molecola, molecole.nome
+        SELECT tipologia_molecola.tipo_molecola, molecole.id, molecole.nome
         FROM molecole
         JOIN tipologia_molecola
         ON molecole.tipologia_id = tipologia_molecola.id
         ORDER BY tipologia_molecola.tipo_molecola ASC
         """
-
-        # Esegui la query
         cursor.execute(query)
-
-        # Recupera tutti i risultati
         risultati = cursor.fetchall()
 
-        # Chiudi la connessione
+        # Costruisce la struttura gerarchica con i saggi
+        struttura = {
+            "name": "root",
+            "children": []
+        }
+
+        gruppi = defaultdict(list)
+
+        for tipologia, molecola_id, molecola_nome in risultati:
+            saggi = ottieni_saggi_positivi(molecola_id)
+            molecola_node = {
+                "name": molecola_nome,
+                "children": [{"name": s[0], "value": 1} for s in saggi] if saggi else [],
+                "value": 1
+            }
+            gruppi[tipologia].append(molecola_node)
+
+        for tipologia, molecole_list in gruppi.items():
+            struttura["children"].append({
+                "name": tipologia,
+                "children": molecole_list
+            })
+
         cursor.close()
         conn.close()
-
-        raggruppati = raggruppa_molecole(risultati)
-
-        return raggruppati
+        return struttura
 
     except sqlite3.Error as e:
         print("Errore SQL:", e)
         return None
 
+def ottieni_saggi_positivi(molecola_id):
+    try:
+        conn = sqlite3.connect('analisi_farmaci.db')
+        cursor = conn.cursor()
 
-def raggruppa_molecole(molecole_tuplas):
-    struttura = {
-        "name": "root",
-        "children": []
-    }
+        query = """
+        SELECT saggi.saggio
+        FROM esiti_saggi
+        JOIN saggi ON esiti_saggi.id_saggio = saggi.id
+        WHERE esiti_saggi.id_molecola = ? AND esiti_saggi.esito_saggio != 'NEGATIVO'
+        """
+        cursor.execute(query, (molecola_id,))
+        risultati = cursor.fetchall()
 
-    # Raggruppa le molecole per tipologia
-    gruppi = defaultdict(list)
-    for tipologia, molecola in molecole_tuplas:
-        gruppi[tipologia].append(molecola)
+        cursor.close()
+        conn.close()
+        return risultati
 
-    # Costruisci la struttura finale
-    for tipologia, molecole_list in gruppi.items():
-        children = [{"name": nome, "value": 1} for nome in molecole_list]
-        struttura["children"].append({
-            "name": tipologia,
-            "children": children
-        })
+    except sqlite3.Error as e:
+        print("Errore nel recupero dei saggi:", e)
+        return []
 
-    return struttura
+
+# def esegui_query_molecole():
+#     try:
+#         # Connessione al database
+#         conn = sqlite3.connect('analisi_farmaci.db')
+#         cursor = conn.cursor()
+
+#         # La query SQL
+#         query = """
+#         SELECT tipologia_molecola.tipo_molecola, molecole.nome
+#         FROM molecole
+#         JOIN tipologia_molecola
+#         ON molecole.tipologia_id = tipologia_molecola.id
+#         ORDER BY tipologia_molecola.tipo_molecola ASC
+#         """
+
+#         # Esegui la query
+#         cursor.execute(query)
+
+#         # Recupera tutti i risultati
+#         risultati = cursor.fetchall()
+
+#         # Chiudi la connessione
+#         cursor.close()
+#         conn.close()
+
+#         raggruppati = raggruppa_molecole(risultati)
+
+#         return raggruppati
+
+#     except sqlite3.Error as e:
+#         print("Errore SQL:", e)
+#         return None
+
+
+# def raggruppa_molecole(molecole_tuplas):
+#     struttura = {
+#         "name": "root",
+#         "children": []
+#     }
+
+#     # Raggruppa le molecole per tipologia
+#     gruppi = defaultdict(list)
+#     for tipologia, molecola in molecole_tuplas:
+#         gruppi[tipologia].append(molecola)
+
+#     # Costruisci la struttura finale
+#     for tipologia, molecole_list in gruppi.items():
+#         children = [{"name": nome, "value": 1} for nome in molecole_list]
+#         struttura["children"].append({
+#             "name": tipologia,
+#             "children": children
+#         })
+
+#     return struttura
+
+
+# def prova(nome_molecola):
+#     # Connessione al database
+#     conn = sqlite3.connect('analisi_farmaci.db')
+#     cursor = conn.cursor()
+
+#     cursor.execute(f"SELECT id FROM molecole WHERE nome LIKE '%{nome_molecola}%'")
+
+#     risultato = cursor.fetchone()
+
+#     cursor.execute(f"SELECT saggi.saggio FROM esiti_saggi JOIN saggi ON esiti_saggi.id_saggio = saggi.id WHERE esiti_saggi.id_molecola = {risultato[0]} AND esiti_saggi.esito_saggio != 'NEGATIVO'")
+
+#     saggi = cursor.fetchall()
+
+#     # Chiudi la connessione
+#     cursor.close()
+#     conn.close()
+
+#     x = []
+
+#     for saggio in saggi:
+#         x.append({"name": saggio[0], "value": 1})
+
+#     print(x)
+
+
+#     return saggi
+
 
 # QUERY PER I REAGENTI DI UN SAGGIO
 # SELECT reagenti.reagente 

@@ -1,0 +1,42 @@
+File: ./conta_py.py
+  Numero di funzioni: 3
+  Numero di righe di codice (non vuote): 56
+  Numero di commenti: 13
+  Numero di reactive: 1
+  Numero di render: 1
+
+File: ./db.py
+  Numero di funzioni: 1
+  Numero di righe di codice (non vuote): 53
+  Numero di commenti: 2
+  Numero di reactive: 0
+  Numero di render: 0
+
+File: ./index2.py
+  Numero di funzioni: 0
+  Numero di righe di codice (non vuote): 0
+  Numero di commenti: 0
+  Numero di reactive: 0
+  Numero di render: 0
+
+File: ./query.py
+  Numero di funzioni: 13
+  Numero di righe di codice (non vuote): 305
+  Numero di commenti: 92
+  Numero di reactive: 0
+  Numero di render: 0
+
+File: ./index.py
+  Numero di funzioni: 0
+  Numero di righe di codice (non vuote): 28
+  Numero di commenti: 23
+  Numero di reactive: 0
+  Numero di render: 0
+
+File: ./app.py
+  Numero di funzioni: 21
+  Numero di righe di codice (non vuote): 235
+  Numero di commenti: 1
+  Numero di reactive: 23
+  Numero di render: 7
+
