@@ -1,0 +1,2432 @@
+[
+  {
+    "name": "flare.molecole.cluster.FENOTIAZINA",
+    "imports": [
+      "flare.saggi.cluster.AMMINE_TERZIARIE_(ACIDO_CITRICO_E_ANIDRIDE_ACETICA)",
+      "flare.saggi.cluster.AMMINE_TERZIARIE_(BOUCHARDAT)",
+      "flare.saggi.cluster.AMMINE_TERZIARIE_(DRAGENDORFF)",
+      "flare.saggi.cluster.AMMINE_TERZIARIE_(MAYER)",
+      "flare.saggi.cluster.SOLUBILITA_ACQUA",
+      "flare.saggi.cluster.SOLUBILITA_ETOH"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.PREDNISONE",
+    "imports": [
+      "flare.saggi.cluster.ACIDO_OSSALICO_(ACETATI)",
+      "flare.saggi.cluster.TTC_(STEROIDI)",
+      "flare.saggi.cluster.GRANDEZZE_FISICHE_(PUNTO_FUSIONE)",
+      "flare.saggi.cluster.H2SO4_&_DILUIZIONE_H2O_(STEROIDI)",
+      "flare.saggi.cluster.LASSAIGNE:ALOGENI",
+      "flare.saggi.cluster.LASSAIGNE:AZOTO",
+      "flare.saggi.cluster.LASSAIGNE:ZOLFO",
+      "flare.saggi.cluster.PROVA_AL_COCCIO",
+      "flare.saggi.cluster.SOLUBILITA_ACQUA",
+      "flare.saggi.cluster.SOLUBILITA_ETOH",
+      "flare.saggi.cluster.SOLUBILITA_HCL",
+      "flare.saggi.cluster.SOLUBILITA_NAOH"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.SODIO_CITRATO",
+    "imports": [
+      "flare.saggi.cluster.ACIDO_OSSALICO_(ACETATI)",
+      "flare.saggi.cluster.AgNO3_&_NH4OH_(FOSFATI)",
+      "flare.saggi.cluster.AgNO3_(ALOGENURI)",
+      "flare.saggi.cluster.BOUCHARDAT_IN_AMB_BASICO_(LATTATI)",
+      "flare.saggi.cluster.CaCl2_IN_AMB_BASICO_(CITRATI)",
+      "flare.saggi.cluster.CLORAMMINA_T_&_CH2Cl2_(BROMURI_E_IODURI)",
+      "flare.saggi.cluster.DENIGES_&_KMnO4_(CITRATI)",
+      "flare.saggi.cluster.FeCl3_(ALCOLI_AROMATICI,_AA,_SALICILATI,_…)",
+      "flare.saggi.cluster.FeCl3-CONC_(BENZOATI_&_SALICILATI)",
+      "flare.saggi.cluster.FENTON:_FeSO4_+_H2O2_(TARTRATI)",
+      "flare.saggi.cluster.FILO_Ni-Cr",
+      "flare.saggi.cluster.GRANDEZZE_FISICHE_(PUNTO_FUSIONE)",
+      "flare.saggi.cluster.LASSAIGNE:ALOGENI",
+      "flare.saggi.cluster.LASSAIGNE:AZOTO",
+      "flare.saggi.cluster.LASSAIGNE:FOSFORO",
+      "flare.saggi.cluster.LASSAIGNE:ZOLFO",
+      "flare.saggi.cluster.PROVA_AL_COCCIO",
+      "flare.saggi.cluster.BEILSTEIN_(FILO_Cu)",
+      "flare.saggi.cluster.SOLUBILITA_ACQUA",
+      "flare.saggi.cluster.SOLUBILITA_HCL",
+      "flare.saggi.cluster.SOLUBILITA_NAOH",
+      "flare.saggi.cluster.UREA_&_FLUORESCENZA_(CITRATI)",
+      "flare.saggi.cluster.UREA_&_FLUORESCENZA_(CITRATI)"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.IDROCORTISONE_ACETATO",
+    "imports": [
+      "flare.saggi.cluster.ACIDO_OSSALICO_(ACETATI)",
+      "flare.saggi.cluster.TTC_(STEROIDI)",
+      "flare.saggi.cluster.GRANDEZZE_FISICHE_(PUNTO_FUSIONE)",
+      "flare.saggi.cluster.H2SO4_&_DILUIZIONE_H2O_(STEROIDI)",
+      "flare.saggi.cluster.LASSAIGNE:AZOTO",
+      "flare.saggi.cluster.LASSAIGNE:FOSFORO",
+      "flare.saggi.cluster.LASSAIGNE:ZOLFO",
+      "flare.saggi.cluster.PROVA_AL_COCCIO",
+      "flare.saggi.cluster.BEILSTEIN_(FILO_Cu)"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.SODIO_ACETATO",
+    "imports": [
+      "flare.saggi.cluster.ACIDO_OSSALICO_(ACETATI)",
+      "flare.saggi.cluster.DENIGES_&_KMnO4_(CITRATI)",
+      "flare.saggi.cluster.FeCl3_(ALCOLI_AROMATICI,_AA,_SALICILATI,_…)",
+      "flare.saggi.cluster.FENTON:_FeSO4_+_H2O2_(TARTRATI)",
+      "flare.saggi.cluster.FILO_Ni-Cr",
+      "flare.saggi.cluster.NH4OH_&_Na2HPO4_(MAGNESIO)",
+      "flare.saggi.cluster.ORGANOLETTICA",
+      "flare.saggi.cluster.PROVA_AL_COCCIO",
+      "flare.saggi.cluster.BEILSTEIN_(FILO_Cu)",
+      "flare.saggi.cluster.SOLUBILITA_ACQUA",
+      "flare.saggi.cluster.SOLUBILITA_HCL"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.CLORPROMAZINA_HCl",
+    "imports": [
+      "flare.saggi.cluster.ACQUA_DI_BROMO_(FENOTIAZINE)",
+      "flare.saggi.cluster.AgNO3_(ALOGENURI)",
+      "flare.saggi.cluster.CLORAMMINA_T_(FENOTIAZINE)",
+      "flare.saggi.cluster.AMMINE_TERZIARIE_(DRAGENDORFF)",
+      "flare.saggi.cluster.GRANDEZZE_FISICHE_(PUNTO_FUSIONE)",
+      "flare.saggi.cluster.HNO3-CONC_(FENOTIAZINE)",
+      "flare.saggi.cluster.LASSAIGNE:AZOTO",
+      "flare.saggi.cluster.LASSAIGNE:ZOLFO",
+      "flare.saggi.cluster.NINIDRINA_(AMINOACIDI)",
+      "flare.saggi.cluster.PROVA_AL_COCCIO",
+      "flare.saggi.cluster.BEILSTEIN_(FILO_Cu)",
+      "flare.saggi.cluster.SOLUBILITA_ACQUA"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.PROMETAZINA_HCl",
+    "imports": [
+      "flare.saggi.cluster.ACQUA_DI_BROMO_(FENOTIAZINE)",
+      "flare.saggi.cluster.AgNO3_(ALOGENURI)",
+      "flare.saggi.cluster.CLORAMMINA_T_(FENOTIAZINE)",
+      "flare.saggi.cluster.AMMINE_TERZIARIE_(DRAGENDORFF)",
+      "flare.saggi.cluster.GRANDEZZE_FISICHE_(PUNTO_FUSIONE)",
+      "flare.saggi.cluster.HNO3-CONC_(FENOTIAZINE)",
+      "flare.saggi.cluster.LASSAIGNE:AZOTO",
+      "flare.saggi.cluster.LASSAIGNE:ZOLFO",
+      "flare.saggi.cluster.NINIDRINA_(AMINOACIDI)",
+      "flare.saggi.cluster.PROVA_AL_COCCIO",
+      "flare.saggi.cluster.BEILSTEIN_(FILO_Cu)",
+      "flare.saggi.cluster.SOLUBILITA_ACQUA",
+      "flare.saggi.cluster.SOLUBILITA_ETOH",
+      "flare.saggi.cluster.SOLUBILITA_HCL",
+      "flare.saggi.cluster.AMMINE_TERZIARIE_(ACIDO_CITRICO_E_ANIDRIDE_ACETICA)"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.CLORBUTANOLO",
+    "imports": [
+      "flare.saggi.cluster.OSSIDAZIONE_ACQUA_DI_BROMO",
+      "flare.saggi.cluster.AgNO3_(ALOGENURI)",
+      "flare.saggi.cluster.BOUCHARDAT_IN_AMB_BASICO_(CLORBUTANOLO)",
+      "flare.saggi.cluster.FeCl3_(ALCOLI_AROMATICI,_AA,_SALICILATI,_…)",
+      "flare.saggi.cluster.OSSIDAZIONE_FEHLING",
+      "flare.saggi.cluster.FILO_Ni-Cr",
+      "flare.saggi.cluster.GRANDEZZE_FISICHE_(PUNTO_FUSIONE)",
+      "flare.saggi.cluster.LASSAIGNE:ALOGENI",
+      "flare.saggi.cluster.LASSAIGNE:AZOTO",
+      "flare.saggi.cluster.LASSAIGNE:ZOLFO",
+      "flare.saggi.cluster.MOLISCH_(CARBOIDRATI)",
+      "flare.saggi.cluster.PROVA_AL_COCCIO",
+      "flare.saggi.cluster.RESORCINA_+_NaOH_(CLORALIO_IDRATO)",
+      "flare.saggi.cluster.BEILSTEIN_(FILO_Cu)",
+      "flare.saggi.cluster.SOLUBILITA_ACQUA",
+      "flare.saggi.cluster.SOLUBILITA_ETOH",
+      "flare.saggi.cluster.SOLUBILITA_HCL",
+      "flare.saggi.cluster.SOLUBILITA_NAOH"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.DAPSONE",
+    "imports": [
+      "flare.saggi.cluster.OSSIDAZIONE_ACQUA_DI_BROMO",
+      "flare.saggi.cluster.AMMINE_PRIMARIE_e_NO2-AROM_(DIAZO-COPULAZIONE)",
+      "flare.saggi.cluster.GRANDEZZE_FISICHE_(PUNTO_FUSIONE)",
+      "flare.saggi.cluster.LASSAIGNE:AZOTO",
+      "flare.saggi.cluster.LASSAIGNE:ZOLFO",
+      "flare.saggi.cluster.PROVA_AL_COCCIO",
+      "flare.saggi.cluster.ACIDO_CROMOTROPICO",
+      "flare.saggi.cluster.SOLUBILITA_ACQUA",
+      "flare.saggi.cluster.SOLUBILITA_ETOH",
+      "flare.saggi.cluster.SOLUBILITA_HCL",
+      "flare.saggi.cluster.SOLUBILITA_NAOH"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.IDROCORTISONE",
+    "imports": [
+      "flare.saggi.cluster.OSSIDAZIONE_ACQUA_DI_BROMO",
+      "flare.saggi.cluster.TTC_(STEROIDI)",
+      "flare.saggi.cluster.GRANDEZZE_FISICHE_(PUNTO_FUSIONE)",
+      "flare.saggi.cluster.H2SO4_&_DILUIZIONE_H2O_(STEROIDI)",
+      "flare.saggi.cluster.LASSAIGNE:AZOTO",
+      "flare.saggi.cluster.LASSAIGNE:ZOLFO",
+      "flare.saggi.cluster.PROVA_AL_COCCIO",
+      "flare.saggi.cluster.BEILSTEIN_(FILO_Cu)",
+      "flare.saggi.cluster.SOLUBILITA_ACQUA",
+      "flare.saggi.cluster.SOLUBILITA_ETOH",
+      "flare.saggi.cluster.SOLUBILITA_HCL",
+      "flare.saggi.cluster.SOLUBILITA_NAOH"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.METRONIDAZOLO",
+    "imports": [
+      "flare.saggi.cluster.OSSIDAZIONE_ACQUA_DI_BROMO",
+      "flare.saggi.cluster.AMMINE_PRIMARIE_e_NO2-AROM_(DIAZO-COPULAZIONE)",
+      "flare.saggi.cluster.GRANDEZZE_FISICHE_(PUNTO_FUSIONE)",
+      "flare.saggi.cluster.LASSAIGNE:AZOTO",
+      "flare.saggi.cluster.LASSAIGNE:ZOLFO",
+      "flare.saggi.cluster.NINIDRINA_(AMINOACIDI)",
+      "flare.saggi.cluster.PROVA_AL_COCCIO",
+      "flare.saggi.cluster.BEILSTEIN_(FILO_Cu)",
+      "flare.saggi.cluster.SOLUBILITA_ACQUA",
+      "flare.saggi.cluster.SOLUBILITA_ETOH",
+      "flare.saggi.cluster.SOLUBILITA_HCL",
+      "flare.saggi.cluster.VITALI-MORIN"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.POTASSIO_TARTRATO",
+    "imports": [
+      "flare.saggi.cluster.OSSIDAZIONE_ACQUA_DI_BROMO",
+      "flare.saggi.cluster.BIURETO_CUSO4_+_HCL_(CALCIO_PANTOTENATO)",
+      "flare.saggi.cluster.CaCl2_IN_AMB_BASICO_(CITRATI)",
+      "flare.saggi.cluster.DENIGES_&_KMnO4_(CITRATI)",
+      "flare.saggi.cluster.DENIGES_&_KMnO4_(CITRATI)",
+      "flare.saggi.cluster.FENTON:_FeSO4_+_H2O2_(TARTRATI)",
+      "flare.saggi.cluster.FILO_Ni-Cr",
+      "flare.saggi.cluster.OSSIDAZIONE_KMnO4",
+      "flare.saggi.cluster.LASSAIGNE:ALOGENI",
+      "flare.saggi.cluster.LASSAIGNE:AZOTO",
+      "flare.saggi.cluster.LASSAIGNE:ZOLFO",
+      "flare.saggi.cluster.MOHLER_(LATTATI_E_TARTRATI)",
+      "flare.saggi.cluster.PROVA_AL_COCCIO",
+      "flare.saggi.cluster.SOLUBILITA_ACQUA",
+      "flare.saggi.cluster.SOLUBILITA_HCL",
+      "flare.saggi.cluster.SOLUBILITA_NAOH"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.ACIDO_ASCORBICO",
+    "imports": [
+      "flare.saggi.cluster.OSSIDAZIONE_ACQUA_DI_BROMO",
+      "flare.saggi.cluster.AgNO3_(ALOGENURI)",
+      "flare.saggi.cluster.CLORAMMINA_T_&_CH2Cl2_(BROMURI_E_IODURI)",
+      "flare.saggi.cluster.FeCl3_(ALCOLI_AROMATICI,_AA,_SALICILATI,_…)",
+      "flare.saggi.cluster.OSSIDAZIONE_FEHLING",
+      "flare.saggi.cluster.FILO_Ni-Cr",
+      "flare.saggi.cluster.GRANDEZZE_FISICHE_(PUNTO_FUSIONE)",
+      "flare.saggi.cluster.HNO3_+_AgNO3_(ACIDO_ASCORBICO)",
+      "flare.saggi.cluster.LASSAIGNE:AZOTO",
+      "flare.saggi.cluster.LASSAIGNE:ZOLFO",
+      "flare.saggi.cluster.PROVA_AL_COCCIO",
+      "flare.saggi.cluster.BEILSTEIN_(FILO_Cu)",
+      "flare.saggi.cluster.SAGGIO_LEGAL_(ACIDO_ASCORBICO)",
+      "flare.saggi.cluster.SOLUBILITA_ACQUA"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.ACIDO_SORBICO",
+    "imports": [
+      "flare.saggi.cluster.OSSIDAZIONE_ACQUA_DI_BROMO",
+      "flare.saggi.cluster.AgNO3_(ALOGENURI)",
+      "flare.saggi.cluster.FeCl3-CONC_(BENZOATI_&_SALICILATI)",
+      "flare.saggi.cluster.GRANDEZZE_FISICHE_(PUNTO_FUSIONE)",
+      "flare.saggi.cluster.LASSAIGNE:AZOTO",
+      "flare.saggi.cluster.LASSAIGNE:ZOLFO",
+      "flare.saggi.cluster.PROVA_AL_COCCIO",
+      "flare.saggi.cluster.BEILSTEIN_(FILO_Cu)",
+      "flare.saggi.cluster.SOLUBILITA_ACQUA",
+      "flare.saggi.cluster.SOLUBILITA_ETOH",
+      "flare.saggi.cluster.SOLUBILITA_HCL",
+      "flare.saggi.cluster.SOLUBILITA_NAOH"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.CAFFEINA",
+    "imports": [
+      "flare.saggi.cluster.OSSIDAZIONE_ACQUA_DI_BROMO",
+      "flare.saggi.cluster.AgNO3_(ALOGENURI)",
+      "flare.saggi.cluster.AgNO3_(XANTINE)",
+      "flare.saggi.cluster.FeSO4_&_H2SO4_(NITRATI)",
+      "flare.saggi.cluster.GRANDEZZE_FISICHE_(PUNTO_FUSIONE)",
+      "flare.saggi.cluster.LASSAIGNE:AZOTO",
+      "flare.saggi.cluster.LASSAIGNE:ZOLFO",
+      "flare.saggi.cluster.MURESSIDE_(XANTINE)",
+      "flare.saggi.cluster.NINIDRINA_(AMINOACIDI)",
+      "flare.saggi.cluster.PROVA_AL_COCCIO",
+      "flare.saggi.cluster.BEILSTEIN_(FILO_Cu)",
+      "flare.saggi.cluster.SOLUBILITA_ACQUA",
+      "flare.saggi.cluster.SOLUBILITA_ETOH",
+      "flare.saggi.cluster.SOLUBILITA_HCL",
+      "flare.saggi.cluster.SOLUBILITA_NaHCO3",
+      "flare.saggi.cluster.SOLUBILITA_NAOH"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.CHINIDINA_SOLFATO",
+    "imports": [
+      "flare.saggi.cluster.OSSIDAZIONE_ACQUA_DI_BROMO",
+      "flare.saggi.cluster.AgNO3_(ALOGENURI)",
+      "flare.saggi.cluster.BASE_SCHIFF_(SULFAMIDICI)",
+      "flare.saggi.cluster.AMMINE_PRIMARIE_e_NO2-AROM_(DIAZO-COPULAZIONE)",
+      "flare.saggi.cluster.AMMINE_TERZIARIE_(DRAGENDORFF)",
+      "flare.saggi.cluster.GRANDEZZE_FISICHE_(PUNTO_FUSIONE)",
+      "flare.saggi.cluster.H2SO4-DIL_+_FLUORESCENZA_(ALC_CHINOLINICI)",
+      "flare.saggi.cluster.HCl_+_BaCl2_(SOLFATI)",
+      "flare.saggi.cluster.OSSIDAZIONE_KMnO4",
+      "flare.saggi.cluster.LASSAIGNE:AZOTO",
+      "flare.saggi.cluster.LASSAIGNE:ZOLFO",
+      "flare.saggi.cluster.PROVA_AL_COCCIO",
+      "flare.saggi.cluster.BEILSTEIN_(FILO_Cu)",
+      "flare.saggi.cluster.SOLUBILITA_ACQUA",
+      "flare.saggi.cluster.SOLUBILITA_HCL",
+      "flare.saggi.cluster.SOLUBILITA_NAOH",
+      "flare.saggi.cluster.SPETTROSCOPIA",
+      "flare.saggi.cluster.TALLEIOCHINA_(ALC_CHINOLINICI)",
+      "flare.saggi.cluster.VITALI-MORIN"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.IDROCLOROTIAZIDE",
+    "imports": [
+      "flare.saggi.cluster.OSSIDAZIONE_ACQUA_DI_BROMO",
+      "flare.saggi.cluster.BASE_SCHIFF_(SULFAMIDICI)",
+      "flare.saggi.cluster.CLORAMMINA_T_(FENOTIAZINE)",
+      "flare.saggi.cluster.FeCl3_(ALCOLI_AROMATICI,_AA,_SALICILATI,_…)",
+      "flare.saggi.cluster.GRANDEZZE_FISICHE_(PUNTO_FUSIONE)",
+      "flare.saggi.cluster.LASSAIGNE:AZOTO",
+      "flare.saggi.cluster.LASSAIGNE:ZOLFO",
+      "flare.saggi.cluster.NINIDRINA_(AMINOACIDI)",
+      "flare.saggi.cluster.PROVA_AL_COCCIO",
+      "flare.saggi.cluster.BEILSTEIN_(FILO_Cu)",
+      "flare.saggi.cluster.ACIDO_CROMOTROPICO",
+      "flare.saggi.cluster.SOLUBILITA_ACQUA",
+      "flare.saggi.cluster.SOLUBILITA_NAOH"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.POTASSIO_SORBATO",
+    "imports": [
+      "flare.saggi.cluster.OSSIDAZIONE_ACQUA_DI_BROMO",
+      "flare.saggi.cluster.FENTON:_FeSO4_+_H2O2_(TARTRATI)",
+      "flare.saggi.cluster.FILO_Ni-Cr",
+      "flare.saggi.cluster.OSSIDAZIONE_KMnO4",
+      "flare.saggi.cluster.LASSAIGNE:ALOGENI",
+      "flare.saggi.cluster.LASSAIGNE:AZOTO",
+      "flare.saggi.cluster.LASSAIGNE:ZOLFO",
+      "flare.saggi.cluster.MOHLER_(LATTATI_E_TARTRATI)",
+      "flare.saggi.cluster.OSSALATO_AMMONIO_(CALCIO)",
+      "flare.saggi.cluster.PROVA_AL_COCCIO",
+      "flare.saggi.cluster.SOLUBILITA_ACQUA"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.PROPIFENAZONE",
+    "imports": [
+      "flare.saggi.cluster.OSSIDAZIONE_ACQUA_DI_BROMO",
+      "flare.saggi.cluster.AgNO3_(ALOGENURI)",
+      "flare.saggi.cluster.FeCl3_+_HCl_o_H2SO4_(FENAZONE_E_PROPIFENAZONE)",
+      "flare.saggi.cluster.FeSO4_&_H2SO4_(NITRATI)",
+      "flare.saggi.cluster.GRANDEZZE_FISICHE_(PUNTO_FUSIONE)",
+      "flare.saggi.cluster.LASSAIGNE:AZOTO",
+      "flare.saggi.cluster.LASSAIGNE:ZOLFO",
+      "flare.saggi.cluster.NINIDRINA_(AMINOACIDI)",
+      "flare.saggi.cluster.PROVA_AL_COCCIO",
+      "flare.saggi.cluster.BEILSTEIN_(FILO_Cu)",
+      "flare.saggi.cluster.SOLUBILITA_ACQUA",
+      "flare.saggi.cluster.SOLUBILITA_HCL",
+      "flare.saggi.cluster.SOLUBILITA_NAOH",
+      "flare.saggi.cluster.VITALI-MORIN",
+      "flare.saggi.cluster.CORALINA_(ALC_ISOCHINOLINICI)"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.SACCARINA_SODICA",
+    "imports": [
+      "flare.saggi.cluster.OSSIDAZIONE_ACQUA_DI_BROMO",
+      "flare.saggi.cluster.CLORAMMINA_T_(FENOTIAZINE)",
+      "flare.saggi.cluster.FeCl3_(ALCOLI_AROMATICI,_AA,_SALICILATI,_…)",
+      "flare.saggi.cluster.FILO_Ni-Cr",
+      "flare.saggi.cluster.HNO3-CONC_(FENOTIAZINE)",
+      "flare.saggi.cluster.LASSAIGNE:AZOTO",
+      "flare.saggi.cluster.LASSAIGNE:FOSFORO",
+      "flare.saggi.cluster.LASSAIGNE:ZOLFO",
+      "flare.saggi.cluster.PROVA_AL_COCCIO",
+      "flare.saggi.cluster.RESORCINA_&_FLUORESCENZA_(SACCARINA_E_SALI)",
+      "flare.saggi.cluster.SOLUBILITA_ACQUA"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.SULFADIAZINA",
+    "imports": [
+      "flare.saggi.cluster.OSSIDAZIONE_ACQUA_DI_BROMO",
+      "flare.saggi.cluster.AgNO3_(ALOGENURI)",
+      "flare.saggi.cluster.BASE_SCHIFF_(SULFAMIDICI)",
+      "flare.saggi.cluster.AMMINE_PRIMARIE_e_NO2-AROM_(DIAZO-COPULAZIONE)",
+      "flare.saggi.cluster.GRANDEZZE_FISICHE_(PUNTO_FUSIONE)",
+      "flare.saggi.cluster.LASSAIGNE:AZOTO",
+      "flare.saggi.cluster.LASSAIGNE:ZOLFO",
+      "flare.saggi.cluster.PROVA_AL_COCCIO",
+      "flare.saggi.cluster.BEILSTEIN_(FILO_Cu)",
+      "flare.saggi.cluster.SAGGIO_BIURETO",
+      "flare.saggi.cluster.SOLUBILITA_ACQUA",
+      "flare.saggi.cluster.SOLUBILITA_HCL",
+      "flare.saggi.cluster.SOLUBILITA_NAOH"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.SULFAGUANIDINA",
+    "imports": [
+      "flare.saggi.cluster.OSSIDAZIONE_ACQUA_DI_BROMO",
+      "flare.saggi.cluster.BASE_SCHIFF_(SULFAMIDICI)",
+      "flare.saggi.cluster.AMMINE_PRIMARIE_e_NO2-AROM_(DIAZO-COPULAZIONE)",
+      "flare.saggi.cluster.FeCl3_(ALCOLI_AROMATICI,_AA,_SALICILATI,_…)",
+      "flare.saggi.cluster.GRANDEZZE_FISICHE_(PUNTO_FUSIONE)",
+      "flare.saggi.cluster.HCl_+_BaCl2_(SOLFATI)",
+      "flare.saggi.cluster.LASSAIGNE:AZOTO",
+      "flare.saggi.cluster.LASSAIGNE:ZOLFO",
+      "flare.saggi.cluster.NINIDRINA_(AMINOACIDI)",
+      "flare.saggi.cluster.PROVA_AL_COCCIO",
+      "flare.saggi.cluster.SOLUBILITA_ACQUA",
+      "flare.saggi.cluster.SOLUBILITA_HCL",
+      "flare.saggi.cluster.SOLUBILITA_NAOH"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.TEOBROMINA",
+    "imports": [
+      "flare.saggi.cluster.OSSIDAZIONE_ACQUA_DI_BROMO",
+      "flare.saggi.cluster.AgNO3_(ALOGENURI)",
+      "flare.saggi.cluster.AgNO3_(XANTINE)",
+      "flare.saggi.cluster.FILO_Ni-Cr",
+      "flare.saggi.cluster.GRANDEZZE_FISICHE_(PUNTO_FUSIONE)",
+      "flare.saggi.cluster.LASSAIGNE:AZOTO",
+      "flare.saggi.cluster.LASSAIGNE:ZOLFO",
+      "flare.saggi.cluster.MURESSIDE_(XANTINE)",
+      "flare.saggi.cluster.PROVA_AL_COCCIO",
+      "flare.saggi.cluster.BEILSTEIN_(FILO_Cu)",
+      "flare.saggi.cluster.SOLUBILITA_ACQUA",
+      "flare.saggi.cluster.SOLUBILITA_NAOH"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.TIAMINA_HCl",
+    "imports": [
+      "flare.saggi.cluster.OSSIDAZIONE_ACQUA_DI_BROMO",
+      "flare.saggi.cluster.AgNO3_(ALOGENURI)",
+      "flare.saggi.cluster.BASE_SCHIFF_(SULFAMIDICI)",
+      "flare.saggi.cluster.AMMINE_PRIMARIE_e_NO2-AROM_(DIAZO-COPULAZIONE)",
+      "flare.saggi.cluster.FeCl3_(ALCOLI_AROMATICI,_AA,_SALICILATI,_…)",
+      "flare.saggi.cluster.GRANDEZZE_FISICHE_(PUNTO_FUSIONE)",
+      "flare.saggi.cluster.NINIDRINA_(AMINOACIDI)",
+      "flare.saggi.cluster.PROVA_AL_COCCIO",
+      "flare.saggi.cluster.TIOCROMO_(TIAMINA_HCl)",
+      "flare.saggi.cluster.BEILSTEIN_(FILO_Cu)",
+      "flare.saggi.cluster.SOLUBILITA_ACQUA"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.VANILLINA",
+    "imports": [
+      "flare.saggi.cluster.OSSIDAZIONE_ACQUA_DI_BROMO",
+      "flare.saggi.cluster.GRANDEZZE_FISICHE_(PUNTO_FUSIONE)",
+      "flare.saggi.cluster.MILLON_(FENOLI_p-OCCUPATA)",
+      "flare.saggi.cluster.SOLUBILITA_ACQUA",
+      "flare.saggi.cluster.SOLUBILITA_HCL",
+      "flare.saggi.cluster.SOLUBILITA_NAOH"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.ACIDO_NICOTINICO",
+    "imports": [
+      "flare.saggi.cluster.AgNO3_&_NH4OH_(FOSFATI)",
+      "flare.saggi.cluster.AgNO3_(ALOGENURI)",
+      "flare.saggi.cluster.FeCl3_(ALCOLI_AROMATICI,_AA,_SALICILATI,_…)",
+      "flare.saggi.cluster.FeSO4_&_H2SO4_(NITRATI)",
+      "flare.saggi.cluster.FILO_Ni-Cr",
+      "flare.saggi.cluster.GRANDEZZE_FISICHE_(PUNTO_FUSIONE)",
+      "flare.saggi.cluster.LASSAIGNE:AZOTO",
+      "flare.saggi.cluster.LASSAIGNE:ZOLFO",
+      "flare.saggi.cluster.NINIDRINA_(AMINOACIDI)",
+      "flare.saggi.cluster.PROVA_AL_COCCIO",
+      "flare.saggi.cluster.BEILSTEIN_(FILO_Cu)",
+      "flare.saggi.cluster.SOLUBILITA_ACQUA",
+      "flare.saggi.cluster.SOLUBILITA_HCL",
+      "flare.saggi.cluster.SOLUBILITA_NAOH",
+      "flare.saggi.cluster.SPETTROSCOPIA",
+      "flare.saggi.cluster.ZINKE-KONIG_(PIRIDINE)"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.BENZOCAINA",
+    "imports": [
+      "flare.saggi.cluster.AgNO3_&_NH4OH_(FOSFATI)",
+      "flare.saggi.cluster.AgNO3_(ALOGENURI)",
+      "flare.saggi.cluster.AMMINE_TERZIARIE_(BOUCHARDAT)",
+      "flare.saggi.cluster.AMMINE_PRIMARIE_e_NO2-AROM_(DIAZO-COPULAZIONE)",
+      "flare.saggi.cluster.AMMINE_TERZIARIE_(DRAGENDORFF)",
+      "flare.saggi.cluster.FeSO4_&_H2SO4_(NITRATI)",
+      "flare.saggi.cluster.GRANDEZZE_FISICHE_(PUNTO_FUSIONE)",
+      "flare.saggi.cluster.LASSAIGNE:AZOTO",
+      "flare.saggi.cluster.LASSAIGNE:ZOLFO",
+      "flare.saggi.cluster.AMMINE_TERZIARIE_(MAYER)",
+      "flare.saggi.cluster.PROVA_AL_COCCIO",
+      "flare.saggi.cluster.BEILSTEIN_(FILO_Cu)",
+      "flare.saggi.cluster.SOLUBILITA_ACQUA",
+      "flare.saggi.cluster.SOLUBILITA_HCL",
+      "flare.saggi.cluster.SOLUBILITA_NAOH",
+      "flare.saggi.cluster.SPETTROSCOPIA"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.CALCIO_PANTOTENATO",
+    "imports": [
+      "flare.saggi.cluster.AgNO3_&_NH4OH_(FOSFATI)",
+      "flare.saggi.cluster.BIURETO_CUSO4_+_HCL_(CALCIO_PANTOTENATO)",
+      "flare.saggi.cluster.FeSO4_&_H2SO4_(NITRATI)",
+      "flare.saggi.cluster.FILO_Ni-Cr",
+      "flare.saggi.cluster.GRANDEZZE_FISICHE_(PUNTO_FUSIONE)",
+      "flare.saggi.cluster.NINIDRINA_(AMINOACIDI)",
+      "flare.saggi.cluster.PROVA_AL_COCCIO",
+      "flare.saggi.cluster.BEILSTEIN_(FILO_Cu)",
+      "flare.saggi.cluster.SOLUBILITA_ACQUA",
+      "flare.saggi.cluster.VANILLINA_(ISONIAZIDE)"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.NICOTINAMIDE",
+    "imports": [
+      "flare.saggi.cluster.AgNO3_&_NH4OH_(FOSFATI)",
+      "flare.saggi.cluster.AgNO3_(ALOGENURI)",
+      "flare.saggi.cluster.AMMINE_TERZIARIE_(BOUCHARDAT)",
+      "flare.saggi.cluster.AMMINE_PRIMARIE_e_NO2-AROM_(DIAZO-COPULAZIONE)",
+      "flare.saggi.cluster.AMMINE_TERZIARIE_(DRAGENDORFF)",
+      "flare.saggi.cluster.FeCl3_(ALCOLI_AROMATICI,_AA,_SALICILATI,_…)",
+      "flare.saggi.cluster.FeCl3_+_HCl_o_H2SO4_(FENAZONE_E_PROPIFENAZONE)",
+      "flare.saggi.cluster.FeSO4_&_H2SO4_(NITRATI)",
+      "flare.saggi.cluster.GIBBS_(PIRIDOSSINA)",
+      "flare.saggi.cluster.GRANDEZZE_FISICHE_(PUNTO_FUSIONE)",
+      "flare.saggi.cluster.IDROSSILAMMINA_(ESTERI_&_AMMIDI)",
+      "flare.saggi.cluster.LASSAIGNE:AZOTO",
+      "flare.saggi.cluster.LASSAIGNE:ZOLFO",
+      "flare.saggi.cluster.MILLON_(FENOLI_p-OCCUPATA)",
+      "flare.saggi.cluster.MOLISCH_(CARBOIDRATI)",
+      "flare.saggi.cluster.NINIDRINA_(AMINOACIDI)",
+      "flare.saggi.cluster.PROVA_AL_COCCIO",
+      "flare.saggi.cluster.BEILSTEIN_(FILO_Cu)",
+      "flare.saggi.cluster.SOLUBILITA_ACQUA",
+      "flare.saggi.cluster.SOLUBILITA_ETOH",
+      "flare.saggi.cluster.SOLUBILITA_HCL",
+      "flare.saggi.cluster.SOLUBILITA_NAOH",
+      "flare.saggi.cluster.VANILLINA_(ISONIAZIDE)",
+      "flare.saggi.cluster.ZINKE-KONIG_(PIRIDINE)",
+      "flare.saggi.cluster.ZINKE-KONIG_(PIRIDINE)"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.SODIO_P-AMMINO_SALICILATO",
+    "imports": [
+      "flare.saggi.cluster.AgNO3_&_NH4OH_(FOSFATI)",
+      "flare.saggi.cluster.AMMINE_PRIMARIE_e_NO2-AROM_(DIAZO-COPULAZIONE)",
+      "flare.saggi.cluster.FeCl3_(ALCOLI_AROMATICI,_AA,_SALICILATI,_…)",
+      "flare.saggi.cluster.FeCl3-CONC_(BENZOATI_&_SALICILATI)",
+      "flare.saggi.cluster.FILO_Ni-Cr",
+      "flare.saggi.cluster.GRANDEZZE_FISICHE_(PUNTO_FUSIONE)",
+      "flare.saggi.cluster.LASSAIGNE:AZOTO",
+      "flare.saggi.cluster.LASSAIGNE:ZOLFO",
+      "flare.saggi.cluster.NINIDRINA_(AMINOACIDI)",
+      "flare.saggi.cluster.PROVA_AL_COCCIO",
+      "flare.saggi.cluster.BEILSTEIN_(FILO_Cu)",
+      "flare.saggi.cluster.SOLUBILITA_ACQUA",
+      "flare.saggi.cluster.SOLUBILITA_ETOH",
+      "flare.saggi.cluster.SOLUBILITA_HCL",
+      "flare.saggi.cluster.SOLUBILITA_NAOH"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.CALCIO_GLICEROFOSFATO",
+    "imports": [
+      "flare.saggi.cluster.AgNO3_&_NH4OH_(FOSFATI)",
+      "flare.saggi.cluster.BIURETO_CUSO4_+_HCL_(CALCIO_PANTOTENATO)",
+      "flare.saggi.cluster.BOUCHARDAT_IN_AMB_BASICO_(LATTATI)",
+      "flare.saggi.cluster.FeCl3_(ALCOLI_AROMATICI,_AA,_SALICILATI,_…)",
+      "flare.saggi.cluster.OSSIDAZIONE_FEHLING",
+      "flare.saggi.cluster.FILO_Ni-Cr",
+      "flare.saggi.cluster.GRANDEZZE_FISICHE_(PUNTO_FUSIONE)",
+      "flare.saggi.cluster.MOLIBDICO_&_NH4OH_(FOSFATI)",
+      "flare.saggi.cluster.LASSAIGNE:ALOGENI",
+      "flare.saggi.cluster.LASSAIGNE:AZOTO",
+      "flare.saggi.cluster.LASSAIGNE:ZOLFO",
+      "flare.saggi.cluster.MOHLER_(LATTATI_E_TARTRATI)",
+      "flare.saggi.cluster.MOLISCH_(CARBOIDRATI)",
+      "flare.saggi.cluster.NH4OH_&_Na2HPO4_(MAGNESIO)",
+      "flare.saggi.cluster.OSSALATO_AMMONIO_(CALCIO)",
+      "flare.saggi.cluster.PROVA_AL_COCCIO",
+      "flare.saggi.cluster.SOLUBILITA_ACQUA",
+      "flare.saggi.cluster.SOLUBILITA_ACQUA",
+      "flare.saggi.cluster.SOLUBILITA_ETOH",
+      "flare.saggi.cluster.SOLUBILITA_HCL",
+      "flare.saggi.cluster.SOLUBILITA_HCL",
+      "flare.saggi.cluster.SOLUBILITA_NAOH",
+      "flare.saggi.cluster.SOLUBILITA_NAOH"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.DESAMETASONE_SODIO_FOSFATO",
+    "imports": [
+      "flare.saggi.cluster.AgNO3_&_NH4OH_(FOSFATI)",
+      "flare.saggi.cluster.TTC_(STEROIDI)",
+      "flare.saggi.cluster.FeCl3-CONC_(BENZOATI_&_SALICILATI)",
+      "flare.saggi.cluster.FILO_Ni-Cr",
+      "flare.saggi.cluster.PROVA_AL_COCCIO",
+      "flare.saggi.cluster.SOLUBILITA_ACQUA",
+      "flare.saggi.cluster.SOLUBILITA_HCL",
+      "flare.saggi.cluster.SOLUBILITA_NAOH"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.ACIDO_CITRICO",
+    "imports": [
+      "flare.saggi.cluster.AgNO3_(ALOGENURI)",
+      "flare.saggi.cluster.CaCl2_IN_AMB_BASICO_(CITRATI)",
+      "flare.saggi.cluster.DENIGES_&_KMnO4_(CITRATI)",
+      "flare.saggi.cluster.FeCl3_(ALCOLI_AROMATICI,_AA,_SALICILATI,_…)",
+      "flare.saggi.cluster.OSSIDAZIONE_FEHLING",
+      "flare.saggi.cluster.FILO_Ni-Cr",
+      "flare.saggi.cluster.GRANDEZZE_FISICHE_(PUNTO_FUSIONE)",
+      "flare.saggi.cluster.LASSAIGNE:ALOGENI",
+      "flare.saggi.cluster.LASSAIGNE:AZOTO",
+      "flare.saggi.cluster.LASSAIGNE:ZOLFO",
+      "flare.saggi.cluster.PROVA_AL_COCCIO",
+      "flare.saggi.cluster.BEILSTEIN_(FILO_Cu)",
+      "flare.saggi.cluster.SOLUBILITA_ACQUA",
+      "flare.saggi.cluster.SOLUBILITA_ETOH",
+      "flare.saggi.cluster.UREA_&_FLUORESCENZA_(CITRATI)"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.FENAZONE",
+    "imports": [
+      "flare.saggi.cluster.AgNO3_(ALOGENURI)",
+      "flare.saggi.cluster.AMMINE_TERZIARIE_(BOUCHARDAT)",
+      "flare.saggi.cluster.AMMINE_TERZIARIE_(DRAGENDORFF)",
+      "flare.saggi.cluster.FeCl3_(ALCOLI_AROMATICI,_AA,_SALICILATI,_…)",
+      "flare.saggi.cluster.FeCl3_+_HCl_o_H2SO4_(FENAZONE_E_PROPIFENAZONE)",
+      "flare.saggi.cluster.FeSO4_&_H2SO4_(NITRATI)",
+      "flare.saggi.cluster.GRANDEZZE_FISICHE_(PUNTO_FUSIONE)",
+      "flare.saggi.cluster.NaNO2_+_H2SO4_(FENAZONE)",
+      "flare.saggi.cluster.LASSAIGNE:AZOTO",
+      "flare.saggi.cluster.LASSAIGNE:ZOLFO",
+      "flare.saggi.cluster.AMMINE_TERZIARIE_(MAYER)",
+      "flare.saggi.cluster.MURESSIDE_(XANTINE)",
+      "flare.saggi.cluster.NINIDRINA_(AMINOACIDI)",
+      "flare.saggi.cluster.PROVA_AL_COCCIO",
+      "flare.saggi.cluster.BEILSTEIN_(FILO_Cu)",
+      "flare.saggi.cluster.SOLUBILITA_ACQUA",
+      "flare.saggi.cluster.SOLUBILITA_HCL",
+      "flare.saggi.cluster.SOLUBILITA_NAOH",
+      "flare.saggi.cluster.ZINKE-KONIG_(PIRIDINE)"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.FENILALANINA",
+    "imports": [
+      "flare.saggi.cluster.AgNO3_(ALOGENURI)",
+      "flare.saggi.cluster.SAGGIO_BIURETO",
+      "flare.saggi.cluster.FeSO4_&_H2SO4_(NITRATI)",
+      "flare.saggi.cluster.GRANDEZZE_FISICHE_(PUNTO_FUSIONE)",
+      "flare.saggi.cluster.LASSAIGNE:AZOTO",
+      "flare.saggi.cluster.LASSAIGNE:ZOLFO",
+      "flare.saggi.cluster.NINIDRINA_(AMINOACIDI)",
+      "flare.saggi.cluster.PROVA_AL_COCCIO",
+      "flare.saggi.cluster.BEILSTEIN_(FILO_Cu)",
+      "flare.saggi.cluster.SOLUBILITA_ACQUA",
+      "flare.saggi.cluster.SOLUBILITA_ETOH",
+      "flare.saggi.cluster.SOLUBILITA_HCL",
+      "flare.saggi.cluster.SOLUBILITA_NAOH"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.FTALILSULFATIAZOLO",
+    "imports": [
+      "flare.saggi.cluster.AgNO3_(ALOGENURI)",
+      "flare.saggi.cluster.BASE_SCHIFF_(SULFAMIDICI)",
+      "flare.saggi.cluster.CLORAMMINA_T_(FENOTIAZINE)",
+      "flare.saggi.cluster.FILO_Ni-Cr",
+      "flare.saggi.cluster.GRANDEZZE_FISICHE_(PUNTO_FUSIONE)",
+      "flare.saggi.cluster.IDROSSILAMMINA_(ESTERI_&_AMMIDI)",
+      "flare.saggi.cluster.LASSAIGNE:AZOTO",
+      "flare.saggi.cluster.LASSAIGNE:ZOLFO",
+      "flare.saggi.cluster.NINIDRINA_(AMINOACIDI)",
+      "flare.saggi.cluster.PROVA_AL_COCCIO",
+      "flare.saggi.cluster.BEILSTEIN_(FILO_Cu)",
+      "flare.saggi.cluster.SAGGIO_BIURETO",
+      "flare.saggi.cluster.SOLUBILITA_ACQUA",
+      "flare.saggi.cluster.SOLUBILITA_ETOH",
+      "flare.saggi.cluster.SOLUBILITA_HCL",
+      "flare.saggi.cluster.SOLUBILITA_NAOH"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.GLICINA",
+    "imports": [
+      "flare.saggi.cluster.AgNO3_(ALOGENURI)",
+      "flare.saggi.cluster.GRANDEZZE_FISICHE_(PUNTO_FUSIONE)",
+      "flare.saggi.cluster.MURESSIDE_(XANTINE)",
+      "flare.saggi.cluster.NINIDRINA_(AMINOACIDI)",
+      "flare.saggi.cluster.PROVA_AL_COCCIO",
+      "flare.saggi.cluster.SOLUBILITA_ACQUA",
+      "flare.saggi.cluster.SOLUBILITA_ETOH",
+      "flare.saggi.cluster.SOLUBILITA_HCL",
+      "flare.saggi.cluster.SOLUBILITA_NAOH"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.MANNITOLO",
+    "imports": [
+      "flare.saggi.cluster.AgNO3_(ALOGENURI)",
+      "flare.saggi.cluster.BORACE_&_FENOLFTALEINA_(POLIALCOLI)",
+      "flare.saggi.cluster.CaCl2_IN_AMB_BASICO_(CITRATI)",
+      "flare.saggi.cluster.DENIGES_&_KMnO4_(CITRATI)",
+      "flare.saggi.cluster.FeCl3_(ALCOLI_AROMATICI,_AA,_SALICILATI,_…)",
+      "flare.saggi.cluster.FeCl3-CONC_(BENZOATI_&_SALICILATI)",
+      "flare.saggi.cluster.OSSIDAZIONE_FEHLING",
+      "flare.saggi.cluster.FENTON:_FeSO4_+_H2O2_(TARTRATI)",
+      "flare.saggi.cluster.GRANDEZZE_FISICHE_(PUNTO_FUSIONE)",
+      "flare.saggi.cluster.LASSAIGNE:ALOGENI",
+      "flare.saggi.cluster.LASSAIGNE:AZOTO",
+      "flare.saggi.cluster.LASSAIGNE:ZOLFO",
+      "flare.saggi.cluster.MOHLER_(LATTATI_E_TARTRATI)",
+      "flare.saggi.cluster.MOLISCH_(CARBOIDRATI)",
+      "flare.saggi.cluster.MURESSIDE_(XANTINE)",
+      "flare.saggi.cluster.PROVA_AL_COCCIO",
+      "flare.saggi.cluster.BEILSTEIN_(FILO_Cu)",
+      "flare.saggi.cluster.SOLUBILITA_ACQUA",
+      "flare.saggi.cluster.SOLUBILITA_ETOH",
+      "flare.saggi.cluster.SOLUBILITA_HCL",
+      "flare.saggi.cluster.SOLUBILITA_NAOH"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.METILPARABEN",
+    "imports": [
+      "flare.saggi.cluster.AgNO3_(ALOGENURI)",
+      "flare.saggi.cluster.FeCl3_(ALCOLI_AROMATICI,_AA,_SALICILATI,_…)",
+      "flare.saggi.cluster.GRANDEZZE_FISICHE_(PUNTO_FUSIONE)",
+      "flare.saggi.cluster.LASSAIGNE:ALOGENI",
+      "flare.saggi.cluster.LASSAIGNE:AZOTO",
+      "flare.saggi.cluster.LASSAIGNE:ZOLFO",
+      "flare.saggi.cluster.MILLON_(FENOLI_p-OCCUPATA)",
+      "flare.saggi.cluster.PROVA_AL_COCCIO",
+      "flare.saggi.cluster.SOLUBILITA_ACQUA",
+      "flare.saggi.cluster.SOLUBILITA_HCL",
+      "flare.saggi.cluster.SOLUBILITA_NAOH"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.PROLINA",
+    "imports": [
+      "flare.saggi.cluster.AgNO3_(ALOGENURI)",
+      "flare.saggi.cluster.LASSAIGNE:AZOTO",
+      "flare.saggi.cluster.LASSAIGNE:ZOLFO",
+      "flare.saggi.cluster.NINIDRINA_(AMINOACIDI)",
+      "flare.saggi.cluster.PROVA_AL_COCCIO",
+      "flare.saggi.cluster.BEILSTEIN_(FILO_Cu)",
+      "flare.saggi.cluster.SOLUBILITA_ACQUA",
+      "flare.saggi.cluster.SOLUBILITA_HCL",
+      "flare.saggi.cluster.SOLUBILITA_NAOH"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.SULFAMERAZINA",
+    "imports": [
+      "flare.saggi.cluster.AgNO3_(ALOGENURI)",
+      "flare.saggi.cluster.BASE_SCHIFF_(SULFAMIDICI)",
+      "flare.saggi.cluster.GRANDEZZE_FISICHE_(PUNTO_FUSIONE)",
+      "flare.saggi.cluster.LASSAIGNE:AZOTO",
+      "flare.saggi.cluster.LASSAIGNE:ZOLFO",
+      "flare.saggi.cluster.PROVA_AL_COCCIO",
+      "flare.saggi.cluster.SOLUBILITA_ACQUA",
+      "flare.saggi.cluster.SOLUBILITA_HCL",
+      "flare.saggi.cluster.SOLUBILITA_NAOH"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.CISTEINA_HCl",
+    "imports": [
+      "flare.saggi.cluster.AgNO3_(ALOGENURI)",
+      "flare.saggi.cluster.CLORAMMINA_T_(FENOTIAZINE)",
+      "flare.saggi.cluster.GRANDEZZE_FISICHE_(PUNTO_FUSIONE)",
+      "flare.saggi.cluster.LASSAIGNE:AZOTO",
+      "flare.saggi.cluster.LASSAIGNE:ZOLFO",
+      "flare.saggi.cluster.NINIDRINA_(AMINOACIDI)",
+      "flare.saggi.cluster.PROVA_AL_COCCIO",
+      "flare.saggi.cluster.BEILSTEIN_(FILO_Cu)",
+      "flare.saggi.cluster.SOLUBILITA_ACQUA",
+      "flare.saggi.cluster.SOLUBILITA_HCL",
+      "flare.saggi.cluster.SOLUBILITA_NAOH"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.DIFENIDRAMINA_HCl",
+    "imports": [
+      "flare.saggi.cluster.AgNO3_(ALOGENURI)",
+      "flare.saggi.cluster.GRANDEZZE_FISICHE_(PUNTO_FUSIONE)",
+      "flare.saggi.cluster.LASSAIGNE:AZOTO",
+      "flare.saggi.cluster.LASSAIGNE:ZOLFO",
+      "flare.saggi.cluster.BEILSTEIN_(FILO_Cu)",
+      "flare.saggi.cluster.SOLUBILITA_ACQUA",
+      "flare.saggi.cluster.SOLUBILITA_ETOH",
+      "flare.saggi.cluster.SOLUBILITA_HCL",
+      "flare.saggi.cluster.SOLUBILITA_NAOH",
+      "flare.saggi.cluster.VITALI-MORIN"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.EFEDRINA_HCl",
+    "imports": [
+      "flare.saggi.cluster.AgNO3_(ALOGENURI)",
+      "flare.saggi.cluster.CHEN-KAO_(FENIL-ALCHIL-AMMINE)",
+      "flare.saggi.cluster.GRANDEZZE_FISICHE_(PUNTO_FUSIONE)",
+      "flare.saggi.cluster.LASSAIGNE:AZOTO",
+      "flare.saggi.cluster.LASSAIGNE:ZOLFO",
+      "flare.saggi.cluster.NINIDRINA_(AMINOACIDI)",
+      "flare.saggi.cluster.PROVA_AL_COCCIO",
+      "flare.saggi.cluster.BEILSTEIN_(FILO_Cu)",
+      "flare.saggi.cluster.SOLUBILITA_ACQUA",
+      "flare.saggi.cluster.SOLUBILITA_ETOH"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.IMIPRAMINA_HCl",
+    "imports": [
+      "flare.saggi.cluster.AgNO3_(ALOGENURI)",
+      "flare.saggi.cluster.GRANDEZZE_FISICHE_(PUNTO_FUSIONE)",
+      "flare.saggi.cluster.HNO3-CONC_(FENOTIAZINE)",
+      "flare.saggi.cluster.MURESSIDE_(XANTINE)",
+      "flare.saggi.cluster.NINIDRINA_(AMINOACIDI)",
+      "flare.saggi.cluster.PROVA_AL_COCCIO",
+      "flare.saggi.cluster.BEILSTEIN_(FILO_Cu)",
+      "flare.saggi.cluster.SOLUBILITA_ETOH",
+      "flare.saggi.cluster.SOLUBILITA_HCL",
+      "flare.saggi.cluster.SOLUBILITA_NAOH",
+      "flare.saggi.cluster.VITALI-MORIN",
+      "flare.saggi.cluster.AMMINE_TERZIARIE_(DRAGENDORFF)",
+      "flare.saggi.cluster.AMMINE_TERZIARIE_(BOUCHARDAT)",
+      "flare.saggi.cluster.AMMINE_TERZIARIE_(MAYER)"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.LIDOCAINA_HCl",
+    "imports": [
+      "flare.saggi.cluster.AgNO3_(ALOGENURI)",
+      "flare.saggi.cluster.AMMINE_TERZIARIE_(BOUCHARDAT)",
+      "flare.saggi.cluster.AMMINE_TERZIARIE_(DRAGENDORFF)",
+      "flare.saggi.cluster.FILO_Ni-Cr",
+      "flare.saggi.cluster.GRANDEZZE_FISICHE_(PUNTO_FUSIONE)",
+      "flare.saggi.cluster.LASSAIGNE:AZOTO",
+      "flare.saggi.cluster.LASSAIGNE:ZOLFO",
+      "flare.saggi.cluster.AMMINE_TERZIARIE_(MAYER)",
+      "flare.saggi.cluster.MURESSIDE_(XANTINE)",
+      "flare.saggi.cluster.PROVA_AL_COCCIO",
+      "flare.saggi.cluster.BEILSTEIN_(FILO_Cu)",
+      "flare.saggi.cluster.SOLUBILITA_ACQUA",
+      "flare.saggi.cluster.SOLUBILITA_ETOH",
+      "flare.saggi.cluster.SOLUBILITA_HCL",
+      "flare.saggi.cluster.SOLUBILITA_NAOH",
+      "flare.saggi.cluster.VITALI-MORIN"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.LISINA_HCl",
+    "imports": [
+      "flare.saggi.cluster.AgNO3_(ALOGENURI)",
+      "flare.saggi.cluster.GRANDEZZE_FISICHE_(PUNTO_FUSIONE)",
+      "flare.saggi.cluster.PROVA_AL_COCCIO",
+      "flare.saggi.cluster.BEILSTEIN_(FILO_Cu)",
+      "flare.saggi.cluster.SOLUBILITA_ACQUA"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.METFORMINA_HCl",
+    "imports": [
+      "flare.saggi.cluster.AgNO3_(ALOGENURI)",
+      "flare.saggi.cluster.SAGGIO_BIURETO",
+      "flare.saggi.cluster.AMMINE_TERZIARIE_(BOUCHARDAT)",
+      "flare.saggi.cluster.AMMINE_PRIMARIE_e_NO2-AROM_(DIAZO-COPULAZIONE)",
+      "flare.saggi.cluster.AMMINE_TERZIARIE_(DRAGENDORFF)",
+      "flare.saggi.cluster.FeSO4_&_H2SO4_(NITRATI)",
+      "flare.saggi.cluster.GRANDEZZE_FISICHE_(PUNTO_FUSIONE)",
+      "flare.saggi.cluster.LASSAIGNE:AZOTO",
+      "flare.saggi.cluster.LASSAIGNE:ZOLFO",
+      "flare.saggi.cluster.AMMINE_TERZIARIE_(MAYER)",
+      "flare.saggi.cluster.NINIDRINA_(AMINOACIDI)",
+      "flare.saggi.cluster.PROVA_AL_COCCIO",
+      "flare.saggi.cluster.BEILSTEIN_(FILO_Cu)",
+      "flare.saggi.cluster.SOLUBILITA_ACQUA",
+      "flare.saggi.cluster.SOLUBILITA_HCL",
+      "flare.saggi.cluster.SOLUBILITA_NAOH"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.PROCAINA_HCl",
+    "imports": [
+      "flare.saggi.cluster.AgNO3_(ALOGENURI)",
+      "flare.saggi.cluster.AMMINE_TERZIARIE_(BOUCHARDAT)",
+      "flare.saggi.cluster.AMMINE_PRIMARIE_e_NO2-AROM_(DIAZO-COPULAZIONE)",
+      "flare.saggi.cluster.AMMINE_TERZIARIE_(DRAGENDORFF)",
+      "flare.saggi.cluster.FeSO4_&_H2SO4_(NITRATI)",
+      "flare.saggi.cluster.GRANDEZZE_FISICHE_(PUNTO_FUSIONE)",
+      "flare.saggi.cluster.LASSAIGNE:AZOTO",
+      "flare.saggi.cluster.LASSAIGNE:ZOLFO",
+      "flare.saggi.cluster.AMMINE_TERZIARIE_(MAYER)",
+      "flare.saggi.cluster.PROVA_AL_COCCIO",
+      "flare.saggi.cluster.BEILSTEIN_(FILO_Cu)",
+      "flare.saggi.cluster.SOLUBILITA_ACQUA",
+      "flare.saggi.cluster.SOLUBILITA_HCL",
+      "flare.saggi.cluster.SOLUBILITA_NAOH"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.ECONAZOLO_NITRATO",
+    "imports": [
+      "flare.saggi.cluster.AgNO3_(ALOGENURI)",
+      "flare.saggi.cluster.FeSO4_&_H2SO4_(NITRATI)",
+      "flare.saggi.cluster.GRANDEZZE_FISICHE_(PUNTO_FUSIONE)",
+      "flare.saggi.cluster.LASSAIGNE:AZOTO",
+      "flare.saggi.cluster.LASSAIGNE:ZOLFO",
+      "flare.saggi.cluster.PROVA_AL_COCCIO",
+      "flare.saggi.cluster.BEILSTEIN_(FILO_Cu)",
+      "flare.saggi.cluster.SOLUBILITA_ACQUA",
+      "flare.saggi.cluster.SOLUBILITA_ETOH",
+      "flare.saggi.cluster.SOLUBILITA_HCL",
+      "flare.saggi.cluster.SOLUBILITA_NAOH"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.FUROSEMIDE",
+    "imports": [
+      "flare.saggi.cluster.AgNO3_(ALOGENURI)",
+      "flare.saggi.cluster.CLORAMMINA_T_&_CH2Cl2_(BROMURI_E_IODURI)",
+      "flare.saggi.cluster.GRANDEZZE_FISICHE_(PUNTO_FUSIONE)",
+      "flare.saggi.cluster.LASSAIGNE:AZOTO",
+      "flare.saggi.cluster.LASSAIGNE:ZOLFO",
+      "flare.saggi.cluster.PROVA_AL_COCCIO",
+      "flare.saggi.cluster.SOLUBILITA_ACQUA",
+      "flare.saggi.cluster.SOLUBILITA_HCL",
+      "flare.saggi.cluster.SOLUBILITA_NAOH"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.TEOFILLINA",
+    "imports": [
+      "flare.saggi.cluster.AgNO3_(XANTINE)",
+      "flare.saggi.cluster.GRANDEZZE_FISICHE_(PUNTO_FUSIONE)",
+      "flare.saggi.cluster.LASSAIGNE:AZOTO",
+      "flare.saggi.cluster.LASSAIGNE:ZOLFO",
+      "flare.saggi.cluster.MURESSIDE_(XANTINE)",
+      "flare.saggi.cluster.PROVA_AL_COCCIO",
+      "flare.saggi.cluster.SOLUBILITA_ACQUA",
+      "flare.saggi.cluster.SOLUBILITA_HCL",
+      "flare.saggi.cluster.SOLUBILITA_NAOH",
+      "flare.saggi.cluster.VITALI-MORIN",
+      "flare.saggi.cluster.NINIDRINA_(AMINOACIDI)"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.INDOMETACINA",
+    "imports": [
+      "flare.saggi.cluster.BASE_SCHIFF_(SULFAMIDICI)",
+      "flare.saggi.cluster.GRANDEZZE_FISICHE_(PUNTO_FUSIONE)",
+      "flare.saggi.cluster.IDROSSILAMMINA_(ESTERI_&_AMMIDI)",
+      "flare.saggi.cluster.LASSAIGNE:AZOTO",
+      "flare.saggi.cluster.LASSAIGNE:ZOLFO",
+      "flare.saggi.cluster.SOLUBILITA_ACQUA",
+      "flare.saggi.cluster.SOLUBILITA_ETOH",
+      "flare.saggi.cluster.SOLUBILITA_HCL",
+      "flare.saggi.cluster.SOLUBILITA_NAOH"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.SUCRALOSIO",
+    "imports": [
+      "flare.saggi.cluster.BASE_SCHIFF_(SULFAMIDICI)",
+      "flare.saggi.cluster.BOUCHARDAT_IN_AMB_BASICO_(LATTATI)",
+      "flare.saggi.cluster.CaCl2_IN_AMB_BASICO_(CITRATI)",
+      "flare.saggi.cluster.AMMINE_PRIMARIE_e_NO2-AROM_(DIAZO-COPULAZIONE)",
+      "flare.saggi.cluster.FeCl3_(ALCOLI_AROMATICI,_AA,_SALICILATI,_…)",
+      "flare.saggi.cluster.OSSIDAZIONE_FEHLING",
+      "flare.saggi.cluster.FENTON:_FeSO4_+_H2O2_(TARTRATI)",
+      "flare.saggi.cluster.FILO_Ni-Cr",
+      "flare.saggi.cluster.GRANDEZZE_FISICHE_(PUNTO_FUSIONE)",
+      "flare.saggi.cluster.LASSAIGNE:ALOGENI",
+      "flare.saggi.cluster.LASSAIGNE:AZOTO",
+      "flare.saggi.cluster.LASSAIGNE:ZOLFO",
+      "flare.saggi.cluster.MOLISCH_(CARBOIDRATI)",
+      "flare.saggi.cluster.PROVA_AL_COCCIO",
+      "flare.saggi.cluster.RESORCINA_+_NaOH_(CLORALIO_IDRATO)",
+      "flare.saggi.cluster.BEILSTEIN_(FILO_Cu)",
+      "flare.saggi.cluster.SOLUBILITA_ACQUA",
+      "flare.saggi.cluster.SOLUBILITA_NAOH"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.SULFANILAMIDE",
+    "imports": [
+      "flare.saggi.cluster.BASE_SCHIFF_(SULFAMIDICI)",
+      "flare.saggi.cluster.GRANDEZZE_FISICHE_(PUNTO_FUSIONE)",
+      "flare.saggi.cluster.LASSAIGNE:AZOTO",
+      "flare.saggi.cluster.LASSAIGNE:ZOLFO",
+      "flare.saggi.cluster.PROVA_AL_COCCIO",
+      "flare.saggi.cluster.SOLUBILITA_ACQUA"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.SULFATIAZOLO",
+    "imports": [
+      "flare.saggi.cluster.BASE_SCHIFF_(SULFAMIDICI)",
+      "flare.saggi.cluster.AMMINE_PRIMARIE_e_NO2-AROM_(DIAZO-COPULAZIONE)",
+      "flare.saggi.cluster.FILO_Ni-Cr",
+      "flare.saggi.cluster.GRANDEZZE_FISICHE_(PUNTO_FUSIONE)",
+      "flare.saggi.cluster.LASSAIGNE:AZOTO",
+      "flare.saggi.cluster.LASSAIGNE:ZOLFO",
+      "flare.saggi.cluster.PROVA_AL_COCCIO",
+      "flare.saggi.cluster.BEILSTEIN_(FILO_Cu)",
+      "flare.saggi.cluster.SAGGIO_BIURETO",
+      "flare.saggi.cluster.SOLUBILITA_ACQUA",
+      "flare.saggi.cluster.SOLUBILITA_HCL",
+      "flare.saggi.cluster.SOLUBILITA_NAOH"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.CALCIO_LATTATO",
+    "imports": [
+      "flare.saggi.cluster.BIURETO_CUSO4_+_HCL_(CALCIO_PANTOTENATO)",
+      "flare.saggi.cluster.BOUCHARDAT_IN_AMB_BASICO_(LATTATI)",
+      "flare.saggi.cluster.FILO_Ni-Cr",
+      "flare.saggi.cluster.LASSAIGNE:ALOGENI",
+      "flare.saggi.cluster.LASSAIGNE:AZOTO",
+      "flare.saggi.cluster.LASSAIGNE:ZOLFO",
+      "flare.saggi.cluster.NH4OH_&_Na2HPO4_(MAGNESIO)",
+      "flare.saggi.cluster.OSSALATO_AMMONIO_(CALCIO)",
+      "flare.saggi.cluster.PROVA_AL_COCCIO",
+      "flare.saggi.cluster.SOLUBILITA_ACQUA",
+      "flare.saggi.cluster.SOLUBILITA_HCL",
+      "flare.saggi.cluster.SOLUBILITA_NAOH"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.PROCAINAMMIDE_HCl",
+    "imports": [
+      "flare.saggi.cluster.SAGGIO_BIURETO",
+      "flare.saggi.cluster.AMMINE_TERZIARIE_(BOUCHARDAT)",
+      "flare.saggi.cluster.AMMINE_PRIMARIE_e_NO2-AROM_(DIAZO-COPULAZIONE)",
+      "flare.saggi.cluster.AMMINE_TERZIARIE_(DRAGENDORFF)",
+      "flare.saggi.cluster.FeCl3_(ALCOLI_AROMATICI,_AA,_SALICILATI,_…)",
+      "flare.saggi.cluster.OSSIDAZIONE_FEHLING",
+      "flare.saggi.cluster.GRANDEZZE_FISICHE_(PUNTO_FUSIONE)",
+      "flare.saggi.cluster.LASSAIGNE:AZOTO",
+      "flare.saggi.cluster.LASSAIGNE:ZOLFO",
+      "flare.saggi.cluster.AMMINE_TERZIARIE_(MAYER)",
+      "flare.saggi.cluster.NINIDRINA_(AMINOACIDI)",
+      "flare.saggi.cluster.PROVA_AL_COCCIO",
+      "flare.saggi.cluster.SOLUBILITA_ACQUA",
+      "flare.saggi.cluster.SOLUBILITA_ETOH",
+      "flare.saggi.cluster.SOLUBILITA_HCL",
+      "flare.saggi.cluster.SOLUBILITA_NAOH"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.ACETILCISTEINA",
+    "imports": [
+      "flare.saggi.cluster.SAGGIO_BIURETO",
+      "flare.saggi.cluster.GRANDEZZE_FISICHE_(PUNTO_FUSIONE)",
+      "flare.saggi.cluster.LASSAIGNE:AZOTO",
+      "flare.saggi.cluster.LASSAIGNE:ZOLFO",
+      "flare.saggi.cluster.SOLUBILITA_ACQUA",
+      "flare.saggi.cluster.SOLUBILITA_HCL"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.ALANINA",
+    "imports": [
+      "flare.saggi.cluster.SAGGIO_BIURETO",
+      "flare.saggi.cluster.SOLUBILITA_ACQUA",
+      "flare.saggi.cluster.SOLUBILITA_ETOH"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.TREONINA",
+    "imports": [
+      "flare.saggi.cluster.SAGGIO_BIURETO",
+      "flare.saggi.cluster.GRANDEZZE_FISICHE_(PUNTO_FUSIONE)",
+      "flare.saggi.cluster.LASSAIGNE:AZOTO",
+      "flare.saggi.cluster.LASSAIGNE:ZOLFO",
+      "flare.saggi.cluster.NINIDRINA_(AMINOACIDI)",
+      "flare.saggi.cluster.SOLUBILITA_ACQUA",
+      "flare.saggi.cluster.SOLUBILITA_HCL",
+      "flare.saggi.cluster.SOLUBILITA_NAOH"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.SACCAROSIO",
+    "imports": [
+      "flare.saggi.cluster.BORACE_&_FENOLFTALEINA_(POLIALCOLI)",
+      "flare.saggi.cluster.FeCl3_(ALCOLI_AROMATICI,_AA,_SALICILATI,_…)",
+      "flare.saggi.cluster.OSSIDAZIONE_FEHLING",
+      "flare.saggi.cluster.GRANDEZZE_FISICHE_(PUNTO_FUSIONE)",
+      "flare.saggi.cluster.MOLISCH_(CARBOIDRATI)",
+      "flare.saggi.cluster.NH4OH_B.M._(LATTOSIO)",
+      "flare.saggi.cluster.PROVA_AL_COCCIO",
+      "flare.saggi.cluster.BEILSTEIN_(FILO_Cu)",
+      "flare.saggi.cluster.SELIWANOFF_(CHETOESOSI)",
+      "flare.saggi.cluster.SOLUBILITA_ACQUA",
+      "flare.saggi.cluster.SOLUBILITA_ETOH"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.SORBITOLO",
+    "imports": [
+      "flare.saggi.cluster.BORACE_&_FENOLFTALEINA_(POLIALCOLI)",
+      "flare.saggi.cluster.AMMINE_PRIMARIE_e_NO2-AROM_(DIAZO-COPULAZIONE)",
+      "flare.saggi.cluster.OSSIDAZIONE_FEHLING",
+      "flare.saggi.cluster.GRANDEZZE_FISICHE_(PUNTO_FUSIONE)",
+      "flare.saggi.cluster.LASSAIGNE:ALOGENI",
+      "flare.saggi.cluster.LASSAIGNE:AZOTO",
+      "flare.saggi.cluster.LASSAIGNE:ZOLFO",
+      "flare.saggi.cluster.MOLISCH_(CARBOIDRATI)",
+      "flare.saggi.cluster.PROVA_AL_COCCIO",
+      "flare.saggi.cluster.BEILSTEIN_(FILO_Cu)",
+      "flare.saggi.cluster.SOLUBILITA_ACQUA",
+      "flare.saggi.cluster.SOLUBILITA_ETOH",
+      "flare.saggi.cluster.SOLUBILITA_HCL",
+      "flare.saggi.cluster.SOLUBILITA_NAOH"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.CHININA_SOLFATO",
+    "imports": [
+      "flare.saggi.cluster.AMMINE_TERZIARIE_(BOUCHARDAT)",
+      "flare.saggi.cluster.AMMINE_PRIMARIE_e_NO2-AROM_(DIAZO-COPULAZIONE)",
+      "flare.saggi.cluster.AMMINE_TERZIARIE_(DRAGENDORFF)",
+      "flare.saggi.cluster.GRANDEZZE_FISICHE_(PUNTO_FUSIONE)",
+      "flare.saggi.cluster.H2SO4-DIL_+_FLUORESCENZA_(ALC_CHINOLINICI)",
+      "flare.saggi.cluster.LASSAIGNE:AZOTO",
+      "flare.saggi.cluster.LASSAIGNE:ZOLFO",
+      "flare.saggi.cluster.AMMINE_TERZIARIE_(MAYER)",
+      "flare.saggi.cluster.PROVA_AL_COCCIO",
+      "flare.saggi.cluster.RIDUZIONE_GRUPPO_NITRO_(NO2-Ar)",
+      "flare.saggi.cluster.SOLUBILITA_ACQUA",
+      "flare.saggi.cluster.TALLEIOCHINA_(ALC_CHINOLINICI)"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.ISONIAZIDE",
+    "imports": [
+      "flare.saggi.cluster.AMMINE_TERZIARIE_(BOUCHARDAT)",
+      "flare.saggi.cluster.AMMINE_TERZIARIE_(DRAGENDORFF)",
+      "flare.saggi.cluster.OSSIDAZIONE_FEHLING",
+      "flare.saggi.cluster.GRANDEZZE_FISICHE_(PUNTO_FUSIONE)",
+      "flare.saggi.cluster.LASSAIGNE:AZOTO",
+      "flare.saggi.cluster.LASSAIGNE:ZOLFO",
+      "flare.saggi.cluster.AMMINE_TERZIARIE_(MAYER)",
+      "flare.saggi.cluster.PROVA_AL_COCCIO",
+      "flare.saggi.cluster.SOLUBILITA_ACQUA",
+      "flare.saggi.cluster.SOLUBILITA_ETOH",
+      "flare.saggi.cluster.SOLUBILITA_HCL",
+      "flare.saggi.cluster.SOLUBILITA_NAOH",
+      "flare.saggi.cluster.ZINKE-KONIG_(PIRIDINE)"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.PROBENECID",
+    "imports": [
+      "flare.saggi.cluster.AMMINE_TERZIARIE_(BOUCHARDAT)",
+      "flare.saggi.cluster.AMMINE_TERZIARIE_(DRAGENDORFF)",
+      "flare.saggi.cluster.GRANDEZZE_FISICHE_(PUNTO_FUSIONE)",
+      "flare.saggi.cluster.AMMINE_TERZIARIE_(MAYER)",
+      "flare.saggi.cluster.SOLUBILITA_ACQUA",
+      "flare.saggi.cluster.SOLUBILITA_ETOH",
+      "flare.saggi.cluster.SOLUBILITA_HCL",
+      "flare.saggi.cluster.SOLUBILITA_NAOH"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.ACIDO_TARTARICO",
+    "imports": [
+      "flare.saggi.cluster.CaCl2_IN_AMB_BASICO_(CITRATI)",
+      "flare.saggi.cluster.DENIGES_&_KMnO4_(CITRATI)",
+      "flare.saggi.cluster.FeCl3_(ALCOLI_AROMATICI,_AA,_SALICILATI,_…)",
+      "flare.saggi.cluster.OSSIDAZIONE_FEHLING",
+      "flare.saggi.cluster.FENTON:_FeSO4_+_H2O2_(TARTRATI)",
+      "flare.saggi.cluster.FILO_Ni-Cr",
+      "flare.saggi.cluster.GRANDEZZE_FISICHE_(PUNTO_FUSIONE)",
+      "flare.saggi.cluster.BEILSTEIN_(FILO_Cu)",
+      "flare.saggi.cluster.SOLUBILITA_ACQUA",
+      "flare.saggi.cluster.UREA_&_FLUORESCENZA_(CITRATI)"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.LITIO_CITRATO",
+    "imports": [
+      "flare.saggi.cluster.CaCl2_IN_AMB_BASICO_(CITRATI)",
+      "flare.saggi.cluster.DENIGES_&_KMnO4_(CITRATI)",
+      "flare.saggi.cluster.FILO_Ni-Cr",
+      "flare.saggi.cluster.LASSAIGNE:ALOGENI",
+      "flare.saggi.cluster.LASSAIGNE:AZOTO",
+      "flare.saggi.cluster.LASSAIGNE:ZOLFO",
+      "flare.saggi.cluster.PROVA_AL_COCCIO",
+      "flare.saggi.cluster.SOLUBILITA_ACQUA",
+      "flare.saggi.cluster.UREA_&_FLUORESCENZA_(CITRATI)"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.POTASSIO_CITRATO",
+    "imports": [
+      "flare.saggi.cluster.CaCl2_IN_AMB_BASICO_(CITRATI)"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.FENILEFRINA_HCl",
+    "imports": [
+      "flare.saggi.cluster.CHEN-KAO_(FENIL-ALCHIL-AMMINE)",
+      "flare.saggi.cluster.FeCl3_(ALCOLI_AROMATICI,_AA,_SALICILATI,_…)",
+      "flare.saggi.cluster.GRANDEZZE_FISICHE_(PUNTO_FUSIONE)",
+      "flare.saggi.cluster.LASSAIGNE:AZOTO",
+      "flare.saggi.cluster.LASSAIGNE:ZOLFO",
+      "flare.saggi.cluster.PROVA_AL_COCCIO",
+      "flare.saggi.cluster.BEILSTEIN_(FILO_Cu)",
+      "flare.saggi.cluster.SOLUBILITA_ACQUA",
+      "flare.saggi.cluster.SOLUBILITA_NAOH",
+      "flare.saggi.cluster.SOLUBILITA_HCL",
+      "flare.saggi.cluster.AgNO3_(ALOGENURI)",
+      "flare.saggi.cluster.IDROSSILAMMINA_(ESTERI_&_AMMIDI)"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.SODIO_SALICILATO",
+    "imports": [
+      "flare.saggi.cluster.AMMINE_PRIMARIE_e_NO2-AROM_(DIAZO-COPULAZIONE)",
+      "flare.saggi.cluster.FeCl3_(ALCOLI_AROMATICI,_AA,_SALICILATI,_…)",
+      "flare.saggi.cluster.FeCl3-CONC_(BENZOATI_&_SALICILATI)",
+      "flare.saggi.cluster.FILO_Ni-Cr",
+      "flare.saggi.cluster.GRANDEZZE_FISICHE_(PUNTO_FUSIONE)",
+      "flare.saggi.cluster.LASSAIGNE:ALOGENI",
+      "flare.saggi.cluster.LASSAIGNE:AZOTO",
+      "flare.saggi.cluster.LASSAIGNE:ZOLFO",
+      "flare.saggi.cluster.LIEBERMANN_(FENOLI_p-LIBERA)",
+      "flare.saggi.cluster.PROVA_AL_COCCIO",
+      "flare.saggi.cluster.BEILSTEIN_(FILO_Cu)",
+      "flare.saggi.cluster.SOLUBILITA_ACQUA",
+      "flare.saggi.cluster.SOLUBILITA_HCL",
+      "flare.saggi.cluster.SOLUBILITA_NAOH"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.NICLOSAMIDE",
+    "imports": [
+      "flare.saggi.cluster.AMMINE_PRIMARIE_e_NO2-AROM_(DIAZO-COPULAZIONE)",
+      "flare.saggi.cluster.GRANDEZZE_FISICHE_(PUNTO_FUSIONE)",
+      "flare.saggi.cluster.PROVA_AL_COCCIO",
+      "flare.saggi.cluster.SOLUBILITA_ACQUA"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.CHININA_HCl",
+    "imports": [
+      "flare.saggi.cluster.AMMINE_TERZIARIE_(DRAGENDORFF)",
+      "flare.saggi.cluster.GRANDEZZE_FISICHE_(PUNTO_FUSIONE)",
+      "flare.saggi.cluster.H2SO4-DIL_+_FLUORESCENZA_(ALC_CHINOLINICI)",
+      "flare.saggi.cluster.PROVA_AL_COCCIO",
+      "flare.saggi.cluster.BEILSTEIN_(FILO_Cu)",
+      "flare.saggi.cluster.SOLUBILITA_ACQUA",
+      "flare.saggi.cluster.SOLUBILITA_HCL",
+      "flare.saggi.cluster.SOLUBILITA_NAOH",
+      "flare.saggi.cluster.TALLEIOCHINA_(ALC_CHINOLINICI)"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.PROGESTERONE",
+    "imports": [
+      "flare.saggi.cluster.TTC_(STEROIDI)",
+      "flare.saggi.cluster.GRANDEZZE_FISICHE_(PUNTO_FUSIONE)",
+      "flare.saggi.cluster.H2SO4_&_DILUIZIONE_H2O_(STEROIDI)",
+      "flare.saggi.cluster.PROVA_AL_COCCIO",
+      "flare.saggi.cluster.SOLUBILITA_ACQUA",
+      "flare.saggi.cluster.SOLUBILITA_ETOH",
+      "flare.saggi.cluster.SOLUBILITA_HCL",
+      "flare.saggi.cluster.SOLUBILITA_NAOH"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.SPIRONOLATTONE",
+    "imports": [
+      "flare.saggi.cluster.TTC_(STEROIDI)",
+      "flare.saggi.cluster.GRANDEZZE_FISICHE_(PUNTO_FUSIONE)",
+      "flare.saggi.cluster.H2SO4_&_DILUIZIONE_H2O_(STEROIDI)",
+      "flare.saggi.cluster.LASSAIGNE:AZOTO",
+      "flare.saggi.cluster.LASSAIGNE:ZOLFO",
+      "flare.saggi.cluster.PROVA_AL_COCCIO",
+      "flare.saggi.cluster.BEILSTEIN_(FILO_Cu)",
+      "flare.saggi.cluster.SOLUBILITA_ACQUA",
+      "flare.saggi.cluster.SOLUBILITA_ACQUA",
+      "flare.saggi.cluster.SOLUBILITA_ETOH",
+      "flare.saggi.cluster.SOLUBILITA_HCL",
+      "flare.saggi.cluster.SOLUBILITA_HCL",
+      "flare.saggi.cluster.SOLUBILITA_NaHCO3",
+      "flare.saggi.cluster.SOLUBILITA_NAOH",
+      "flare.saggi.cluster.SOLUBILITA_NAOH"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.CORTISONE_ACETATO",
+    "imports": [
+      "flare.saggi.cluster.TTC_(STEROIDI)",
+      "flare.saggi.cluster.H2SO4_&_DILUIZIONE_H2O_(STEROIDI)",
+      "flare.saggi.cluster.PROVA_AL_COCCIO",
+      "flare.saggi.cluster.SOLUBILITA_ACQUA",
+      "flare.saggi.cluster.SOLUBILITA_ETOH",
+      "flare.saggi.cluster.SOLUBILITA_HCL",
+      "flare.saggi.cluster.SOLUBILITA_NAOH"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.DESAMETASONE_ACETATO",
+    "imports": [
+      "flare.saggi.cluster.TTC_(STEROIDI)"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.FRUTTOSIO",
+    "imports": [
+      "flare.saggi.cluster.FeCl3_(ALCOLI_AROMATICI,_AA,_SALICILATI,_…)",
+      "flare.saggi.cluster.FeCl3-CONC_(BENZOATI_&_SALICILATI)",
+      "flare.saggi.cluster.OSSIDAZIONE_FEHLING",
+      "flare.saggi.cluster.FILO_Ni-Cr",
+      "flare.saggi.cluster.GRANDEZZE_FISICHE_(PUNTO_FUSIONE)",
+      "flare.saggi.cluster.LASSAIGNE:ALOGENI",
+      "flare.saggi.cluster.LASSAIGNE:AZOTO",
+      "flare.saggi.cluster.LASSAIGNE:ZOLFO",
+      "flare.saggi.cluster.MOLISCH_(CARBOIDRATI)",
+      "flare.saggi.cluster.PROVA_AL_COCCIO",
+      "flare.saggi.cluster.BEILSTEIN_(FILO_Cu)",
+      "flare.saggi.cluster.SELIWANOFF_(CHETOESOSI)",
+      "flare.saggi.cluster.SOLUBILITA_ACQUA"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.LATTOSIO",
+    "imports": [
+      "flare.saggi.cluster.FeCl3_(ALCOLI_AROMATICI,_AA,_SALICILATI,_…)",
+      "flare.saggi.cluster.OSSIDAZIONE_FEHLING",
+      "flare.saggi.cluster.FILO_Ni-Cr",
+      "flare.saggi.cluster.GRANDEZZE_FISICHE_(PUNTO_FUSIONE)",
+      "flare.saggi.cluster.LASSAIGNE:ALOGENI",
+      "flare.saggi.cluster.LASSAIGNE:AZOTO",
+      "flare.saggi.cluster.LASSAIGNE:ZOLFO",
+      "flare.saggi.cluster.MOLISCH_(CARBOIDRATI)",
+      "flare.saggi.cluster.NH4OH_&_Na2HPO4_(MAGNESIO)",
+      "flare.saggi.cluster.NH4OH_B.M._(LATTOSIO)",
+      "flare.saggi.cluster.OSSALATO_AMMONIO_(CALCIO)",
+      "flare.saggi.cluster.PROVA_AL_COCCIO",
+      "flare.saggi.cluster.SELIWANOFF_(CHETOESOSI)",
+      "flare.saggi.cluster.SOLUBILITA_ACQUA",
+      "flare.saggi.cluster.SOLUBILITA_ETOH",
+      "flare.saggi.cluster.SOLUBILITA_NAOH"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.TIMOLO",
+    "imports": [
+      "flare.saggi.cluster.FeCl3_(ALCOLI_AROMATICI,_AA,_SALICILATI,_…)",
+      "flare.saggi.cluster.GRANDEZZE_FISICHE_(PUNTO_FUSIONE)",
+      "flare.saggi.cluster.LASSAIGNE:ALOGENI",
+      "flare.saggi.cluster.LASSAIGNE:AZOTO",
+      "flare.saggi.cluster.LASSAIGNE:ZOLFO",
+      "flare.saggi.cluster.LIEBERMANN_(FENOLI_p-LIBERA)",
+      "flare.saggi.cluster.MILLON_(FENOLI_p-OCCUPATA)",
+      "flare.saggi.cluster.ORGANOLETTICA",
+      "flare.saggi.cluster.PROVA_AL_COCCIO",
+      "flare.saggi.cluster.SOLUBILITA_ACQUA",
+      "flare.saggi.cluster.SOLUBILITA_ETOH",
+      "flare.saggi.cluster.SOLUBILITA_HCL",
+      "flare.saggi.cluster.SOLUBILITA_NAOH"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.ACIDO_ACETILSALICILICO",
+    "imports": [
+      "flare.saggi.cluster.FeCl3_(ALCOLI_AROMATICI,_AA,_SALICILATI,_…)",
+      "flare.saggi.cluster.GRANDEZZE_FISICHE_(PUNTO_FUSIONE)",
+      "flare.saggi.cluster.LASSAIGNE:ALOGENI",
+      "flare.saggi.cluster.LASSAIGNE:AZOTO",
+      "flare.saggi.cluster.LASSAIGNE:ZOLFO",
+      "flare.saggi.cluster.PROVA_AL_COCCIO",
+      "flare.saggi.cluster.BEILSTEIN_(FILO_Cu)",
+      "flare.saggi.cluster.SOLUBILITA_ACQUA",
+      "flare.saggi.cluster.SOLUBILITA_ETOH",
+      "flare.saggi.cluster.SOLUBILITA_NAOH"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.ACIDO_BENZOICO",
+    "imports": [
+      "flare.saggi.cluster.FeCl3_(ALCOLI_AROMATICI,_AA,_SALICILATI,_…)",
+      "flare.saggi.cluster.GRANDEZZE_FISICHE_(PUNTO_FUSIONE)",
+      "flare.saggi.cluster.LASSAIGNE:AZOTO",
+      "flare.saggi.cluster.LASSAIGNE:ZOLFO",
+      "flare.saggi.cluster.BEILSTEIN_(FILO_Cu)",
+      "flare.saggi.cluster.SOLUBILITA_ACQUA",
+      "flare.saggi.cluster.SOLUBILITA_NAOH"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.ACIDO_TANNICO",
+    "imports": [
+      "flare.saggi.cluster.FeCl3_(ALCOLI_AROMATICI,_AA,_SALICILATI,_…)",
+      "flare.saggi.cluster.OSSIDAZIONE_KMnO4",
+      "flare.saggi.cluster.LASSAIGNE:AZOTO",
+      "flare.saggi.cluster.LASSAIGNE:ZOLFO",
+      "flare.saggi.cluster.ORGANOLETTICA",
+      "flare.saggi.cluster.PROVA_AL_COCCIO",
+      "flare.saggi.cluster.BEILSTEIN_(FILO_Cu)",
+      "flare.saggi.cluster.SOLUBILITA_ACQUA",
+      "flare.saggi.cluster.SOLUBILITA_ETOH",
+      "flare.saggi.cluster.SOLUBILITA_HCL",
+      "flare.saggi.cluster.SOLUBILITA_NAOH"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.FENOLO",
+    "imports": [
+      "flare.saggi.cluster.FeCl3_(ALCOLI_AROMATICI,_AA,_SALICILATI,_…)",
+      "flare.saggi.cluster.GRANDEZZE_FISICHE_(PUNTO_FUSIONE)",
+      "flare.saggi.cluster.LASSAIGNE:ALOGENI",
+      "flare.saggi.cluster.LASSAIGNE:AZOTO",
+      "flare.saggi.cluster.LASSAIGNE:ZOLFO",
+      "flare.saggi.cluster.PROVA_AL_COCCIO",
+      "flare.saggi.cluster.SOLUBILITA_ACQUA",
+      "flare.saggi.cluster.SOLUBILITA_HCL",
+      "flare.saggi.cluster.SOLUBILITA_NAOH"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.PARACETAMOLO",
+    "imports": [
+      "flare.saggi.cluster.FeCl3_(ALCOLI_AROMATICI,_AA,_SALICILATI,_…)",
+      "flare.saggi.cluster.OSSIDAZIONE_FEHLING",
+      "flare.saggi.cluster.GRANDEZZE_FISICHE_(PUNTO_FUSIONE)",
+      "flare.saggi.cluster.MILLON_(FENOLI_p-OCCUPATA)",
+      "flare.saggi.cluster.NINIDRINA_(AMINOACIDI)",
+      "flare.saggi.cluster.SOLUBILITA_ACQUA",
+      "flare.saggi.cluster.SOLUBILITA_NAOH"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.PIRIDOSSINA_HCl",
+    "imports": [
+      "flare.saggi.cluster.FeCl3_(ALCOLI_AROMATICI,_AA,_SALICILATI,_…)",
+      "flare.saggi.cluster.OSSIDAZIONE_FEHLING",
+      "flare.saggi.cluster.GIBBS_(PIRIDOSSINA)",
+      "flare.saggi.cluster.GRANDEZZE_FISICHE_(PUNTO_FUSIONE)",
+      "flare.saggi.cluster.LASSAIGNE:AZOTO",
+      "flare.saggi.cluster.LASSAIGNE:ZOLFO",
+      "flare.saggi.cluster.NINIDRINA_(AMINOACIDI)",
+      "flare.saggi.cluster.SOLUBILITA_ACQUA",
+      "flare.saggi.cluster.ZINKE-KONIG_(PIRIDINE)"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.PROPILPARABEN",
+    "imports": [
+      "flare.saggi.cluster.FeCl3_(ALCOLI_AROMATICI,_AA,_SALICILATI,_…)",
+      "flare.saggi.cluster.FILO_Ni-Cr",
+      "flare.saggi.cluster.GRANDEZZE_FISICHE_(PUNTO_FUSIONE)",
+      "flare.saggi.cluster.IDROSSILAMMINA_(ESTERI_&_AMMIDI)",
+      "flare.saggi.cluster.LASSAIGNE:ALOGENI",
+      "flare.saggi.cluster.LASSAIGNE:AZOTO",
+      "flare.saggi.cluster.LASSAIGNE:ZOLFO",
+      "flare.saggi.cluster.MILLON_(FENOLI_p-OCCUPATA)",
+      "flare.saggi.cluster.PROVA_AL_COCCIO",
+      "flare.saggi.cluster.BEILSTEIN_(FILO_Cu)",
+      "flare.saggi.cluster.SOLUBILITA_ACQUA",
+      "flare.saggi.cluster.SOLUBILITA_HCL",
+      "flare.saggi.cluster.SOLUBILITA_NAOH"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.SODIO_BENZOATO",
+    "imports": [
+      "flare.saggi.cluster.FeCl3_(ALCOLI_AROMATICI,_AA,_SALICILATI,_…)",
+      "flare.saggi.cluster.FeCl3-CONC_(BENZOATI_&_SALICILATI)",
+      "flare.saggi.cluster.FILO_Ni-Cr",
+      "flare.saggi.cluster.PROVA_AL_COCCIO",
+      "flare.saggi.cluster.SOLUBILITA_ACQUA",
+      "flare.saggi.cluster.SOLUBILITA_ETOH",
+      "flare.saggi.cluster.SOLUBILITA_HCL",
+      "flare.saggi.cluster.SOLUBILITA_NAOH"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.ACIDO_SALICILICO",
+    "imports": [
+      "flare.saggi.cluster.FeCl3-CONC_(BENZOATI_&_SALICILATI)",
+      "flare.saggi.cluster.GRANDEZZE_FISICHE_(PUNTO_FUSIONE)",
+      "flare.saggi.cluster.LASSAIGNE:ALOGENI",
+      "flare.saggi.cluster.LASSAIGNE:AZOTO",
+      "flare.saggi.cluster.LASSAIGNE:ZOLFO",
+      "flare.saggi.cluster.PROVA_AL_COCCIO",
+      "flare.saggi.cluster.BEILSTEIN_(FILO_Cu)",
+      "flare.saggi.cluster.SOLUBILITA_ACQUA"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.MAGNESIO_ASPARTATO",
+    "imports": [
+      "flare.saggi.cluster.FILO_Ni-Cr",
+      "flare.saggi.cluster.LASSAIGNE:AZOTO",
+      "flare.saggi.cluster.LASSAIGNE:FOSFORO",
+      "flare.saggi.cluster.LASSAIGNE:ZOLFO",
+      "flare.saggi.cluster.NH4OH_&_Na2HPO4_(MAGNESIO)",
+      "flare.saggi.cluster.PROVA_AL_COCCIO",
+      "flare.saggi.cluster.SOLUBILITA_ACQUA",
+      "flare.saggi.cluster.SOLUBILITA_ETOH",
+      "flare.saggi.cluster.SOLUBILITA_HCL",
+      "flare.saggi.cluster.SOLUBILITA_NAOH"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.MAGNESIO_LATTATO",
+    "imports": [
+      "flare.saggi.cluster.FILO_Ni-Cr",
+      "flare.saggi.cluster.GRANDEZZE_FISICHE_(PUNTO_FUSIONE)",
+      "flare.saggi.cluster.LASSAIGNE:ALOGENI",
+      "flare.saggi.cluster.LASSAIGNE:AZOTO",
+      "flare.saggi.cluster.LASSAIGNE:ZOLFO",
+      "flare.saggi.cluster.MOHLER_(LATTATI_E_TARTRATI)",
+      "flare.saggi.cluster.NH4OH_&_Na2HPO4_(MAGNESIO)",
+      "flare.saggi.cluster.ORGANOLETTICA",
+      "flare.saggi.cluster.PROVA_AL_COCCIO",
+      "flare.saggi.cluster.SOLUBILITA_ACQUA",
+      "flare.saggi.cluster.SOLUBILITA_ETOH",
+      "flare.saggi.cluster.SOLUBILITA_HCL"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.CLORAMINA_T",
+    "imports": [
+      "flare.saggi.cluster.FILO_Ni-Cr",
+      "flare.saggi.cluster.LASSAIGNE:AZOTO",
+      "flare.saggi.cluster.LASSAIGNE:ZOLFO",
+      "flare.saggi.cluster.ORGANOLETTICA",
+      "flare.saggi.cluster.PROVA_AL_COCCIO",
+      "flare.saggi.cluster.BEILSTEIN_(FILO_Cu)",
+      "flare.saggi.cluster.SOLUBILITA_ACQUA",
+      "flare.saggi.cluster.SOLUBILITA_HCL",
+      "flare.saggi.cluster.SOLUBILITA_NAOH"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.POTASSIO_ASPARTATO",
+    "imports": [
+      "flare.saggi.cluster.FILO_Ni-Cr",
+      "flare.saggi.cluster.LASSAIGNE:AZOTO",
+      "flare.saggi.cluster.LASSAIGNE:ZOLFO",
+      "flare.saggi.cluster.NINIDRINA_(AMINOACIDI)",
+      "flare.saggi.cluster.SOLUBILITA_ACQUA"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.SODIO_ASCORBATO",
+    "imports": [
+      "flare.saggi.cluster.FILO_Ni-Cr",
+      "flare.saggi.cluster.HNO3_+_AgNO3_(ACIDO_ASCORBICO)",
+      "flare.saggi.cluster.LASSAIGNE:ALOGENI",
+      "flare.saggi.cluster.LASSAIGNE:AZOTO",
+      "flare.saggi.cluster.LASSAIGNE:ZOLFO",
+      "flare.saggi.cluster.PROVA_AL_COCCIO",
+      "flare.saggi.cluster.SOLUBILITA_ACQUA"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.CLORALIO_IDRATO",
+    "imports": [
+      "flare.saggi.cluster.GRANDEZZE_FISICHE_(PUNTO_FUSIONE)",
+      "flare.saggi.cluster.LASSAIGNE:ALOGENI",
+      "flare.saggi.cluster.LASSAIGNE:AZOTO",
+      "flare.saggi.cluster.LASSAIGNE:ZOLFO",
+      "flare.saggi.cluster.PROVA_AL_COCCIO",
+      "flare.saggi.cluster.RESORCINA_+_NaOH_(CLORALIO_IDRATO)",
+      "flare.saggi.cluster.BEILSTEIN_(FILO_Cu)",
+      "flare.saggi.cluster.SOLUBILITA_ACQUA",
+      "flare.saggi.cluster.SOLUBILITA_ETOH",
+      "flare.saggi.cluster.SOLUBILITA_HCL"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.GLUCOSIO",
+    "imports": [
+      "flare.saggi.cluster.GRANDEZZE_FISICHE_(PUNTO_FUSIONE)",
+      "flare.saggi.cluster.PROVA_AL_COCCIO",
+      "flare.saggi.cluster.SOLUBILITA_ACQUA"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.LEUCINA",
+    "imports": [
+      "flare.saggi.cluster.GRANDEZZE_FISICHE_(PUNTO_FUSIONE)",
+      "flare.saggi.cluster.LASSAIGNE:AZOTO",
+      "flare.saggi.cluster.LASSAIGNE:ZOLFO",
+      "flare.saggi.cluster.NINIDRINA_(AMINOACIDI)",
+      "flare.saggi.cluster.PROVA_AL_COCCIO",
+      "flare.saggi.cluster.SOLUBILITA_ACQUA"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.PAPAVERINA_HCl",
+    "imports": [
+      "flare.saggi.cluster.GRANDEZZE_FISICHE_(PUNTO_FUSIONE)",
+      "flare.saggi.cluster.SOLUBILITA_ACQUA"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.SACCARINA",
+    "imports": [
+      "flare.saggi.cluster.GRANDEZZE_FISICHE_(PUNTO_FUSIONE)",
+      "flare.saggi.cluster.LASSAIGNE:AZOTO",
+      "flare.saggi.cluster.LASSAIGNE:ZOLFO",
+      "flare.saggi.cluster.PROVA_AL_COCCIO",
+      "flare.saggi.cluster.RESORCINA_&_FLUORESCENZA_(SACCARINA_E_SALI)",
+      "flare.saggi.cluster.BEILSTEIN_(FILO_Cu)",
+      "flare.saggi.cluster.SOLUBILITA_ACQUA",
+      "flare.saggi.cluster.SOLUBILITA_ETOH",
+      "flare.saggi.cluster.SOLUBILITA_NAOH"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.SCOPOLAMINA_HBr",
+    "imports": [
+      "flare.saggi.cluster.GRANDEZZE_FISICHE_(PUNTO_FUSIONE)",
+      "flare.saggi.cluster.LASSAIGNE:AZOTO",
+      "flare.saggi.cluster.LASSAIGNE:ZOLFO",
+      "flare.saggi.cluster.PROVA_AL_COCCIO",
+      "flare.saggi.cluster.SOLUBILITA_ACQUA",
+      "flare.saggi.cluster.VITALI-MORIN"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.SERINA",
+    "imports": [
+      "flare.saggi.cluster.GRANDEZZE_FISICHE_(PUNTO_FUSIONE)",
+      "flare.saggi.cluster.LASSAIGNE:AZOTO",
+      "flare.saggi.cluster.LASSAIGNE:ZOLFO",
+      "flare.saggi.cluster.NINIDRINA_(AMINOACIDI)",
+      "flare.saggi.cluster.NINIDRINA_(AMINOACIDI)",
+      "flare.saggi.cluster.PROVA_AL_COCCIO",
+      "flare.saggi.cluster.BEILSTEIN_(FILO_Cu)",
+      "flare.saggi.cluster.SOLUBILITA_ACQUA",
+      "flare.saggi.cluster.SOLUBILITA_HCL",
+      "flare.saggi.cluster.SOLUBILITA_NAOH"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.SULFAMETOSSIPIRIDAZINA",
+    "imports": [
+      "flare.saggi.cluster.GRANDEZZE_FISICHE_(PUNTO_FUSIONE)"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.TOLBUTAMIDE",
+    "imports": [
+      "flare.saggi.cluster.GRANDEZZE_FISICHE_(PUNTO_FUSIONE)",
+      "flare.saggi.cluster.IDROSSILAMMINA_(ESTERI_&_AMMIDI)",
+      "flare.saggi.cluster.LASSAIGNE:AZOTO",
+      "flare.saggi.cluster.LASSAIGNE:ZOLFO",
+      "flare.saggi.cluster.PROVA_AL_COCCIO",
+      "flare.saggi.cluster.SOLUBILITA_ACQUA",
+      "flare.saggi.cluster.SOLUBILITA_ETOH",
+      "flare.saggi.cluster.SOLUBILITA_HCL",
+      "flare.saggi.cluster.SOLUBILITA_NAOH"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.TRIPTOFANO",
+    "imports": [
+      "flare.saggi.cluster.GRANDEZZE_FISICHE_(PUNTO_FUSIONE)",
+      "flare.saggi.cluster.LASSAIGNE:AZOTO",
+      "flare.saggi.cluster.LASSAIGNE:ZOLFO",
+      "flare.saggi.cluster.NINIDRINA_(AMINOACIDI)",
+      "flare.saggi.cluster.PROVA_AL_COCCIO",
+      "flare.saggi.cluster.SOLUBILITA_ACQUA"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.ASPARTAME",
+    "imports": [
+      "flare.saggi.cluster.LASSAIGNE:AZOTO",
+      "flare.saggi.cluster.LASSAIGNE:ZOLFO",
+      "flare.saggi.cluster.NINIDRINA_(AMINOACIDI)",
+      "flare.saggi.cluster.PROVA_AL_COCCIO",
+      "flare.saggi.cluster.BEILSTEIN_(FILO_Cu)",
+      "flare.saggi.cluster.SOLUBILITA_ACQUA"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.CAPTOPRIL",
+    "imports": [
+      "flare.saggi.cluster.LASSAIGNE:AZOTO",
+      "flare.saggi.cluster.LASSAIGNE:ZOLFO",
+      "flare.saggi.cluster.PROVA_AL_COCCIO",
+      "flare.saggi.cluster.BEILSTEIN_(FILO_Cu)",
+      "flare.saggi.cluster.SOLUBILITA_ACQUA",
+      "flare.saggi.cluster.SOLUBILITA_ETOH",
+      "flare.saggi.cluster.SOLUBILITA_HCL",
+      "flare.saggi.cluster.SOLUBILITA_NAOH"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.METIONINA",
+    "imports": [
+      "flare.saggi.cluster.LASSAIGNE:AZOTO",
+      "flare.saggi.cluster.LASSAIGNE:ZOLFO",
+      "flare.saggi.cluster.NINIDRINA_(AMINOACIDI)",
+      "flare.saggi.cluster.NINIDRINA_(AMINOACIDI)",
+      "flare.saggi.cluster.PROVA_AL_COCCIO",
+      "flare.saggi.cluster.BEILSTEIN_(FILO_Cu)",
+      "flare.saggi.cluster.SOLUBILITA_ACQUA",
+      "flare.saggi.cluster.SOLUBILITA_HCL",
+      "flare.saggi.cluster.SOLUBILITA_NAOH"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.CLOROCHINA_BIFOSFATO",
+    "imports": [
+      "flare.saggi.cluster.PROVA_AL_COCCIO",
+      "flare.saggi.cluster.SOLUBILITA_ACQUA",
+      "flare.saggi.cluster.SOLUBILITA_HCL",
+      "flare.saggi.cluster.AgNO3_&_NH4OH_(FOSFATI)"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.NIFEDIPINA",
+    "imports": [
+      "flare.saggi.cluster.SOLUBILITA_ACQUA",
+      "flare.saggi.cluster.SOLUBILITA_ETOH"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.VALINA",
+    "imports": [
+      "flare.saggi.cluster.SOLUBILITA_ACQUA",
+      "flare.saggi.cluster.SOLUBILITA_HCL",
+      "flare.saggi.cluster.SOLUBILITA_NAOH"
+    ]
+  },
+  {
+    "name": "flare.molecole.cluster.CALCIO_GLUCONATO",
+    "imports": [
+      "flare.saggi.cluster.SOLUBILITA_ACQUA",
+      "flare.saggi.cluster.PROVA_AL_COCCIO",
+      "flare.saggi.cluster.SOLUBILITA_NAOH",
+      "flare.saggi.cluster.SOLUBILITA_HCL",
+      "flare.saggi.cluster.SOLUBILITA_ETOH",
+      "flare.saggi.cluster.FILO_Ni-Cr"
+    ]
+  },
+  {
+    "name": "flare.saggi.cluster.AMMINE_TERZIARIE_(ACIDO_CITRICO_E_ANIDRIDE_ACETICA)",
+    "imports": [
+      "flare.reagenti.cluster.acido_nitrico_concentrato",
+      "flare.reagenti.cluster.acido_nitrico_diluito"
+    ]
+  },
+  {
+    "name": "flare.saggi.cluster.LASSAIGNE:ALOGENI",
+    "imports": [
+      "flare.reagenti.cluster.sodio_metallico",
+      "flare.reagenti.cluster.acido_nitrico_2N",
+      "flare.reagenti.cluster.argento_nitrato",
+      "flare.reagenti.cluster.idrossido_d'ammonio_diluito",
+      "flare.reagenti.cluster.idrossido_d'ammonio_concentrato"
+    ]
+  },
+  {
+    "name": "flare.saggi.cluster.LASSAIGNE:AZOTO",
+    "imports": [
+      "flare.reagenti.cluster.ferro_solfato",
+      "flare.reagenti.cluster.acido_solforico_diluito",
+      "flare.reagenti.cluster.sodio_nitroprussiato"
+    ]
+  },
+  {
+    "name": "flare.saggi.cluster.PROVA_AL_COCCIO",
+    "imports": [
+      "flare.reagenti.cluster.acido_cloridrico_concentrato"
+    ]
+  },
+  {
+    "name": "flare.saggi.cluster.ACIDO_CROMOTROPICO",
+    "imports": [
+      "flare.reagenti.cluster.sale_sodico_dell'acido_cromotropico",
+      "flare.reagenti.cluster.acido_solforico_concentrato"
+    ]
+  },
+  {
+    "name": "flare.saggi.cluster.ACIDO_OSSALICO_(ACETATI)",
+    "imports": [
+      "flare.reagenti.cluster.acido_ossalico"
+    ]
+  },
+  {
+    "name": "flare.saggi.cluster.SOLUBILITA_HCL",
+    "imports": []
+  },
+  {
+    "name": "flare.saggi.cluster.SPETTROSCOPIA",
+    "imports": []
+  },
+  {
+    "name": "flare.saggi.cluster.SOLUBILITA_NaHCO3",
+    "imports": []
+  },
+  {
+    "name": "flare.saggi.cluster.SOLUBILITA_NAOH",
+    "imports": []
+  },
+  {
+    "name": "flare.saggi.cluster._(LATTOSIO)",
+    "imports": []
+  },
+  {
+    "name": "flare.saggi.cluster.CaCl2_IN_AMB_BASICO_(CITRATI)",
+    "imports": []
+  },
+  {
+    "name": "flare.saggi.cluster.RIDUZIONE_GRUPPO_NITRO_(NO2-Ar)",
+    "imports": []
+  },
+  {
+    "name": "flare.saggi.cluster.TALLEIOCHINA_(ALC_CHINOLINICI)",
+    "imports": []
+  },
+  {
+    "name": "flare.saggi.cluster.TTC_(STEROIDI)",
+    "imports": []
+  },
+  {
+    "name": "flare.saggi.cluster.VANILLINA_(ISONIAZIDE)",
+    "imports": []
+  },
+  {
+    "name": "flare.saggi.cluster.SAGGIO_LEGAL_(ACIDO_ASCORBICO)",
+    "imports": []
+  },
+  {
+    "name": "flare.saggi.cluster.VITALI-MORIN",
+    "imports": []
+  },
+  {
+    "name": "flare.saggi.cluster.BORACE_&_FENOLFTALEINA_(POLIALCOLI)",
+    "imports": []
+  },
+  {
+    "name": "flare.saggi.cluster.ORGANOLETTICA",
+    "imports": []
+  },
+  {
+    "name": "flare.saggi.cluster.ZINKE-KONIG_(PIRIDINE)",
+    "imports": []
+  },
+  {
+    "name": "flare.saggi.cluster.TIOCROMO_(TIAMINA_HCl)",
+    "imports": []
+  },
+  {
+    "name": "flare.saggi.cluster.LASSAIGNE:FOSFORO",
+    "imports": []
+  },
+  {
+    "name": "flare.saggi.cluster.GRANDEZZE_FISICHE_(PUNTO_FUSIONE)",
+    "imports": []
+  },
+  {
+    "name": "flare.saggi.cluster.SELIWANOFF_(CHETOESOSI)",
+    "imports": []
+  },
+  {
+    "name": "flare.saggi.cluster.SOLUBILITA_ACQUA",
+    "imports": []
+  },
+  {
+    "name": "flare.saggi.cluster.SOLUBILITA_ETOH",
+    "imports": []
+  },
+  {
+    "name": "flare.saggi.cluster.ACQUA_DI_BROMO_(FENOTIAZINE)",
+    "imports": []
+  },
+  {
+    "name": "flare.saggi.cluster.UREA_&_FLUORESCENZA_(CITRATI)",
+    "imports": []
+  },
+  {
+    "name": "flare.saggi.cluster.AgNO3_&_NH4OH_(FOSFATI)",
+    "imports": [
+      "flare.reagenti.cluster.argento_nitrato",
+      "flare.reagenti.cluster.idrossido_d'ammonio_diluito"
+    ]
+  },
+  {
+    "name": "flare.saggi.cluster.AgNO3_(ALOGENURI)",
+    "imports": [
+      "flare.reagenti.cluster.acido_nitrico_2N",
+      "flare.reagenti.cluster.argento_nitrato",
+      "flare.reagenti.cluster.idrossido_d'ammonio_diluito",
+      "flare.reagenti.cluster.idrossido_d'ammonio_concentrato"
+    ]
+  },
+  {
+    "name": "flare.saggi.cluster.AgNO3_(XANTINE)",
+    "imports": [
+      "flare.reagenti.cluster.argento_nitrato"
+    ]
+  },
+  {
+    "name": "flare.saggi.cluster.AMMINE_PRIMARIE_e_NO2-AROM_(DIAZO-COPULAZIONE)",
+    "imports": [
+      "flare.reagenti.cluster.acido_cloridrico_2N",
+      "flare.reagenti.cluster.nitrito_di_sodio",
+      "flare.reagenti.cluster.beta_naftolo"
+    ]
+  },
+  {
+    "name": "flare.saggi.cluster.AMMINE_TERZIARIE_(BOUCHARDAT)",
+    "imports": [
+      "flare.reagenti.cluster.soluzione_di_lugol_iodio_iodurata"
+    ]
+  },
+  {
+    "name": "flare.saggi.cluster.AMMINE_TERZIARIE_(DRAGENDORFF)",
+    "imports": [
+      "flare.reagenti.cluster.soluzione_di_tetraiodo_bismutato_di_potassio"
+    ]
+  },
+  {
+    "name": "flare.saggi.cluster.AMMINE_TERZIARIE_(MAYER)",
+    "imports": [
+      "flare.reagenti.cluster.soluzione_di_tetraiodo_mercurato_di_potassio"
+    ]
+  },
+  {
+    "name": "flare.saggi.cluster.BASE_SCHIFF_(SULFAMIDICI)",
+    "imports": [
+      "flare.reagenti.cluster.para_dimetilamminobenzaldeide"
+    ]
+  },
+  {
+    "name": "flare.saggi.cluster.BEILSTEIN_(FILO_Cu)",
+    "imports": [
+      "flare.reagenti.cluster.filo_di_rame"
+    ]
+  },
+  {
+    "name": "flare.saggi.cluster.BIURETO_CUSO4_+_HCL_(CALCIO_PANTOTENATO)",
+    "imports": [
+      "flare.reagenti.cluster.acido_cloridrico_2N",
+      "flare.reagenti.cluster.idrossido_di_sodio_diluito",
+      "flare.reagenti.cluster.solfato_di_rame",
+      "flare.reagenti.cluster.borace",
+      "flare.reagenti.cluster.fenolftaleina"
+    ]
+  },
+  {
+    "name": "flare.saggi.cluster.BOUCHARDAT_IN_AMB_BASICO_(CLORBUTANOLO)",
+    "imports": [
+      "flare.reagenti.cluster.idrossido_di_sodio_diluito",
+      "flare.reagenti.cluster.reattivo_di_bouchardat"
+    ]
+  },
+  {
+    "name": "flare.saggi.cluster.BOUCHARDAT_IN_AMB_BASICO_(LATTATI)",
+    "imports": [
+      "flare.reagenti.cluster.reattivo_di_bouchardat",
+      "flare.reagenti.cluster.idrossido_di_sodio_diluito"
+    ]
+  },
+  {
+    "name": "flare.saggi.cluster.CHEN-KAO_(FENIL-ALCHIL-AMMINE)",
+    "imports": [
+      "flare.reagenti.cluster.solfato_di_rame",
+      "flare.reagenti.cluster.idrossido_di_sodio_concentrato",
+      "flare.reagenti.cluster.etere_etilico"
+    ]
+  },
+  {
+    "name": "flare.saggi.cluster.CLORAMMINA_T_&_CH2Cl2_(BROMURI_E_IODURI)",
+    "imports": [
+      "flare.reagenti.cluster.acido_solforico_diluito",
+      "flare.reagenti.cluster.cloramina_t",
+      "flare.reagenti.cluster.diclorometano"
+    ]
+  },
+  {
+    "name": "flare.saggi.cluster.CLORAMMINA_T_(FENOTIAZINE)",
+    "imports": [
+      "flare.reagenti.cluster.acido_cloridrico_2N",
+      "flare.reagenti.cluster.cloramina_t"
+    ]
+  },
+  {
+    "name": "flare.saggi.cluster.CORALINA_(ALC_ISOCHINOLINICI)",
+    "imports": [
+      "flare.reagenti.cluster.acido_solforico_concentrato",
+      "flare.reagenti.cluster.anidride_acetica"
+    ]
+  },
+  {
+    "name": "flare.saggi.cluster.DENIGES_&_KMnO4_(CITRATI)",
+    "imports": [
+      "flare.reagenti.cluster.reattivo_di_deniges",
+      "flare.reagenti.cluster.permanganato_di_potassio"
+    ]
+  },
+  {
+    "name": "flare.saggi.cluster.FeCl3_(ALCOLI_AROMATICI,_AA,_SALICILATI,_…)",
+    "imports": [
+      "flare.reagenti.cluster.tricloruro_di_ferro"
+    ]
+  },
+  {
+    "name": "flare.saggi.cluster.FeCl3_+_HCl_o_H2SO4_(FENAZONE_E_PROPIFENAZONE)",
+    "imports": [
+      "flare.reagenti.cluster.tricloruro_di_ferro",
+      "flare.reagenti.cluster.acido_cloridrico_2N",
+      "flare.reagenti.cluster.acido_solforico_diluito"
+    ]
+  },
+  {
+    "name": "flare.saggi.cluster.FeCl3-CONC_(BENZOATI_&_SALICILATI)",
+    "imports": [
+      "flare.reagenti.cluster.tricloruro_di_ferro"
+    ]
+  },
+  {
+    "name": "flare.saggi.cluster.FENTON:_FeSO4_+_H2O2_(TARTRATI)",
+    "imports": [
+      "flare.reagenti.cluster.acqua_ossigenata",
+      "flare.reagenti.cluster.ferro_solfato",
+      "flare.reagenti.cluster.idrossido_di_sodio_diluito"
+    ]
+  },
+  {
+    "name": "flare.saggi.cluster.FeSO4_&_H2SO4_(NITRATI)",
+    "imports": [
+      "flare.reagenti.cluster.ferro_solfato",
+      "flare.reagenti.cluster.acido_solforico_concentrato"
+    ]
+  },
+  {
+    "name": "flare.saggi.cluster.FILO_Ni-Cr",
+    "imports": [
+      "flare.reagenti.cluster.acido_cloridrico_concentrato"
+    ]
+  },
+  {
+    "name": "flare.saggi.cluster.GIBBS_(PIRIDOSSINA)",
+    "imports": [
+      "flare.reagenti.cluster.3,5-diclorochinonclorimmina"
+    ]
+  },
+  {
+    "name": "flare.saggi.cluster.H2SO4_&_DILUIZIONE_H2O_(STEROIDI)",
+    "imports": [
+      "flare.reagenti.cluster.acido_solforico_concentrato"
+    ]
+  },
+  {
+    "name": "flare.saggi.cluster.H2SO4-DIL_+_FLUORESCENZA_(ALC_CHINOLINICI)",
+    "imports": [
+      "flare.reagenti.cluster.acido_solforico_diluito",
+      "flare.reagenti.cluster.acido_cloridrico_2N"
+    ]
+  },
+  {
+    "name": "flare.saggi.cluster.HCl_+_BaCl2_(SOLFATI)",
+    "imports": [
+      "flare.reagenti.cluster.acido_cloridrico_2N",
+      "flare.reagenti.cluster.bario_cloruro"
+    ]
+  },
+  {
+    "name": "flare.saggi.cluster.HNO3_+_AgNO3_(ACIDO_ASCORBICO)",
+    "imports": [
+      "flare.reagenti.cluster.acido_nitrico_2N",
+      "flare.reagenti.cluster.argento_nitrato"
+    ]
+  },
+  {
+    "name": "flare.saggi.cluster.HNO3-CONC_(FENOTIAZINE)",
+    "imports": [
+      "flare.reagenti.cluster.acido_nitrico_concentrato"
+    ]
+  },
+  {
+    "name": "flare.saggi.cluster.IDROSSILAMMINA_(ESTERI_&_AMMIDI)",
+    "imports": [
+      "flare.reagenti.cluster.idrossilammina_cloridrato",
+      "flare.reagenti.cluster.idrossido_di_sodio_diluito",
+      "flare.reagenti.cluster.acido_cloridrico_6N",
+      "flare.reagenti.cluster.tricloruro_di_ferro"
+    ]
+  },
+  {
+    "name": "flare.saggi.cluster.LASSAIGNE:ZOLFO",
+    "imports": [
+      "flare.reagenti.cluster.sodio_nitroprussiato"
+    ]
+  },
+  {
+    "name": "flare.saggi.cluster.LIEBERMANN_(FENOLI_p-LIBERA)",
+    "imports": [
+      "flare.reagenti.cluster.nitrito_di_sodio",
+      "flare.reagenti.cluster.acido_solforico_diluito"
+    ]
+  },
+  {
+    "name": "flare.saggi.cluster.MILLON_(FENOLI_p-OCCUPATA)",
+    "imports": [
+      "flare.reagenti.cluster.reattivo_di_millon"
+    ]
+  },
+  {
+    "name": "flare.saggi.cluster.MOHLER_(LATTATI_E_TARTRATI)",
+    "imports": [
+      "flare.reagenti.cluster.resorcina",
+      "flare.reagenti.cluster.acido_solforico_concentrato"
+    ]
+  },
+  {
+    "name": "flare.saggi.cluster.MOLIBDICO_&_NH4OH_(FOSFATI)",
+    "imports": [
+      "flare.reagenti.cluster.reattivo_molibdico",
+      "flare.reagenti.cluster.idrossido_d'ammonio_diluito"
+    ]
+  },
+  {
+    "name": "flare.saggi.cluster.MOLISCH_(CARBOIDRATI)",
+    "imports": [
+      "flare.reagenti.cluster.reattivo_di_molish",
+      "flare.reagenti.cluster.acido_solforico_concentrato"
+    ]
+  },
+  {
+    "name": "flare.saggi.cluster.MURESSIDE_(XANTINE)",
+    "imports": [
+      "flare.reagenti.cluster.acqua_ossigenata",
+      "flare.reagenti.cluster.acido_cloridrico_2N",
+      "flare.reagenti.cluster.idrossido_d'ammonio_diluito"
+    ]
+  },
+  {
+    "name": "flare.saggi.cluster.NaNO2_+_H2SO4_(FENAZONE)",
+    "imports": [
+      "flare.reagenti.cluster.acido_solforico_diluito",
+      "flare.reagenti.cluster.nitrito_di_sodio"
+    ]
+  },
+  {
+    "name": "flare.saggi.cluster.NH4OH_&_Na2HPO4_(MAGNESIO)",
+    "imports": [
+      "flare.reagenti.cluster.idrossido_d'ammonio_6N",
+      "flare.reagenti.cluster.cloruro_d'ammonio",
+      "flare.reagenti.cluster.sodio_fosfato_acido"
+    ]
+  },
+  {
+    "name": "flare.saggi.cluster.NH4OH_B.M._(LATTOSIO)",
+    "imports": [
+      "flare.reagenti.cluster.idrossido_d'ammonio_concentrato"
+    ]
+  },
+  {
+    "name": "flare.saggi.cluster.NINIDRINA_(AMINOACIDI)",
+    "imports": [
+      "flare.reagenti.cluster.soluzione_etanolica_di_ninidrina"
+    ]
+  },
+  {
+    "name": "flare.saggi.cluster.OSSALATO_AMMONIO_(CALCIO)",
+    "imports": [
+      "flare.reagenti.cluster.acido_acetico_2N",
+      "flare.reagenti.cluster.ossalato_di_ammonio"
+    ]
+  },
+  {
+    "name": "flare.saggi.cluster.OSSIDAZIONE_ACQUA_DI_BROMO",
+    "imports": [
+      "flare.reagenti.cluster.acqua_di_bromo"
+    ]
+  },
+  {
+    "name": "flare.saggi.cluster.OSSIDAZIONE_FEHLING",
+    "imports": [
+      "flare.reagenti.cluster.reattivo_di_fehling"
+    ]
+  },
+  {
+    "name": "flare.saggi.cluster.OSSIDAZIONE_KMnO4",
+    "imports": [
+      "flare.reagenti.cluster.acido_solforico_diluito",
+      "flare.reagenti.cluster.permanganato_di_potassio"
+    ]
+  },
+  {
+    "name": "flare.saggi.cluster.RESORCINA_&_FLUORESCENZA_(SACCARINA_E_SALI)",
+    "imports": [
+      "flare.reagenti.cluster.resorcina",
+      "flare.reagenti.cluster.acido_solforico_concentrato",
+      "flare.reagenti.cluster.idrossido_di_sodio_diluito"
+    ]
+  },
+  {
+    "name": "flare.saggi.cluster.RESORCINA_+_NaOH_(CLORALIO_IDRATO)",
+    "imports": [
+      "flare.reagenti.cluster.resorcina",
+      "flare.reagenti.cluster.idrossido_di_sodio_diluito"
+    ]
+  },
+  {
+    "name": "flare.saggi.cluster.SAGGIO_BIURETO",
+    "imports": [
+      "flare.reagenti.cluster.solfato_di_rame",
+      "flare.reagenti.cluster.idrossido_di_sodio_diluito"
+    ]
+  },
+  {
+    "name": "flare.reagenti.cluster.acido_nitrico_concentrato",
+    "imports": []
+  },
+  {
+    "name": "flare.reagenti.cluster.acido_nitrico_diluito",
+    "imports": []
+  },
+  {
+    "name": "flare.reagenti.cluster.acido_cloridrico_2N",
+    "imports": []
+  },
+  {
+    "name": "flare.reagenti.cluster.sodio_metallico",
+    "imports": []
+  },
+  {
+    "name": "flare.reagenti.cluster.ferro_solfato",
+    "imports": []
+  },
+  {
+    "name": "flare.reagenti.cluster.acido_solforico_diluito",
+    "imports": []
+  },
+  {
+    "name": "flare.reagenti.cluster.sodio_nitroprussiato",
+    "imports": []
+  },
+  {
+    "name": "flare.reagenti.cluster.",
+    "imports": []
+  },
+  {
+    "name": "flare.reagenti.cluster.acido_nitrico_2N",
+    "imports": []
+  },
+  {
+    "name": "flare.reagenti.cluster.argento_nitrato",
+    "imports": []
+  },
+  {
+    "name": "flare.reagenti.cluster.idrossido_d'ammonio_diluito",
+    "imports": []
+  },
+  {
+    "name": "flare.reagenti.cluster.idrossido_d'ammonio_concentrato",
+    "imports": []
+  },
+  {
+    "name": "flare.reagenti.cluster.acido_cloridrico_concentrato",
+    "imports": []
+  },
+  {
+    "name": "flare.reagenti.cluster.sale_sodico_dell'acido_cromotropico",
+    "imports": []
+  },
+  {
+    "name": "flare.reagenti.cluster.acido_solforico_concentrato",
+    "imports": []
+  },
+  {
+    "name": "flare.reagenti.cluster.acido_ossalico",
+    "imports": []
+  },
+  {
+    "name": "flare.reagenti.cluster.acqua_di_bromo",
+    "imports": []
+  },
+  {
+    "name": "flare.reagenti.cluster.nitrito_di_sodio",
+    "imports": []
+  },
+  {
+    "name": "flare.reagenti.cluster.beta_naftolo",
+    "imports": []
+  },
+  {
+    "name": "flare.reagenti.cluster.soluzione_di_lugol_iodio_iodurata",
+    "imports": []
+  },
+  {
+    "name": "flare.reagenti.cluster.soluzione_di_tetraiodo_bismutato_di_potassio",
+    "imports": []
+  },
+  {
+    "name": "flare.reagenti.cluster.soluzione_di_tetraiodo_mercurato_di_potassio",
+    "imports": []
+  },
+  {
+    "name": "flare.reagenti.cluster.para_dimetilamminobenzaldeide",
+    "imports": []
+  },
+  {
+    "name": "flare.reagenti.cluster.filo_di_rame",
+    "imports": []
+  },
+  {
+    "name": "flare.reagenti.cluster.solfato_di_rame",
+    "imports": []
+  },
+  {
+    "name": "flare.reagenti.cluster.idrossido_di_sodio_diluito",
+    "imports": []
+  },
+  {
+    "name": "flare.reagenti.cluster.borace",
+    "imports": []
+  },
+  {
+    "name": "flare.reagenti.cluster.fenolftaleina",
+    "imports": []
+  },
+  {
+    "name": "flare.reagenti.cluster.reattivo_di_bouchardat",
+    "imports": []
+  },
+  {
+    "name": "flare.reagenti.cluster.idrossido_di_sodio_concentrato",
+    "imports": []
+  },
+  {
+    "name": "flare.reagenti.cluster.etere_etilico",
+    "imports": []
+  },
+  {
+    "name": "flare.reagenti.cluster.cloramina_t",
+    "imports": []
+  },
+  {
+    "name": "flare.reagenti.cluster.diclorometano",
+    "imports": []
+  },
+  {
+    "name": "flare.reagenti.cluster.anidride_acetica",
+    "imports": []
+  },
+  {
+    "name": "flare.reagenti.cluster.permanganato_di_potassio",
+    "imports": []
+  },
+  {
+    "name": "flare.reagenti.cluster.reattivo_di_deniges",
+    "imports": []
+  },
+  {
+    "name": "flare.reagenti.cluster.tricloruro_di_ferro",
+    "imports": []
+  },
+  {
+    "name": "flare.reagenti.cluster.acqua_ossigenata",
+    "imports": []
+  },
+  {
+    "name": "flare.reagenti.cluster.3,5-diclorochinonclorimmina",
+    "imports": []
+  },
+  {
+    "name": "flare.reagenti.cluster.bario_cloruro",
+    "imports": []
+  },
+  {
+    "name": "flare.reagenti.cluster.idrossilammina_cloridrato",
+    "imports": []
+  },
+  {
+    "name": "flare.reagenti.cluster.acido_cloridrico_6N",
+    "imports": []
+  },
+  {
+    "name": "flare.reagenti.cluster.reattivo_di_millon",
+    "imports": []
+  },
+  {
+    "name": "flare.reagenti.cluster.resorcina",
+    "imports": []
+  },
+  {
+    "name": "flare.reagenti.cluster.reattivo_molibdico",
+    "imports": []
+  },
+  {
+    "name": "flare.reagenti.cluster.reattivo_di_molish",
+    "imports": []
+  },
+  {
+    "name": "flare.reagenti.cluster.solfuro_di_sodio",
+    "imports": []
+  },
+  {
+    "name": "flare.reagenti.cluster.cloruro_d'ammonio",
+    "imports": []
+  },
+  {
+    "name": "flare.reagenti.cluster.idrossido_d'ammonio_6N",
+    "imports": []
+  },
+  {
+    "name": "flare.reagenti.cluster.sodio_fosfato_acido",
+    "imports": []
+  },
+  {
+    "name": "flare.reagenti.cluster.soluzione_etanolica_di_ninidrina",
+    "imports": []
+  },
+  {
+    "name": "flare.reagenti.cluster.acido_acetico_2N",
+    "imports": []
+  },
+  {
+    "name": "flare.reagenti.cluster.ossalato_di_ammonio",
+    "imports": []
+  },
+  {
+    "name": "flare.reagenti.cluster.reattivo_di_fehling",
+    "imports": []
+  }
+]
