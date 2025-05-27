@@ -323,20 +323,53 @@ def ottieni_saggi_positivi(molecola_id):
 
 
 
-def pippo(molecola, saggio, reagente):
+def ricerca_complessa(molecola, saggio, reagente):
     conn = sqlite3.connect("analisi_farmaci.db")
     cursor = conn.cursor()
+    query = params = None
 
-    if saggio and molecola and not reagente:
-        query = "SELECT * FROM esiti_saggi WHERE id_saggio = ? AND id_molecola = ?"
-        params = (saggio, molecola)
-    elif saggio and not molecola and not reagente:
-        query = "SELECT reagenti.reagente FROM saggi_reagenti JOIN reagenti ON saggi_reagenti.reagente_id = reagenti.id WHERE saggio_id = ?"
-        params = (saggio,)
+    if molecola and not saggio and not reagente:
+        cursor.execute(
+        """
+            SELECT esiti_saggi.id_saggio, saggi.saggio
+            FROM esiti_saggi
+            JOIN saggi
+            ON esiti_saggi.id_saggio = saggi.id
+            WHERE id_molecola = ? AND esiti_saggi.esito_saggio = 'POSITIVO'""", 
+        (molecola,))
+        saggi = cursor.fetchall()
+        saggi_ids = [saggio[0] for saggio in saggi]
+        placeholders = ",".join(["?"] * len(saggi_ids))
+        cursor.execute(
+        f"""
+            SELECT reagenti.reagente, saggi.saggio
+            FROM reagenti 
+            JOIN saggi_reagenti 
+            ON reagenti.id = saggi_reagenti.reagente_id
+            JOIN saggi
+            ON saggi_reagenti.saggio_id = saggi.id
+            WHERE saggio_id IN ({placeholders})
+        """, saggi_ids)
+        reagenti = cursor.fetchall()
+        
 
-    if query and params:
-        cursor.execute(query, params)
-        return cursor.fetchall()
+        risultato_saggi = pd.DataFrame([saggio[1] for saggio in saggi], columns=["Saggi"])
+        risultato_reagenti = pd.DataFrame([[reagente[0], reagente[1]] for reagente in reagenti], columns=["reagente", "Saggio"])
+        
+        print(risultato_saggi)
+        print(risultato_reagenti)
+
+        return {
+            "saggi": risultato_saggi,
+            "reagenti": risultato_reagenti
+        }
+
+    elif molecola and saggio and not reagente:
+        return None
+    elif not molecola and saggio and not reagente:
+        return None
+    elif not molecola and saggio and reagente:
+        return None
     
     return "Problema"
     

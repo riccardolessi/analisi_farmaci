@@ -91,24 +91,31 @@ app_ui = ui.page_navbar(
     ),
     ui.nav_panel(
         "Ricerca",
-        ui.card(
-            ui.input_checkbox("checkbox_molecola", "Cerca le molecole"),
-            ui.panel_conditional(
-                "input.checkbox_molecola",
-                ui.input_select("select_molecola", "Seleziona la molecola", choices = [])
+        ui.page_sidebar(
+            ui.sidebar(
+                ui.input_checkbox("checkbox_molecola", "Cerca le molecole"),
+                ui.panel_conditional(
+                    "input.checkbox_molecola",
+                    ui.input_select("select_molecola", "Seleziona la molecola", choices = [])
+                ),
+                ui.input_checkbox("checkbox_saggio", "Cerca i saggi"),
+                ui.panel_conditional(
+                    "input.checkbox_saggio",
+                    ui.input_select("select_saggio", "Seleziona i saggi", choices = [])
+                ),
+                ui.input_checkbox("checkbox_reagente", "Cerca i reagenti"),
+                ui.panel_conditional(
+                    "input.checkbox_reagente",
+                    ui.input_select("select_reagente", "Seleziona i reagenti", choices = [])
+                ),
+                ui.input_checkbox_group(
+                    "ricerca_output_checkbox",
+                    "Campi di Output",
+                    choices = []
+                ),
+                ui.input_action_button("ricerca_bottone", "Cerca", disabled=True),
             ),
-            ui.input_checkbox("checkbox_saggio", "Cerca i saggi"),
-            ui.panel_conditional(
-                "input.checkbox_saggio",
-                ui.input_select("select_saggio", "Seleziona i saggi", choices = [])
-            ),
-            ui.input_checkbox("checkbox_reagente", "Cerca i reagenti"),
-            ui.panel_conditional(
-                "input.checkbox_reagente",
-                ui.input_select("select_reagente", "Seleziona i reagenti", choices = [])
-            ),
-            ui.input_action_button("ricerca_bottone", "Cerca"),
-            
+            ui.output_ui("risultato_ricerca")
         )
     ),
 )
@@ -116,6 +123,35 @@ app_ui = ui.page_navbar(
 def server(input, output, session):
     val = reactive.Value()
 
+    @reactive.effect
+    @reactive.event(input.checkbox_molecola, input.checkbox_saggio, input.checkbox_reagente)
+    def _():
+        # Checkbox solo molecola
+        if input.checkbox_molecola() and not input.checkbox_saggio() and not input.checkbox_reagente():
+            print("checkbox molecola")
+            ui.update_checkbox_group("ricerca_output_checkbox", choices = ["Saggi", "Reagenti"])
+            ui.update_action_button("ricerca_bottone", disabled = False)
+        # Checkbox molecola e saggio
+        elif input.checkbox_molecola() and input.checkbox_saggio() and not input.checkbox_reagente():
+            print("checkbox molecola e saggio")
+            ui.update_checkbox_group("ricerca_output_checkbox", choices = ["Reagenti"])
+            ui.update_action_button("ricerca_bottone", disabled = False)
+        # Checkbox solo saggio
+        elif not input.checkbox_molecola() and input.checkbox_saggio() and not input.checkbox_reagente():
+            print("checkbox saggio")
+            ui.update_checkbox_group("ricerca_output_checkbox", choices = ["Molecole", "Reagenti"])
+            ui.update_action_button("ricerca_bottone", disabled = False)
+        # Checkbox saggio e reagente
+        elif not input.checkbox_molecola() and input.checkbox_saggio() and input.checkbox_reagente():
+            print("checkbox saggio e reagente")
+            ui.update_checkbox_group("ricerca_output_checkbox", choices = ["Molecole"])
+            ui.update_action_button("ricerca_bottone", disabled = False)
+        else:
+            ui.update_checkbox_group("ricerca_output_checkbox", choices = [])
+            ui.update_action_button("ricerca_bottone", disabled = True)
+
+
+    # Funzione per popolare i select nella navtab "Ricerca"
     @reactive.effect
     def _():
         molecole = query.molecole()
@@ -136,8 +172,28 @@ def server(input, output, session):
         saggio = input.select_saggio() if input.checkbox_saggio() else None
         reagente = input.select_reagente() if input.checkbox_reagente() else None
 
-        risultato = query.pippo(molecola, saggio, reagente)
-        print(risultato)
+        risultato = query.ricerca_complessa(molecola, saggio, reagente)
+        
+        @render.ui
+        def risultato_ricerca():
+            # Converto i df in tabelle HTML
+            html1 = risultato['saggi'].to_html(classes="display", table_id="tab1", index=False)
+            html2 = risultato['reagenti'].to_html(classes="display", table_id="tab2", index=False)
+
+            # Codice JS per attivare DataTable su entrambe le tabelle
+            js = """
+            <script>
+            $(document).ready(function() {
+                $('#tab1').DataTable();
+                $('#tab2').DataTable();
+            });
+            </script>
+            """
+
+            # Combino tutto in un unico blocco HTML + JS
+            full_html = f"{html1}<br><br>{html2}{js}"
+
+            return ui.HTML(full_html)
 
 
     @reactive.effect

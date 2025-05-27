@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<style>
+  .link {
+    stroke: #aaa;
+  }
+
+  .node circle {
+    stroke: #fff;
+    stroke-width: 1.5px;
+  }
+
+  text {
+    font-family: sans-serif;
+    font-size: 12px;
+    pointer-events: none;
+  }
+</style>
+<body>
+<svg width="1000" height="1000"></svg>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script>
+  const data = {
+  "nodes": [
+    {"id": "M1", "type": "molecola"}, {"id": "M2", "type": "molecola"}, {"id": "M3", "type": "molecola"}, {"id": "M4", "type": "molecola"}, {"id": "M5", "type": "molecola"},
+    {"id": "M6", "type": "molecola"}, {"id": "M7", "type": "molecola"}, {"id": "M8", "type": "molecola"}, {"id": "M9", "type": "molecola"}, {"id": "M10", "type": "molecola"},
+    {"id": "M11", "type": "molecola"}, {"id": "M12", "type": "molecola"}, {"id": "M13", "type": "molecola"}, {"id": "M14", "type": "molecola"}, {"id": "M15", "type": "molecola"},
+    {"id": "M16", "type": "molecola"}, {"id": "M17", "type": "molecola"}, {"id": "M18", "type": "molecola"}, {"id": "M19", "type": "molecola"}, {"id": "M20", "type": "molecola"},
+
+    {"id": "S1", "type": "saggio"}, {"id": "S2", "type": "saggio"}, {"id": "S3", "type": "saggio"}, {"id": "S4", "type": "saggio"}, {"id": "S5", "type": "saggio"},
+    {"id": "S6", "type": "saggio"}, {"id": "S7", "type": "saggio"}, {"id": "S8", "type": "saggio"}, {"id": "S9", "type": "saggio"}, {"id": "S10", "type": "saggio"},
+    {"id": "S11", "type": "saggio"}, {"id": "S12", "type": "saggio"}, {"id": "S13", "type": "saggio"}, {"id": "S14", "type": "saggio"}, {"id": "S15", "type": "saggio"},
+    {"id": "S16", "type": "saggio"}, {"id": "S17", "type": "saggio"}, {"id": "S18", "type": "saggio"}, {"id": "S19", "type": "saggio"}, {"id": "S20", "type": "saggio"},
+
+    {"id": "R1", "type": "reagente"}, {"id": "R2", "type": "reagente"}, {"id": "R3", "type": "reagente"}, {"id": "R4", "type": "reagente"}, {"id": "R5", "type": "reagente"},
+    {"id": "R6", "type": "reagente"}, {"id": "R7", "type": "reagente"}, {"id": "R8", "type": "reagente"}, {"id": "R9", "type": "reagente"}, {"id": "R10", "type": "reagente"},
+    {"id": "R11", "type": "reagente"}, {"id": "R12", "type": "reagente"}, {"id": "R13", "type": "reagente"}, {"id": "R14", "type": "reagente"}, {"id": "R15", "type": "reagente"},
+    {"id": "R16", "type": "reagente"}, {"id": "R17", "type": "reagente"}, {"id": "R18", "type": "reagente"}, {"id": "R19", "type": "reagente"}, {"id": "R20", "type": "reagente"}
+  ],
+  "links": [
+    // molecole → saggi
+    {"source": "M1", "target": "S1"}, {"source": "M1", "target": "S5"}, {"source": "M1", "target": "S10"},
+    {"source": "M2", "target": "S2"}, {"source": "M2", "target": "S6"}, {"source": "M2", "target": "S14"},
+    {"source": "M3", "target": "S3"}, {"source": "M3", "target": "S7"}, {"source": "M3", "target": "S12"},
+    {"source": "M4", "target": "S4"}, {"source": "M4", "target": "S8"}, {"source": "M4", "target": "S16"},
+    {"source": "M5", "target": "S5"}, {"source": "M5", "target": "S9"}, {"source": "M5", "target": "S18"},
+    {"source": "M6", "target": "S6"}, {"source": "M6", "target": "S10"}, {"source": "M6", "target": "S11"},
+    {"source": "M7", "target": "S7"}, {"source": "M7", "target": "S13"}, {"source": "M7", "target": "S17"},
+    {"source": "M8", "target": "S8"}, {"source": "M8", "target": "S12"}, {"source": "M8", "target": "S20"},
+    {"source": "M9", "target": "S9"}, {"source": "M9", "target": "S14"}, {"source": "M9", "target": "S19"},
+    {"source": "M10", "target": "S10"}, {"source": "M10", "target": "S15"}, {"source": "M10", "target": "S18"},
+    {"source": "M11", "target": "S11"}, {"source": "M12", "target": "S12"}, {"source": "M13", "target": "S13"},
+    {"source": "M14", "target": "S14"}, {"source": "M15", "target": "S15"}, {"source": "M16", "target": "S16"},
+    {"source": "M17", "target": "S17"}, {"source": "M18", "target": "S18"}, {"source": "M19", "target": "S19"},
+    {"source": "M20", "target": "S20"},
+
+    // saggi → reagenti
+    {"source": "S1", "target": "R1"}, {"source": "S1", "target": "R5"}, {"source": "S2", "target": "R2"},
+    {"source": "S2", "target": "R6"}, {"source": "S3", "target": "R3"}, {"source": "S3", "target": "R7"},
+    {"source": "S4", "target": "R4"}, {"source": "S4", "target": "R8"}, {"source": "S5", "target": "R9"},
+    {"source": "S5", "target": "R10"}, {"source": "S6", "target": "R11"}, {"source": "S6", "target": "R12"},
+    {"source": "S7", "target": "R13"}, {"source": "S7", "target": "R14"}, {"source": "S8", "target": "R15"},
+    {"source": "S8", "target": "R16"}, {"source": "S9", "target": "R17"}, {"source": "S9", "target": "R18"},
+    {"source": "S10", "target": "R19"}, {"source": "S10", "target": "R20"}, {"source": "S11", "target": "R1"},
+    {"source": "S12", "target": "R2"}, {"source": "S13", "target": "R3"}, {"source": "S14", "target": "R4"},
+    {"source": "S15", "target": "R5"}, {"source": "S16", "target": "R6"}, {"source": "S17", "target": "R7"},
+    {"source": "S18", "target": "R8"}, {"source": "S19", "target": "R9"}, {"source": "S20", "target": "R10"},
+
+    // extra cross-links
+    {"source": "M1", "target": "S15"}, {"source": "M5", "target": "S19"}, {"source": "M10", "target": "S3"},
+    {"source": "S2", "target": "R19"}, {"source": "S8", "target": "R11"}, {"source": "S12", "target": "R8"},
+    {"source": "S18", "target": "R2"}, {"source": "S14", "target": "R14"}, {"source": "S17", "target": "R6"}
+  ]
+};
+
+  const svg = d3.select("svg");
+  const width = +svg.attr("width");
+  const height = +svg.attr("height"); 
+
+  const color = d3.scaleOrdinal()
+    .domain(["molecola", "saggio", "reagente"])
+    .range(["#1f77b4", "#ff7f0e", "#2ca02c"]);
+
+  const simulation = d3.forceSimulation(data.nodes)
+    .force("link", d3.forceLink(data.links).id(d => d.id).distance(20))
+    .force("charge", d3.forceManyBody().strength(-300))
+    .force("center", d3.forceCenter(width / 2, height / 2));
+
+  const link = svg.append("g")
+      .attr("stroke", "#aaa")
+    .selectAll("line")
+    .data(data.links)
+    .join("line")
+      .attr("stroke-width", 1.5);
+
+  const node = svg.append("g")
+      .attr("stroke", "#fff")
+      .attr("stroke-width", 1.5)
+    .selectAll("circle")
+    .data(data.nodes)
+    .join("circle")
+      .attr("r", 10)
+      .attr("fill", d => color(d.type))
+      .call(drag(simulation));
+
+  const label = svg.append("g")
+    .selectAll("text")
+    .data(data.nodes)
+    .join("text")
+      .text(d => d.id)
+      .attr("dy", -15)
+      .attr("text-anchor", "middle");
+
+  simulation.on("tick", () => {
+    link
+        .attr("x1", d => d.source.x)
+        .attr("y1", d => d.source.y)
+        .attr("x2", d => d.target.x)
+        .attr("y2", d => d.target.y);
+
+    node
+        .attr("cx", d => d.x)
+        .attr("cy", d => d.y);
+
+    label
+        .attr("x", d => d.x)
+        .attr("y", d => d.y);
+  });
+
+  function drag(simulation) {
+    function dragstarted(event) {
+      if (!event.active) simulation.alphaTarget(0.3).restart();
+      event.subject.fx = event.subject.x;
+      event.subject.fy = event.subject.y;
+    }
+
+    function dragged(event) {
+      event.subject.fx = event.x;
+      event.subject.fy = event.y;
+    }
+
+    function dragended(event) {
+      if (!event.active) simulation.alphaTarget(0);
+      event.subject.fx = null;
+      event.subject.fy = null;
+    }
+
+    return d3.drag()
+        .on("start", dragstarted)
+        .on("drag", dragged)
+        .on("end", dragended);
+  }
+</script>
+</body>
