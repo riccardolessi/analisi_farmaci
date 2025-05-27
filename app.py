@@ -5,6 +5,7 @@ from pathlib import Path
 import asyncio
 
 script_file =  Path(__file__).parent / "prova" / "www" / "script.js"
+script_file_2 = Path(__file__).parent / 'www' / 'app_loader.js'
 
 app_ui = ui.page_navbar(
     ui.nav_panel(
@@ -123,47 +124,45 @@ app_ui = ui.page_navbar(
 def server(input, output, session):
     val = reactive.Value()
 
+    # Funzione per gestire la ricerca nella tab Ricerca
     @reactive.effect
     @reactive.event(input.checkbox_molecola, input.checkbox_saggio, input.checkbox_reagente)
     def _():
-        # Checkbox solo molecola
-        if input.checkbox_molecola() and not input.checkbox_saggio() and not input.checkbox_reagente():
-            print("checkbox molecola")
-            ui.update_checkbox_group("ricerca_output_checkbox", choices = ["Saggi", "Reagenti"])
-            ui.update_action_button("ricerca_bottone", disabled = False)
-        # Checkbox molecola e saggio
-        elif input.checkbox_molecola() and input.checkbox_saggio() and not input.checkbox_reagente():
-            print("checkbox molecola e saggio")
-            ui.update_checkbox_group("ricerca_output_checkbox", choices = ["Reagenti"])
-            ui.update_action_button("ricerca_bottone", disabled = False)
-        # Checkbox solo saggio
-        elif not input.checkbox_molecola() and input.checkbox_saggio() and not input.checkbox_reagente():
-            print("checkbox saggio")
-            ui.update_checkbox_group("ricerca_output_checkbox", choices = ["Molecole", "Reagenti"])
-            ui.update_action_button("ricerca_bottone", disabled = False)
-        # Checkbox saggio e reagente
-        elif not input.checkbox_molecola() and input.checkbox_saggio() and input.checkbox_reagente():
-            print("checkbox saggio e reagente")
-            ui.update_checkbox_group("ricerca_output_checkbox", choices = ["Molecole"])
-            ui.update_action_button("ricerca_bottone", disabled = False)
-        else:
-            ui.update_checkbox_group("ricerca_output_checkbox", choices = [])
-            ui.update_action_button("ricerca_bottone", disabled = True)
+        molecola = input.checkbox_molecola()
+        saggio = input.checkbox_saggio()
+        reagente = input.checkbox_reagente()
+        visualizza_log_message = True # Debug
+
+        # Casi possibili → output choices
+        cases = {
+            (True, False, False): (["Saggi", "Reagenti"], "checkbox molecola"),
+            (True, True, False): (["Reagenti"], "checkbox molecola e saggio"),
+            (False, True, False): (["Molecole", "Reagenti"], "checkbox saggio"),
+            (False, True, True): (["Molecole"], "checkbox saggio e reagente"),
+        }
+
+        # Ottieni la tupla corrispondente al caso attivo
+        key = (molecola, saggio, reagente)
+        choices, log_message = cases.get(key, ([], None))
+
+        if visualizza_log_message:
+            print(log_message)
+
+        ui.update_checkbox_group("ricerca_output_checkbox", choices=choices)
+        ui.update_action_button("ricerca_bottone", disabled=(not choices))
 
 
     # Funzione per popolare i select nella navtab "Ricerca"
     @reactive.effect
     def _():
-        molecole = query.molecole()
-        molecole = {mol[0]: mol[1] for mol in molecole}
-        saggi = query.saggi()
-        saggi = {saggio[0]: saggio[1] for saggio in saggi}
-        reagenti = query.reagenti()
-        reagenti = {reagente[0]: reagente[1] for reagente in reagenti}
-
-        ui.update_select("select_molecola", choices = molecole)
-        ui.update_select("select_saggio", choices = saggi)
-        ui.update_select("select_reagente", choices = reagenti)
+        def update_select_from_query(query_fn, select_id):
+            data = query_fn()
+            choices = {item[0]: item[1] for item in data}
+            ui.update_select(select_id, choices=choices)
+        
+        update_select_from_query(query.molecole, "select_molecola")
+        update_select_from_query(query.saggi, "select_saggio")
+        update_select_from_query(query.reagenti, "select_reagente")
 
     @reactive.effect
     @reactive.event(input.ricerca_bottone)
@@ -202,18 +201,16 @@ def server(input, output, session):
         
         await session.send_custom_message("d3data", data)
 
+    # Funzione per salvare la tipologia di molecola nel DB
     @reactive.effect
     @reactive.event(input.salva_tipologia)
-    def _():
-        molecole = input.molecole_tip()
-        tipologia = input.tipologia_id()
-
-        result = query.nuova_tipologia(tipologia, molecole)
-
-        ui.notification_show(
-            result['message'],
-            type = result['status']
-        )
+    def salva_tipologia():
+        try:
+            result = query.nuova_tipologia(input.tipologia_id, input.molecole_tip())
+        except Exception as e:
+            ui.notification_show(f"Errore durante il salvataggio: {e}", type="error")
+        else:
+            ui.notification_show(result.get("message", "Operazione completata"), type= result.get("status", "info"))
 
 
     @reactive.effect
@@ -233,21 +230,23 @@ def server(input, output, session):
     @render.ui
     @reactive.event(input.cerca_reagenti_mol)
     def reagenti_mol():
-        messaggio = ""
+        messaggi = []
+
         for saggio in val.get():
             id_saggio = saggio[1]
             reagenti = query.reagenti_da_saggio(id_saggio)
-            
             lista_reagenti = reagenti['Reagente'].tolist()
             
             if lista_reagenti:
-                messaggio += f"Il saggio {saggio[2]} richiede: "
-                for mol in lista_reagenti:
-                    messaggio += f"{mol}, "
-            
-            messaggio += "<br>"
+                reagenti_str = ", ".join(lista_reagenti)
+                messaggi.append(f"Il saggio {saggio[2]} richiede: {reagenti_str}")
+            else:
+                messaggi.append(f"Il saggio {saggio[2]} non richiede reagenti.")
         
-        return ui.HTML(messaggio)
+        # Unisci i messacci con <br> per la separazione
+        html_message = "<br>".join(messaggi)
+
+        return ui.HTML(html_message)
 
     @render.data_frame
     @reactive.event(input.cerca_saggi)
@@ -371,25 +370,28 @@ def server(input, output, session):
         id_saggio = input.selectize_saggi()
         id_reagenti = input.selectize_reagenti()
 
-        if id_saggio != "" and len(id_reagenti) != 0:
-            for id_reagente in id_reagenti:
-                result = query.saggi_reagenti(id_saggio, id_reagente)
-                
-                if result['status'] == "success":
-                    ui.notification_show(
-                        result['message'],
-                        type = "message"
-                    )
-                else:
-                    ui.notification_show(
-                        result['message'],
-                        type = "error"
-                    )
-        else:
-            ui.notification_show(
-                "Compila entrambi i campi",
-                type = "error"
-            )
+        if id_saggio == "" or not id_reagenti:
+            ui.notification_show("Compila entrambi i campi", type="error")
+            return
+        
+        success_msgs = []
+        error_msgs = []
+
+        # IMPORTANTE !!!!!!!!!!!!!!!!!!!!!
+        # MODIFICARE MESSAGE PER DIRE QUALI MOLECOLE HANNO DATO ERRORE
+        # NON NECESSARIO IN CASO DI SUCCESS
+        for id_reagente in id_reagenti:
+            result = query.saggi_reagenti(id_saggio, id_reagente)
+            if result.get("status") == "success":
+                success_msgs.append(result.get("message", "Operazione riuscita"))
+            else:
+                error_msgs.append(result.get("message", "Errore sconosciuto"))
+
+        # Mostra i messaggi
+        if success_msgs:
+            ui.notification_show("\n".join(success_msgs), type="message")
+        if error_msgs:
+            ui.notification_show("\n".join(error_msgs), type="error")
 
     @render.data_frame
     def associazioni_df():

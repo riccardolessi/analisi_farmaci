@@ -30,7 +30,11 @@ def analyze_directory(directory_path):
     results = {}
 
     # Itera attraverso tutti i file .py nella directory
-    for root, _, files in os.walk(directory_path):
+    for root, dirs, files in os.walk(directory_path):
+
+        if 'venv_analisi' in dirs:
+            dirs.remove('venv_analisi')
+
         for file in files:
             if file.endswith('.py'):
                 file_path = os.path.join(root, file)
