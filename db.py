@@ -4,6 +4,7 @@ def setup_db():
     conn = sqlite3.connect("analisi_farmaci.db")
     cursor = conn.cursor()
 
+    # ELIMINARE tipologia_id SE SERVE FARE UNA NUOVA MIGRAZIONE
     cursor.execute("""
     CREATE TABLE IF NOT EXISTS molecole (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -18,6 +19,17 @@ def setup_db():
     CREATE TABLE IF NOT EXISTS saggi (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         saggio TEXT UNIQUE
+    )
+    """)
+
+    cursor.execute("""
+    CREATE TABLE IF NOT EXISTS saggi_new (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        nome_saggio TEXT UNIQUE,
+        desrizione TEXT,
+        schema_saggio_img TEXT,
+        rif_saggio_temp INTEGER,
+        FOREIGN KEY (rif_saggio_temp) REFERENCES saggi(id) ON DELETE CASCADE
     )
     """)
 

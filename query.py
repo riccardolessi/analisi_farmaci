@@ -372,8 +372,101 @@ def ricerca_complessa(molecola, saggio, reagente):
         return None
     
     return "Problema"
+
+def insert_saggio_new(saggio, descrizione, schema_saggio_img, rif_saggio_temp):
+    conn = sqlite3.connect('analisi_farmaci.db')
+    cursor = conn.cursor()
+
+    try:
+        cursor.execute("""
+        INSERT INTO saggi_new (nome_saggio, desrizione, schema_saggio_img, rif_saggio_temp)
+        VALUES (?, ?, ?, ?)
+        """, (saggio, descrizione, schema_saggio_img, rif_saggio_temp))
+        
+        conn.commit()
+        return {
+            "status": "success",
+            "message": "Saggio inserito correttamente"
+        }
+    except sqlite3.Error as e:
+        return {
+            "status": "error",
+            "message": str(e)
+        }
+    finally:
+        cursor.close()
+        conn.close()
+
+def saggi_new():
+    conn = sqlite3.connect('analisi_farmaci.db')
+    cursor = conn.cursor()
+
+    cursor.execute("SELECT * FROM saggi_new")
+    saggi = cursor.fetchall()
+
     
 
+    cursor.close()
+    conn.close()
+
+    return saggi
+    
+
+def get_saggio_details(saggio_id):
+    conn = sqlite3.connect('analisi_farmaci.db')
+    cursor = conn.cursor()
+
+    cursor.execute("SELECT * FROM saggi_new WHERE id = ?", (saggio_id,))
+    saggio_details = cursor.fetchone()
+
+    cursor.close()
+    conn.close()
+
+    if saggio_details:
+        return {
+            "id": saggio_details[0],
+            "nome_saggio": saggio_details[1],
+            "descrizione": saggio_details[2],
+            "schema_saggio_img": saggio_details[3],
+            "rif_saggio_temp": saggio_details[4]
+        }
+    else:
+        return None
+
+
+def get_reagenti_saggio_new(saggio_new_id):
+    conn = sqlite3.connect('analisi_farmaci.db')
+    cursor = conn.cursor()
+
+    cursor.execute("""
+    SELECT saggi.id 
+    FROM saggi_new
+    JOIN saggi ON saggi_new.rif_saggio_temp = saggi.id
+    WHERE saggi_new.id = ?
+    """, (saggio_new_id,))
+
+    saggio_id = cursor.fetchone()
+
+    if not saggio_id:
+        cursor.close()
+        conn.close()
+        return []
+    
+    saggio_id = saggio_id[0]
+
+    cursor.execute("""
+    SELECT reagenti.reagente
+    FROM saggi_reagenti
+    JOIN reagenti ON saggi_reagenti.reagente_id = reagenti.id
+    WHERE saggi_reagenti.saggio_id = ?
+    """, (saggio_id,))
+
+    reagenti = cursor.fetchall()
+
+    cursor.close()
+    conn.close()
+
+    return [reagente[0] for reagente in reagenti]
 
 # def esegui_query_molecole():
 #     try:

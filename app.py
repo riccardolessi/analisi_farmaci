@@ -3,6 +3,7 @@ import query
 import pandas as pd
 from pathlib import Path
 import asyncio
+from pathlib import Path
 
 script_file =  Path(__file__).parent / "prova" / "www" / "script.js"
 script_file_2 = Path(__file__).parent / 'www' / 'app_loader.js'
@@ -119,10 +120,109 @@ app_ui = ui.page_navbar(
             ui.output_ui("risultato_ricerca")
         )
     ),
+    ui.nav_panel(
+        "Saggio_new",
+        ui.page_navbar(
+            ui.nav_panel(
+                "Inserimento saggio",
+                ui.input_text("nome_saggio", "Nome del saggio"),
+                ui.input_text_area("descrizione_saggio", "Descrizione del saggio"),
+                ui.input_text("schema_saggio_img", "Schema del saggio (URL)"),
+                ui.input_select("rif_saggio_temp", "Riferimento al saggio temporaneo", choices=[]),
+                ui.input_action_button("salva_saggio", "Salva"),
+            ),
+            ui.nav_panel(
+                "Saggi esistenti",
+                ui.input_select("select_saggi_esistenti", "Saggi esistenti", choices=[]),
+                ui.input_action_button("visualizza_saggio", "Visualizza"),
+                ui.input_action_button("elimina_saggio", "Elimina"),
+                ui.card(
+                    ui.output_text("saggio_details_nome_saggio"),
+                    ui.output_image("saggio_details_schema_saggio_img"),
+                    ui.br(),
+                    ui.output_ui("saggio_details_descrizione_saggio"),
+                    ui.br(),
+                    ui.output_text("reagenti_saggio"),
+                ),
+            )
+        )
+    )
 )
 
 def server(input, output, session):
     val = reactive.Value()
+
+    @reactive.effect
+    @reactive.event(input.visualizza_saggio)
+    def visualizza_saggio():
+        saggio_id = input.select_saggi_esistenti()
+        if not saggio_id:
+            ui.notification_show("Seleziona un saggio esistente", type="error")
+            return
+        
+        try:
+            saggio_details = query.get_saggio_details(saggio_id)
+            if not saggio_details:
+                ui.notification_show("Saggio non trovato", type="error")
+                return
+            
+            @render.text
+            def saggio_details_nome_saggio():
+                return saggio_details['nome_saggio']
+            
+            @render.image
+            def saggio_details_schema_saggio_img():
+                img = {"src": str(Path(__file__).parent / "assets" / "img_saggi" / saggio_details['schema_saggio_img'])} if saggio_details['schema_saggio_img'] else None
+                if img is None:
+                    return None
+                return img
+            
+            @render.ui
+            def saggio_details_descrizione_saggio():
+                return ui.HTML(saggio_details['descrizione'].replace("\n", "<br>"))
+            
+            @render.text
+            def reagenti_saggio():
+                reagenti = query.get_reagenti_saggio_new(saggio_id)
+                if not reagenti:
+                    return "Nessun reagente associato a questo saggio."
+                return "Reagenti associati: " + ", ".join(reagenti)
+
+        except Exception as e:
+            ui.notification_show(f"Errore durante il recupero del saggio: {e}", type="error")
+
+    # Funzione per popolare il select con i saggi esistenti
+    @reactive.effect
+    def select_saggi_esistenti():
+        # Popola il select con i saggi esistenti
+        saggi = query.saggi_new()
+        choices = {saggio[0]: saggio[1] for saggio in saggi}
+        ui.update_select("select_saggi_esistenti", choices=choices)
+
+    @reactive.effect
+    @reactive.event(input.salva_saggio)
+    def salva_saggio():
+        nome = input.nome_saggio()
+        descrizione = input.descrizione_saggio()
+        schema = input.schema_saggio_img()
+        rif_saggio_temp = input.rif_saggio_temp()
+
+        if not nome or not descrizione or not schema:
+            ui.notification_show("Compila tutti i campi", type="error")
+            return
+
+        try:
+            result = query.insert_saggio_new(nome, descrizione, schema, rif_saggio_temp)
+            ui.notification_show(result.get("message", "Operazione completata"), type=result.get("status", "info"))
+        except Exception as e:
+            ui.notification_show(f"Errore durante il salvataggio: {e}", type="error")
+
+    @reactive.effect
+    def rif_saggio_temp():
+        # Popola il select con i saggi esistenti
+        saggi = query.saggi()
+        choices = {saggio[0]: saggio[1] for saggio in saggi}
+        ui.update_select("rif_saggio_temp", choices=choices)
 
     # Funzione per gestire la ricerca nella tab Ricerca
     @reactive.effect
