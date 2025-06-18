@@ -1,0 +1,70 @@
+File: ./app.py
+  Numero di funzioni: 33
+  Numero di righe di codice (non vuote): 424
+  Numero di commenti: 20
+  Numero di reactive: 34
+  Numero di render: 12
+
+File: ./query.py
+  Numero di funzioni: 18
+  Numero di righe di codice (non vuote): 418
+  Numero di commenti: 92
+  Numero di reactive: 0
+  Numero di render: 0
+
+File: ./index2.py
+  Numero di funzioni: 0
+  Numero di righe di codice (non vuote): 0
+  Numero di commenti: 0
+  Numero di reactive: 0
+  Numero di render: 0
+
+File: ./prova.py
+  Numero di funzioni: 0
+  Numero di righe di codice (non vuote): 24
+  Numero di commenti: 9
+  Numero di reactive: 0
+  Numero di render: 0
+
+File: ./conta_py.py
+  Numero di funzioni: 3
+  Numero di righe di codice (non vuote): 58
+  Numero di commenti: 13
+  Numero di reactive: 1
+  Numero di render: 1
+
+File: ./index.py
+  Numero di funzioni: 0
+  Numero di righe di codice (non vuote): 28
+  Numero di commenti: 23
+  Numero di reactive: 0
+  Numero di render: 0
+
+File: ./db.py
+  Numero di funzioni: 1
+  Numero di righe di codice (non vuote): 64
+  Numero di commenti: 3
+  Numero di reactive: 0
+  Numero di render: 0
+
+File: ./prova/app2.py
+  Numero di funzioni: 1
+  Numero di righe di codice (non vuote): 20
+  Numero di commenti: 1
+  Numero di reactive: 1
+  Numero di render: 0
+
+File: ./www/files/prova.py
+  Numero di funzioni: 0
+  Numero di righe di codice (non vuote): 13
+  Numero di commenti: 5
+  Numero di reactive: 0
+  Numero di render: 0
+
+File: ./www/files/pippo.py
+  Numero di funzioni: 1
+  Numero di righe di codice (non vuote): 19
+  Numero di commenti: 3
+  Numero di reactive: 0
+  Numero di render: 0
+

@@ -129,6 +129,7 @@ app_ui = ui.page_navbar(
                 ui.input_text_area("descrizione_saggio", "Descrizione del saggio"),
                 ui.input_text("schema_saggio_img", "Schema del saggio (URL)"),
                 ui.input_select("rif_saggio_temp", "Riferimento al saggio temporaneo", choices=[]),
+                ui.input_text("riferimento_molecola_trattata", "Riferimento SMILES della molecola trattata"),
                 ui.input_action_button("salva_saggio", "Salva"),
             ),
             ui.nav_panel(
@@ -143,6 +144,8 @@ app_ui = ui.page_navbar(
                     ui.output_ui("saggio_details_descrizione_saggio"),
                     ui.br(),
                     ui.output_text("reagenti_saggio"),
+                    ui.br(),
+                    ui.output_text("molecola_trattata"),
                 ),
             )
         )
@@ -187,6 +190,13 @@ def server(input, output, session):
                 if not reagenti:
                     return "Nessun reagente associato a questo saggio."
                 return "Reagenti associati: " + ", ".join(reagenti)
+            
+            @render.text
+            def molecola_trattata():
+                molecola_trattata = saggio_details.get('molecola_trattata')
+                if not molecola_trattata:
+                    return "Nessuna molecola trattata associata a questo saggio."
+                return f"Molecola trattata: {molecola_trattata}"
 
         except Exception as e:
             ui.notification_show(f"Errore durante il recupero del saggio: {e}", type="error")
@@ -206,13 +216,14 @@ def server(input, output, session):
         descrizione = input.descrizione_saggio()
         schema = input.schema_saggio_img()
         rif_saggio_temp = input.rif_saggio_temp()
+        rif_molecola_trattata = input.riferimento_molecola_trattata()
 
         if not nome or not descrizione or not schema:
             ui.notification_show("Compila tutti i campi", type="error")
             return
 
         try:
-            result = query.insert_saggio_new(nome, descrizione, schema, rif_saggio_temp)
+            result = query.insert_saggio_new(nome, descrizione, schema, rif_saggio_temp, rif_molecola_trattata)
             ui.notification_show(result.get("message", "Operazione completata"), type=result.get("status", "info"))
         except Exception as e:
             ui.notification_show(f"Errore durante il salvataggio: {e}", type="error")

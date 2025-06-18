@@ -28,6 +28,7 @@ def setup_db():
         nome_saggio TEXT UNIQUE,
         desrizione TEXT,
         schema_saggio_img TEXT,
+        molecola_interessata TEXT,
         rif_saggio_temp INTEGER,
         FOREIGN KEY (rif_saggio_temp) REFERENCES saggi(id) ON DELETE CASCADE
     )

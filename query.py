@@ -373,15 +373,15 @@ def ricerca_complessa(molecola, saggio, reagente):
     
     return "Problema"
 
-def insert_saggio_new(saggio, descrizione, schema_saggio_img, rif_saggio_temp):
+def insert_saggio_new(saggio, descrizione, schema_saggio_img, rif_saggio_temp, rif_molecola_trattata):
     conn = sqlite3.connect('analisi_farmaci.db')
     cursor = conn.cursor()
 
     try:
         cursor.execute("""
-        INSERT INTO saggi_new (nome_saggio, desrizione, schema_saggio_img, rif_saggio_temp)
-        VALUES (?, ?, ?, ?)
-        """, (saggio, descrizione, schema_saggio_img, rif_saggio_temp))
+        INSERT INTO saggi_new (nome_saggio, desrizione, schema_saggio_img, rif_saggio_temp, molecola_interessata)
+        VALUES (?, ?, ?, ?, ?)
+        """, (saggio, descrizione, schema_saggio_img, rif_saggio_temp, rif_molecola_trattata))
         
         conn.commit()
         return {
@@ -422,13 +422,15 @@ def get_saggio_details(saggio_id):
     cursor.close()
     conn.close()
 
+    print(saggio_details)
     if saggio_details:
         return {
             "id": saggio_details[0],
             "nome_saggio": saggio_details[1],
             "descrizione": saggio_details[2],
             "schema_saggio_img": saggio_details[3],
-            "rif_saggio_temp": saggio_details[4]
+            "rif_saggio_temp": saggio_details[4],
+            "molecola_trattata": saggio_details[5]
         }
     else:
         return None
