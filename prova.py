@@ -1,34 +1,127 @@
-import sqlite3
-from collections import defaultdict
-import json
+import pandas as pd
 
-query = """
-    SELECT saggi.saggio, reagenti.reagente FROM saggi
-    JOIN saggi_reagenti ON saggi_reagenti.saggio_id = saggi.id
-    JOIN reagenti ON reagenti.id = saggi_reagenti.reagente_id
-"""
+molecole_obj = [
+    {"nome": "ACETILCISTEINA", "smiles": "CC(=O)N[C@@H](CS)C(=O)O"},
+    {"nome": "ACIDO ACETILSALICILICO", "smiles": "CC(=O)OC1=CC=CC=C1C(=O)O"},
+    {"nome": "ACIDO ASCORBICO", "smiles": "C([C@@H]([C@@H]1C(=C(C(=O)O1)O)O)O)O"},
+    {"nome": "ACIDO BENZOICO", "smiles": "C1=CC=C(C=C1)C(=O)O"},
+    {"nome": "ACIDO CITRICO", "smiles": "C(C(=O)O)C(CC(=O)O)(C(=O)O)O"},
+    {"nome": "ACIDO NICOTINICO", "smiles": "C1=CC(=CN=C1)C(=O)O"},
+    {"nome": "ACIDO SALICILICO", "smiles": "C1=CC=C(C(=C1)C(=O)O)O"},
+    {"nome": "ACIDO SORBICO", "smiles": "C/C=C/C=C/C(=O)O"},
+    {"nome": "ACIDO TANNICO", "smiles": "C1=C(C=C(C(=C1O)O)O)C(=O)OC2=CC(=CC(=C2O)O)C(=O)OC[C@@H]3[C@H]([C@@H]([C@H](C(O3)OC(=O)C4=CC(=C(C(=C4)OC(=O)C5=CC(=C(C(=C5)O)O)O)O)O)OC(=O)C6=CC(=C(C(=C6)OC(=O)C7=CC(=C(C(=C7)O)O)O)O)O)OC(=O)C8=CC(=C(C(=C8)OC(=O)C9=CC(=C(C(=C9)O)O)O)O)O)OC(=O)C1=CC(=C(C(=C1)OC(=O)C1=CC(=C(C(=C1)O)O)O)O)O"},
+    {"nome": "ACIDO TARTARICO", "smiles": "[C@H]([C@@H](C(=O)O)O)(C(=O)O)O"},
+    {"nome": "ALANINA", "smiles": "C[C@@H](C(=O)O)N"},
+    {"nome": "ASPARTAME", "smiles": "COC(=O)[C@H](CC1=CC=CC=C1)NC(=O)[C@H](CC(=O)O)N"},
+    {"nome": "BENZOCAINA", "smiles": "CCOC(=O)C1=CC=C(C=C1)N"},
+    {"nome": "CAFFEINA", "smiles": "CN1C=NC2=C1C(=O)N(C(=O)N2C)C"},
+    {"nome": "CALCIO GLICEROFOSFATO", "smiles": "C(C(CO)OP(=O)([O-])[O-])O.[Ca+2]"},
+    {"nome": "CALCIO GLUCONATO", "smiles": "C([C@H]([C@H]([C@@H]([C@H](C(=O)[O-])O)O)O)O)O.C([C@H]([C@H]([C@@H]([C@H](C(=O)[O-])O)O)O)O)O.[Ca+2]"},
+    {"nome": "CALCIO LATTATO", "smiles": "CC(C(=O)[O-])O.CC(C(=O)[O-])O.[Ca+2]"},
+    {"nome": "CALCIO PANTOTENATO", "smiles": "CC(C)(CO)[C@H](C(=O)NCCC(=O)[O-])O.CC(C)(CO)[C@H](C(=O)NCCC(=O)[O-])O.[Ca+2]"},
+    {"nome": "CAPTOPRIL", "smiles": "C[C@H](CS)C(=O)N1CCC[C@H]1C(=O)O"},
+    {"nome": "CHINIDINA SOLFATO", "smiles": "COC1=CC2=C(C=CN=C2C=C1)[C@@H]([C@H]3C[C@@H]4CCN3C[C@@H]4C=C)O.[SO4]2-"},
+    {"nome": "CHININA HCl", "smiles": "COC1=CC2=C(C=CN=C2C=C1)[C@H]([C@@H]3C[C@@H]4CCN3C[C@@H]4C=C)O"},
+    {"nome": "CHININA SOLFATO", "smiles": "COC1=CC2=C(C=CN=C2C=C1)[C@H]([C@@H]3C[C@@H]4CCN3C[C@@H]4C=C)O"},
+    {"nome": "CISTEINA HCl", "smiles": "C([C@@H](C(=O)O)N)S"},
+    {"nome": "CLORALIO IDRATO", "smiles": "C(C(Cl)(Cl)Cl)(O)O"},
+    {"nome": "CLORAMINA T", "smiles": "CC1=CC=C(C=C1)S(=O)(=O)[N-]Cl.[Na+]"},
+    {"nome": "CLORBUTANOLO", "smiles": "CC(C)(C(Cl)(Cl)Cl)O"},
+    {"nome": "CLOROCHINA BIFOSFATO", "smiles": "CCN(CC)CCCC(C)NC1=C2C=CC(=CC2=NC=C1)Cl "},
+    {"nome": "CLORPROMAZINA HCl", "smiles": "CN(C)CCCN1C2=CC=CC=C2SC3=C1C=C(C=C3)Cl"},
+    {"nome": "CORTISONE ACETATO", "smiles": "CC(=O)OCC(=O)[C@]1(CC[C@@H]2[C@@]1(CC(=O)[C@H]3[C@H]2CCC4=CC(=O)CC[C@]34C)C)O"},
+    {"nome": "DAPSONE", "smiles": "C1=CC(=CC=C1N)S(=O)(=O)C2=CC=C(C=C2)N"},
+    {"nome": "DESAMETASONE ACETATO", "smiles": "C[C@@H]1C[C@H]2[C@@H]3CCC4=CC(=O)C=C[C@@]4([C@]3([C@H](C[C@@]2([C@]1(C(=O)COC(=O)C)O)C)O)F)C"},
+    {"nome": "DESAMETASONE SODIO FOSFATO", "smiles": "C[C@@H]1C[C@H]2[C@@H]3CCC4=CC(=O)C=C[C@@]4([C@]3([C@H](C[C@@]2([C@]1(C(=O)COP(=O)([O-])[O-])O)C)O)F)C.[Na+].[Na+]"},
+    {"nome": "DIFENIDRAMINA HCl", "smiles": "CN(C)CCOC(C1=CC=CC=C1)C2=CC=CC=C2"},
+    {"nome": "ECONAZOLO NITRATO", "smiles": "C1=CC(=CC=C1COC(CN2C=CN=C2)C3=C(C=C(C=C3)Cl)Cl)Cl.[N+](=O)(O)[O-]"},
+    {"nome": "EFEDRINA HCl", "smiles": "C[C@@H]([C@@H](C1=CC=CC=C1)O)NC"},
+    {"nome": "FENAZONE", "smiles": "CC1=CC(=O)N(N1C)C2=CC=CC=C2"},
+    {"nome": "FENILALANINA", "smiles": "C1=CC=C(C=C1)C[C@@H](C(=O)O)N"},
+    {"nome": "FENILEFRINA HCl", "smiles": "CNC[C@@H](C1=CC(=CC=C1)O)O"},
+    {"nome": "FENOLO", "smiles": "C1=CC=C(C=C1)O"},
+    {"nome": "FENOTIAZINA", "smiles": "C1=CC=C2C(=C1)NC3=CC=CC=C3S2"},
+    {"nome": "FRUTTOSIO", "smiles": "1[C@H]([C@H]([C@@H](C(O1)(CO)O)O)O)O"},
+    {"nome": "FTALILSULFATIAZOLO", "smiles": "C1=CC=C(C(=C1)C(=O)NC2=CC=C(C=C2)S(=O)(=O)NC3=NC=CS3)C(=O)O"},
+    {"nome": "FUROSEMIDE", "smiles": "C1=COC(=C1)CNC2=CC(=C(C=C2C(=O)O)S(=O)(=O)N)Cl"},
+    {"nome": "GLICINA", "smiles": "C(C(=O)O)N"},
+    {"nome": "GLUCOSIO", "smiles": "C([C@@H]1[C@H]([C@@H]([C@H](C(O1)O)O)O)O)O"},
+    {"nome": "IDROCLOROTIAZIDE", "smiles": "C1NC2=CC(=C(C=C2S(=O)(=O)N1)S(=O)(=O)N)Cl"},
+    {"nome": "IDROCORTISONE", "smiles": "C[C@]12CCC(=O)C=C1CC[C@@H]3[C@@H]2[C@H](C[C@]4([C@H]3CC[C@@]4(C(=O)CO)O)C)O"},
+    {"nome": "IDROCORTISONE ACETATO", "smiles": "CC(=O)OCC(=O)[C@]1(CC[C@@H]2[C@@]1(C[C@@H]([C@H]3[C@H]2CCC4=CC(=O)CC[C@]34C)O)C)O"},
+    {"nome": "IMIPRAMINA HCl", "smiles": "CN(C)CCCN1C2=CC=CC=C2CCC3=CC=CC=C31.Cl"},
+    {"nome": "INDOMETACINA", "smiles": "CC1=C(C2=C(N1C(=O)C3=CC=C(C=C3)Cl)C=CC(=C2)OC)CC(=O)O"},
+    {"nome": "ISONIAZIDE", "smiles": "C1=CN=CC=C1C(=O)NN"},
+    {"nome": "LATTOSIO", "smiles": "C([C@@H]1[C@@H]([C@@H]([C@H]([C@@H](O1)O[C@@H]2[C@H](O[C@H]([C@@H]([C@H]2O)O)O)CO)O)O)O)O"},
+    {"nome": "LEUCINA", "smiles": "CC(C)C[C@@H](C(=O)O)N"},
+    {"nome": "LIDOCAINA HCl", "smiles": "CCN(CC)CC(=O)NC1=C(C=CC=C1C)C.Cl"},
+    {"nome": "LISINA HCl", "smiles": "(CCN)C[C@@H](C(=O)O)N.Cl"},
+    {"nome": "LITIO CITRATO", "smiles": "[Li+].[Li+].[Li+].C(C(=O)[O-])C(CC(=O)[O-])(C(=O)[O-])O"},
+    {"nome": "MAGNESIO ASPARTATO", "smiles": "C([C@@H](C(=O)[O-])N)C(=O)O.C([C@@H](C(=O)[O-])N)C(=O)O.O.O.O.O.[Mg+2]"},
+    {"nome": "MAGNESIO LATTATO", "smiles": "CC(C(=O)[O-])O.CC(C(=O)[O-])O.[Mg+2]"},
+    {"nome": "MANNITOLO", "smiles": "C([C@H]([C@H]([C@@H]([C@@H](CO)O)O)O)O)O"},
+    {"nome": "METFORMINA HCl", "smiles": "CN(C)C(=N)N=C(N)N.Cl"},
+    {"nome": "METILPARABEN", "smiles": "COC(=O)C1=CC=C(C=C1)O"},
+    {"nome": "METIONINA", "smiles": "CSCC[C@@H](C(=O)O)N"},
+    {"nome": "METRONIDAZOLO", "smiles": "CC1=NC=C(N1CCO)[N+](=O)[O-]"},
+    {"nome": "NICLOSAMIDE", "smiles": "C1=CC(=C(C=C1[N+](=O)[O-])Cl)NC(=O)C2=C(C=CC(=C2)Cl)O"},
+    {"nome": "NICOTINAMIDE", "smiles": "C1=CC(=CN=C1)C(=O)N"},
+    {"nome": "NIFEDIPINA", "smiles": "CC1=C(C(C(=C(N1)C)C(=O)OC)C2=CC=CC=C2[N+](=O)[O-])C(=O)OC"},
+    {"nome": "PAPAVERINA HCl", "smiles": "COC1=C(C=C(C=C1)CC2=NC=CC3=CC(=C(C=C32)OC)OC)OC.Cl"},
+    {"nome": "PARACETAMOLO", "smiles": "CC(=O)NC1=CC=C(C=C1)O"},
+    {"nome": "PIRIDOSSINA HCl", "smiles": "CC1=NC=C(C(=C1O)CO)CO.Cl"},
+    {"nome": "POTASSIO ASPARTATO", "smiles": "[H+].[H+].C([C@@H](C(=O)[O-])N)C(=O)[O-].C([C@@H](C(=O)[O-])N)C(=O)[O-].O.[K+].[K+]"},
+    {"nome": "POTASSIO CITRATO", "smiles": "[C(C(=O)[O-])C(CC(=O)[O-])(C(=O)[O-])O].[K+].[K+].[K+]"},
+    {"nome": "POTASSIO SORBATO", "smiles": "C=CC=CC(=O)[O-].[K+]"},
+    {"nome": "POTASSIO TARTRATO", "smiles": "C(C(C(=O)[O-])O)C(=O)O.[K+]"},
+    {"nome": "PREDNISONE", "smiles": "C[C@]12CC(=O)[C@H]3[C@H]([C@@H]1CC[C@@]2(C(=O)CO)O)CCC4=CC(=O)C=C[C@]34C"},
+    {"nome": "PROBENECID", "smiles": "CCCN(CCC)S(=O)(=O)C1=CC=C(C=C1)C(=O)O"},
+    {"nome": "PROCAINA HCl", "smiles": "CCN(CC)CCOC(=O)C1=CC=C(C=C1)N.Cl"},
+    {"nome": "PROCAINAMMIDE HCl", "smiles": "CCN(CC)CCNC(=O)C1=CC=C(C=C1)N.Cl"},
+    {"nome": "PROGESTERONE", "smiles": "CC(=O)[C@H]1CC[C@@H]2[C@@]1(CC[C@H]3[C@H]2CCC4=CC(=O)CC[C@]34C)C"},
+    {"nome": "PROLINA", "smiles": "C1C[C@H](NC1)C(=O)O"},
+    {"nome": "PROMETAZINA HCl", "smiles": "CC(CN1C2=CC=CC=C2SC3=CC=CC=C31)N(C)C.Cl"},
+    {"nome": "PROPIFENAZONE", "smiles": "CC1=C(C(=O)N(N1C)C2=CC=CC=C2)C(C)C"},
+    {"nome": "PROPILPARABEN", "smiles": "CCCOC(=O)C1=CC=C(C=C1)O"},
+    {"nome": "SACCARINA", "smiles": "C1=CC=C2C(=C1)C(=O)NS2(=O)=O"},
+    {"nome": "SACCARINA SODICA", "smiles": "C1=CC=C2C(=C1)C(=O)[N-]S2(=O)=O.[Na+]"},
+    {"nome": "SACCAROSIO", "smiles": "C([C@@H]1[C@H]([C@@H]([C@H]([C@H](O1)O[C@]2([C@H]([C@@H]([C@H](O2)CO)O)O)CO)O)O)O)O"},
+    {"nome": "SCOPOLAMINA HBr", "smiles": "CN1[C@@H]2CC(C[C@H]1[C@H]3[C@@H]2O3)OC(=O)[C@H](CO)C4=CC=CC=C4.O.O.O.Br"},
+    {"nome": "SERINA", "smiles": "C([C@@H](C(=O)O)N)O"},
+    {"nome": "SODIO ACETATO", "smiles": "CC(=O)[O-].[Na+]"},
+    {"nome": "SODIO ASCORBATO", "smiles": "C([C@@H]([C@@H]1C(=C(C(=O)O1)O)[O-])O)O.[Na+]"},
+    {"nome": "SODIO BENZOATO", "smiles": "C1=CC=C(C=C1)C(=O)[O-].[Na+]"},
+    {"nome": "SODIO CITRATO", "smiles": "C(C(=O)[O-])C(CC(=O)[O-])(C(=O)[O-])O.[Na+].[Na+].[Na+]"},
+    {"nome": "SODIO P-AMMINO SALICILATO", "smiles": "C1=CC(=C(C=C1N)O)C(=O)[O-].[Na+]"},
+    {"nome": "SODIO SALICILATO", "smiles": "C1=CC=C(C(=C1)C(=O)[O-])O.[Na+]"},
+    {"nome": "SORBITOLO", "smiles": "C([C@H]([C@H]([C@@H]([C@H](CO)O)O)O)O)O"},
+    {"nome": "SPIRONOLATTONE", "smiles": "CC(=O)S[C@@H]1CC2=CC(=O)CC[C@@]2([C@@H]3[C@@H]1[C@@H]4CC[C@]5([C@]4(CC3)C)CCC(=O)O5)C"},
+    {"nome": "SUCRALOSIO", "smiles": "C([C@@H]1[C@@H]([C@@H]([C@H]([C@H](O1)O[C@]2([C@H]([C@@H]([C@H](O2)CCl)O)O)CCl)O)O)Cl)O"},
+    {"nome": "SULFADIAZINA", "smiles": "C1=CN=C(N=C1)NS(=O)(=O)C2=CC=C(C=C2)N"},
+    {"nome": "SULFAGUANIDINA", "smiles": "C1=CC(=CC=C1N)S(=O)(=O)N=C(N)N"},
+    {"nome": "SULFAMERAZINA", "smiles": "CC1=NC(=NC=C1)NS(=O)(=O)C2=CC=C(C=C2)N"},
+    {"nome": "SULFAMETOSSIPIRIDAZINA", "smiles": "COC1=NN=C(C=C1)NS(=O)(=O)C2=CC=C(C=C2)N"},
+    {"nome": "SULFANILAMIDE", "smiles": "C1=CC(=CC=C1N)S(=O)(=O)N"},
+    {"nome": "SULFATIAZOLO", "smiles": "C1=CC(=CC=C1N)S(=O)(=O)NC2=NC=CS2"},
+    {"nome": "TEOBROMINA", "smiles": "CN1C=NC2=C1C(=O)NC(=O)N2C"},
+    {"nome": "TEOFILLINA", "smiles": "CN1C2=C(C(=O)N(C1=O)C)NC=N2"},
+    {"nome": "TIAMINA HCl", "smiles": "CC1=C(SC=[N+]1CC2=CN=C(N=C2N)C)CCO.Cl"},
+    {"nome": "TIMOLO", "smiles": "CC(C)(C)NC[C@@H](COC1=NSN=C1N2CCOCC2)O"},
+    {"nome": "TOLBUTAMIDE", "smiles": "CCCCNC(=O)NS(=O)(=O)C1=CC=C(C=C1)C"},
+    {"nome": "TREONINA", "smiles": "C[C@H]([C@@H](C(=O)O)N)O"},
+    {"nome": "TRIPTOFANO", "smiles": "C1=CC=C2C(=C1)C(=CN2)C[C@@H](C(=O)O)N"},
+    {"nome": "VALINA", "smiles": "CC(C)[C@@H](C(=O)O)N"},
+    {"nome": "VANILLINA", "smiles": "COC1=C(C=CC(=C1)C=O)O"}
+]
 
-conn = sqlite3.connect("analisi_farmaci.db")
+df = pd.read_csv("risultati_query_pubchem_pivot.csv")
 
-cursor = conn.cursor()
+nome_to_smiles = {m["nome"]: m["smiles"] for m in molecole_obj}
 
-cursor.execute(query)
+df["SMILES"] = df["Molecola"].map(nome_to_smiles)
 
-tuples = cursor.fetchall()
+colonne = df.columns.tolist()
+colonne.insert(1, colonne.pop(colonne.index("SMILES")))
+df = df[colonne]
 
-# Raggruppamento
-molecola_dict = defaultdict(list)
-for saggio, reagente in tuples:
-    molecola_dict[saggio].append(reagente)
-
-# Struttura finale
-risultato = [{"nome": saggio, "children": reagenti} for saggio, reagenti in molecola_dict.items()]
-
-print(len(risultato))
-
-# # Trasforma in struttura desiderata
-# risultato = [{"nome": f"flare.reagenti.cluster.{reagente[0]}", "children": []} for reagente in tuples]
-
-# # Scrittura su file JSON
-# with open("output.json", "w", encoding="utf-8") as f:
-#     json.dump(risultato, f, indent=2, ensure_ascii=False)
+df.to_csv("risultati_query_pubchem_pivot_con_smiles.csv", index=False)
