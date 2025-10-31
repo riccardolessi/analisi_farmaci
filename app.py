@@ -4,6 +4,7 @@ import pandas as pd
 from pathlib import Path
 import asyncio
 from pathlib import Path
+from riconoscimento_sottostrutture import trova_saggi_da_smiles
 
 script_file =  Path(__file__).parent / "prova" / "www" / "script.js"
 script_file_2 = Path(__file__).parent / 'www' / 'app_loader.js'
@@ -24,49 +25,7 @@ app_ui = ui.page_navbar(
         ui.output_text("esito_saggio_2"),
     ),
     ui.nav_panel(
-        "DB",
-        ui.navset_card_tab(
-            ui.nav_panel(
-                "Reagenti",
-                ui.input_text("input_reagenti", "Inserisci il reagente"),
-                ui.input_action_button("aggiungi_reagente", "Salva")
-            ),
-            ui.nav_panel(
-                "saggi",
-                ui.tags.div(  # wrapper con altezza 100vh
-                    ui.input_selectize(
-                        "selectize_saggi",
-                        "Seleziona il saggio",
-                        multiple=False,
-                        choices=[]
-                    ),
-                    ui.input_selectize(
-                        "selectize_reagenti",
-                        "Seleziona i reagenti",
-                        multiple=True,
-                        choices=[]
-                    ),
-                    ui.input_action_button("salva_reagente_saggio", "Salva"),
-                    style="height: 60vh;"
-                )
-            )
-        )
-    ),
-    ui.nav_panel(
-        "associazioni",
-        ui.card(
-            ui.h2("Associazioni"),
-            ui.output_data_frame("associazioni_df"),
-        )
-    ),
-    ui.nav_panel(
         "Cerca reagenti",
-        ui.input_select("saggi_reagenti", "Seleziona il saggio", choices = []),
-        ui.input_action_button("cerca_reagenti", "Cerca"),
-        ui.output_data_frame("reagenti")
-    ),
-    ui.nav_panel(
-        "Cerca reagenti 2",
         ui.input_select("molecole_reagenti", "Seleziona la molecola", choices = []),
         ui.input_action_button("cerca_saggi", "Cerca"),
         ui.output_data_frame("saggi_reag"),
@@ -76,14 +35,7 @@ app_ui = ui.page_navbar(
         )
     ),
     ui.nav_panel(
-        "Tipologia molecola",
-        ui.input_selectize("molecole_tip", "Seleziona le molecole", choices = [], multiple = True),
-        ui.input_selectize("tipologia_id", "Seleziona la tipologia", choices = []),
-        ui.input_action_button("salva_tipologia", "Salva"),
-        ui.output_text_verbatim("text"),
-    ),
-    ui.nav_panel(
-        "Grafico",
+        "Grafico a torta",
         ui.tags.head(
             ui.tags.script(src="https://d3js.org/d3.v7.min.js"),
         ),
@@ -92,46 +44,8 @@ app_ui = ui.page_navbar(
         ui.include_js(script_file),
     ),
     ui.nav_panel(
-        "Ricerca",
-        ui.page_sidebar(
-            ui.sidebar(
-                ui.input_checkbox("checkbox_molecola", "Cerca le molecole"),
-                ui.panel_conditional(
-                    "input.checkbox_molecola",
-                    ui.input_select("select_molecola", "Seleziona la molecola", choices = [])
-                ),
-                ui.input_checkbox("checkbox_saggio", "Cerca i saggi"),
-                ui.panel_conditional(
-                    "input.checkbox_saggio",
-                    ui.input_select("select_saggio", "Seleziona i saggi", choices = [])
-                ),
-                ui.input_checkbox("checkbox_reagente", "Cerca i reagenti"),
-                ui.panel_conditional(
-                    "input.checkbox_reagente",
-                    ui.input_select("select_reagente", "Seleziona i reagenti", choices = [])
-                ),
-                ui.input_checkbox_group(
-                    "ricerca_output_checkbox",
-                    "Campi di Output",
-                    choices = []
-                ),
-                ui.input_action_button("ricerca_bottone", "Cerca", disabled=True),
-            ),
-            ui.output_ui("risultato_ricerca")
-        )
-    ),
-    ui.nav_panel(
-        "Saggio_new",
+        "Dettaglio saggi",
         ui.page_navbar(
-            ui.nav_panel(
-                "Inserimento saggio",
-                ui.input_text("nome_saggio", "Nome del saggio"),
-                ui.input_text_area("descrizione_saggio", "Descrizione del saggio"),
-                ui.input_text("schema_saggio_img", "Schema del saggio (URL)"),
-                ui.input_select("rif_saggio_temp", "Riferimento al saggio temporaneo", choices=[]),
-                ui.input_text("riferimento_molecola_trattata", "Riferimento SMILES della molecola trattata"),
-                ui.input_action_button("salva_saggio", "Salva"),
-            ),
             ui.nav_panel(
                 "Saggi esistenti",
                 ui.input_select("select_saggi_esistenti", "Saggi esistenti", choices=[]),
@@ -149,11 +63,33 @@ app_ui = ui.page_navbar(
                 ),
             )
         )
+    ),
+    ui.nav_panel(
+        "prova ml",
+        ui.input_text("input_test", "Input di prova"),
+        ui.input_action_button("test_button", "Esegui test"),
+        ui.output_text("test_output")
     )
 )
 
 def server(input, output, session):
     val = reactive.Value()
+    output_text = reactive.Value("")
+
+    @render.text
+    def test_output():
+        return output_text.get()
+    
+    @reactive.effect
+    @reactive.event(input.test_button)
+    def _():
+        test_input = input.input_test()
+        saggi, success = trova_saggi_da_smiles(test_input)
+        print(saggi, success)
+        if success:
+            output_text.set(f"Saggi trovati: {', '.join(saggi)}")
+        else:
+            output_text.set(saggi)
 
     @reactive.effect
     @reactive.event(input.visualizza_saggio)
@@ -175,10 +111,13 @@ def server(input, output, session):
             
             @render.image
             def saggio_details_schema_saggio_img():
-                img = {"src": str(Path(__file__).parent / "assets" / "img_saggi" / saggio_details['schema_saggio_img'])} if saggio_details['schema_saggio_img'] else None
+                img = str(Path(__file__).parent / "assets" / "img_saggi" / saggio_details['schema_saggio_img']) if saggio_details['schema_saggio_img'] else None
                 if img is None:
                     return None
-                return img
+                return {
+                    "src": img,
+                    "width": "600px"
+                }
             
             @render.ui
             def saggio_details_descrizione_saggio():
@@ -509,5 +448,6 @@ def server(input, output, session):
         df = query.associazioni()
         
         return render.DataTable(df)
+    
 
 app = App(app_ui, server)
