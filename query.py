@@ -574,3 +574,38 @@ def get_reagenti_saggio_new(saggio_new_id):
 # JOIN tipologia_molecola
 # ON molecole.tipologia_id = tipologia_molecola.id
 # ORDER BY tipoogia_molecola.tipo_molecola ASC
+
+def test_ricerca_molecole_positive(rif_saggio_temp = 53):
+    conn = sqlite3.connect('analisi_farmaci.db')
+    cursor = conn.cursor()
+
+    # Query parametrizzata
+    query = """
+    SELECT 
+        m.id AS id_molecola,
+        m.nome AS nome_molecola,
+        sn.id AS id_saggio,
+        sn.nome_saggio,
+        sn.desrizione,
+        sn.schema_saggio_img,
+        sn.molecola_interessata,
+        es.esito_saggio
+    FROM esiti_saggi AS es
+    JOIN saggi_new AS sn
+        ON es.id_saggio = sn.rif_saggio_temp
+    JOIN molecole AS m
+        ON es.id_molecola = m.id
+    WHERE es.esito_saggio = 'POSITIVO'
+    AND sn.rif_saggio_temp = ?;
+    """
+
+    # Esegui la query con parametro
+    df = pd.read_sql_query(query, conn, params=(rif_saggio_temp,))
+
+    # Mostra il DataFrame
+    print(df)
+
+    cursor.close()
+    conn.close()
+
+test_ricerca_molecole_positive()

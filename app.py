@@ -5,6 +5,10 @@ from pathlib import Path
 import asyncio
 from pathlib import Path
 from riconoscimento_sottostrutture import trova_saggi_da_smiles
+import pickle
+import numpy as np
+from rdkit import Chem
+from rdkit.Chem.rdFingerprintGenerator import GetMorganGenerator
 
 script_file =  Path(__file__).parent / "prova" / "www" / "script.js"
 script_file_2 = Path(__file__).parent / 'www' / 'app_loader.js'
@@ -39,7 +43,7 @@ app_ui = ui.page_navbar(
         ui.tags.head(
             ui.tags.script(src="https://d3js.org/d3.v7.min.js"),
         ),
-        ui.HTML("<h2>Grafico Sunburst con D3.js</h2>"),
+        ui.h2("Grafico Sunburst con D3.js"),
         ui.tags.div(id="chart-container"),
         ui.include_js(script_file),
     ),
@@ -50,7 +54,6 @@ app_ui = ui.page_navbar(
                 "Saggi esistenti",
                 ui.input_select("select_saggi_esistenti", "Saggi esistenti", choices=[]),
                 ui.input_action_button("visualizza_saggio", "Visualizza"),
-                ui.input_action_button("elimina_saggio", "Elimina"),
                 ui.card(
                     ui.output_text("saggio_details_nome_saggio"),
                     ui.output_image("saggio_details_schema_saggio_img"),
@@ -65,18 +68,64 @@ app_ui = ui.page_navbar(
         )
     ),
     ui.nav_panel(
-        "prova ml",
-        ui.input_text("input_test", "Input di prova"),
-        ui.input_action_button("test_button", "Esegui test"),
-        ui.output_text("test_output")
+        "Riconoscimento sottostrutture",
+        ui.layout_sidebar(
+            ui.sidebar(
+                ui.input_text("input_test", "Inserisci SMILES da testare"),
+                ui.input_action_button("test_button", "Testa SMILES"),
+            ),
+            ui.output_data_frame("test_output")
+        )
+    ),
+    ui.nav_panel(
+        "Predizione saggio con Acqua di Bromo",
+        ui.h2("Predizione saggio con Acqua di Bromo"),
+        ui.p("Inserisci una molecola in formato SMILES per ottenere la predizione."),
+        ui.input_text("smiles", "SMILES:", placeholder="es. c1ccc2c(c1)Nc3ccccc3S2"),
+        ui.input_action_button("predict", "Predici"),
+        ui.hr(),
+        ui.output_text("result")
     )
 )
 
 def server(input, output, session):
     val = reactive.Value()
-    output_text = reactive.Value("")
+    output_text = reactive.Value(pd.DataFrame())
 
     @render.text
+    @reactive.event(input.predict)
+    def result():
+        # Trigger solo dopo il clic
+        if input.predict() == 0:
+            return "Inserisci uno SMILES e premi 'Predici'."
+
+        smiles = input.smiles().strip()
+        if not smiles:
+            return "⚠️ Inserisci uno SMILES valido."
+
+        # Carica il modello solo al clic
+        try:
+            with open("modello.pkl", "rb") as f:
+                model = pickle.load(f)
+        except FileNotFoundError:
+            return "❌ Errore: file 'model.pkl' non trovato nella directory."
+
+        # Converte SMILES → fingerprint
+        fp = smiles_to_fp(smiles)
+        if fp is None:
+            return "❌ SMILES non valido."
+
+        # Predizione
+        try:
+            y_pred = model.predict([fp])[0]
+            if y_pred == 1:
+                return f"Predizione del modello: Positivo"
+            else:
+                return f"Predizione del modello: Negativo"
+        except Exception as e:
+            return f"❌ Errore nella predizione: {e}"
+
+    @render.data_frame
     def test_output():
         return output_text.get()
     
@@ -85,11 +134,14 @@ def server(input, output, session):
     def _():
         test_input = input.input_test()
         saggi, success = trova_saggi_da_smiles(test_input)
-        print(saggi, success)
+        print(success)
         if success:
-            output_text.set(f"Saggi trovati: {', '.join(saggi)}")
+            # Creiamo un DataFrame dai saggi trovati
+            df_saggi = pd.DataFrame(saggi, columns=["Saggi trovati"])
+            
+            output_text.set(df_saggi)
         else:
-            output_text.set(saggi)
+            output_text.set(pd.DataFrame())
 
     @reactive.effect
     @reactive.event(input.visualizza_saggio)
@@ -116,7 +168,7 @@ def server(input, output, session):
                     return None
                 return {
                     "src": img,
-                    "width": "600px"
+                    "height": "400px",
                 }
             
             @render.ui
@@ -449,5 +501,14 @@ def server(input, output, session):
         
         return render.DataTable(df)
     
+def smiles_to_fp(smiles, radius=3, nBits=1024):
+    """Converte uno SMILES in fingerprint numerico."""
+    mol = Chem.MolFromSmiles(smiles)
+    if mol is None:
+        return None
+    gen = GetMorganGenerator(radius=radius, fpSize=nBits)
+    fp = np.array(gen.GetFingerprint(mol))
+    return fp
+
 
 app = App(app_ui, server)
