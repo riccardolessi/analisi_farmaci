@@ -4,8 +4,8 @@ from collections import defaultdict
 
 def molecole(id_saggio = None):
     conn = sqlite3.connect('analisi_farmaci.db')
-
     cursor = conn.cursor()
+    
     if id_saggio:
         id_saggio = int(id_saggio)
 

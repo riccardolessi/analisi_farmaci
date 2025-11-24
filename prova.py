@@ -1,28 +1,30 @@
 import pandas as pd
-from rdkit import Chem
+import sqlite3
 
-# Carica il dataset
-df = pd.read_csv("dataset.csv")
+# Connessione al database SQLite
+conn = sqlite3.connect('analisi_farmaci.db')
 
-# Assicurati che la colonna SMILES sia di tipo stringa
-df = df.dropna(subset=["SMILES"]).copy()
-df["SMILES"] = df["SMILES"].astype(str)
+# Esecuzione della query SQL
+query = "UPDATE saggi_new SET smarts = ? WHERE id = ?"
+cursor = conn.cursor()
 
-# Funzione di controllo validità
-def try_parse(smi):
-    try:
-        mol = Chem.MolFromSmiles(smi)
-        return mol is not None
-    except Exception:
-        return False
+with open('smarts saggi.csv', 'r', encoding='utf-8') as file:
+    df = pd.read_csv(file, delimiter=';')
 
-# Applica il controllo a tutto il dataset
-df["is_valid"] = df["SMILES"].apply(try_parse)
+    for index, row in df.iterrows():
+        id = row['id']
+        smarts = row['smarts']
+        if (pd.isna(smarts) or smarts.strip() == ''):
+            continue  # Salta righe con SMARTS vuoto
+        print(f"Row {index + 1}: ID={id}, SMARTS={smarts}")
 
-# Seleziona gli SMILES invalidi
-invalid = df[~df["is_valid"]]
+        try:
+            cursor.execute(query, (smarts, id))
+ 
+            print(f"Inserted row {index + 1}: ID={id}, SMARTS={smarts}")
+        except sqlite3.Error as e:
+            print(f"Error inserting row {index + 1}: {e}")
 
-# Salva o visualizza
-print(f"Trovati {len(invalid)} SMILES invalidi su {len(df)}.")
-invalid_smiles = invalid[["Molecola", "SMILES"]]
-print(invalid_smiles)
+
+conn.commit()
+conn.close()

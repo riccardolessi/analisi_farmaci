@@ -30,6 +30,7 @@ def setup_db():
         schema_saggio_img TEXT,
         molecola_interessata TEXT,
         rif_saggio_temp INTEGER,
+        smarts TEXT,
         FOREIGN KEY (rif_saggio_temp) REFERENCES saggi(id) ON DELETE CASCADE
     )
     """)

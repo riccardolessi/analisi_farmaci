@@ -1,3 +1,6 @@
+# Generato automaticamente il 2025-11-10 09:55:32
+# File creato da check_versions.py
+
 plotly==5.9.0
 shiny==1.2.1
 pandas==2.1.1

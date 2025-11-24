@@ -1,96 +1,64 @@
 from shiny import App, reactive, render, ui
 import query
-import pandas as pd
-from pathlib import Path
-import asyncio
-from pathlib import Path
-from riconoscimento_sottostrutture import trova_saggi_da_smiles
-import pickle
-import numpy as np
-from rdkit import Chem
-from rdkit.Chem.rdFingerprintGenerator import GetMorganGenerator
+from modules.cerca_molecole import *
+from modules.cerca_saggi import *
+from modules.cerca_reagenti import *
+from modules.grafico_torta import *
+from modules.dettaglio_saggi import *
+from modules.riconoscimento_sottostrutture import *
+from modules.predizione_ml import *
 
-script_file =  Path(__file__).parent / "prova" / "www" / "script.js"
-script_file_2 = Path(__file__).parent / 'www' / 'app_loader.js'
 
 app_ui = ui.page_navbar(
     ui.nav_panel(
         "Cerca molecole",
-        ui.input_select("molecole", "Seleziona la molecola", choices = []),
-        ui.input_select("saggi", "Seleziona il saggio", choices = []),
-        ui.input_action_button("cerca", "Cerca"),
-        ui.output_text("esito_saggio"),
+        cerca_molecole_ui("cerca_molecole")
     ),
     ui.nav_panel(
         "Cerca saggi",
-        ui.input_select("saggi_2", "Seleziona il saggio", choices = []),
-        ui.input_select("molecole_2", "Seleziona la molecola", choices = []),
-        ui.input_action_button("cerca_2", "Cerca"),
-        ui.output_text("esito_saggio_2"),
+        cerca_saggi_ui("cerca_saggi_ui")
     ),
     ui.nav_panel(
         "Cerca reagenti",
-        ui.input_select("molecole_reagenti", "Seleziona la molecola", choices = []),
-        ui.input_action_button("cerca_saggi", "Cerca"),
-        ui.output_data_frame("saggi_reag"),
-        ui.input_action_button("cerca_reagenti_mol", "Cerca"),
-        ui.card(
-            ui.output_ui("reagenti_mol"),
-        )
+        cerca_reagenti_ui("cerca_reagenti_ui")
     ),
     ui.nav_panel(
         "Grafico a torta",
-        ui.tags.head(
-            ui.tags.script(src="https://d3js.org/d3.v7.min.js"),
-        ),
-        ui.h2("Grafico Sunburst con D3.js"),
-        ui.tags.div(id="chart-container"),
-        ui.include_js(script_file),
+        grafico_torta_ui("grafico_torta")
     ),
     ui.nav_panel(
         "Dettaglio saggi",
         ui.page_navbar(
             ui.nav_panel(
                 "Saggi esistenti",
-                ui.input_select("select_saggi_esistenti", "Saggi esistenti", choices=[]),
-                ui.input_action_button("visualizza_saggio", "Visualizza"),
-                ui.card(
-                    ui.output_text("saggio_details_nome_saggio"),
-                    ui.output_image("saggio_details_schema_saggio_img"),
-                    ui.br(),
-                    ui.output_ui("saggio_details_descrizione_saggio"),
-                    ui.br(),
-                    ui.output_text("reagenti_saggio"),
-                    ui.br(),
-                    ui.output_text("molecola_trattata"),
-                ),
+                dettaglio_saggi_ui("dettaglio_saggi")
             )
         )
     ),
     ui.nav_panel(
         "Riconoscimento sottostrutture",
-        ui.layout_sidebar(
-            ui.sidebar(
-                ui.input_text("input_test", "Inserisci SMILES da testare"),
-                ui.input_action_button("test_button", "Testa SMILES"),
-            ),
-            ui.output_data_frame("test_output")
-        )
+        riconoscimento_sottostrutture_ui("riconoscimento_sottostrutture")
     ),
     ui.nav_panel(
         "Predizione saggio con Acqua di Bromo",
-        ui.h2("Predizione saggio con Acqua di Bromo"),
-        ui.p("Inserisci una molecola in formato SMILES per ottenere la predizione."),
-        ui.input_text("smiles", "SMILES:", placeholder="es. c1ccc2c(c1)Nc3ccccc3S2"),
-        ui.input_action_button("predict", "Predici"),
-        ui.hr(),
-        ui.output_text("result")
-    )
+        predizione_ml_ui("predizione_ml")
+    ),
+    title="App Analisi dei Medicinali"
 )
 
 def server(input, output, session):
-    val = reactive.Value()
-    output_text = reactive.Value(pd.DataFrame())
+    
+    cerca_molecole_server("cerca_molecole", query=query)
+
+    cerca_saggi_server("cerca_saggi_ui", query=query)
+
+    cerca_reagenti_server("cerca_reagenti_ui", query=query)
+
+    dettaglio_saggi_server("dettaglio_saggi", query=query)
+
+    riconoscimento_sottostrutture_server("riconoscimento_sottostrutture")
+
+    predizione_ml_server("predizione_ml")
 
     @render.text
     @reactive.event(input.predict)
@@ -124,81 +92,6 @@ def server(input, output, session):
                 return f"Predizione del modello: Negativo"
         except Exception as e:
             return f"❌ Errore nella predizione: {e}"
-
-    @render.data_frame
-    def test_output():
-        return output_text.get()
-    
-    @reactive.effect
-    @reactive.event(input.test_button)
-    def _():
-        test_input = input.input_test()
-        saggi, success = trova_saggi_da_smiles(test_input)
-        print(success)
-        if success:
-            # Creiamo un DataFrame dai saggi trovati
-            df_saggi = pd.DataFrame(saggi, columns=["Saggi trovati"])
-            
-            output_text.set(df_saggi)
-        else:
-            output_text.set(pd.DataFrame())
-
-    @reactive.effect
-    @reactive.event(input.visualizza_saggio)
-    def visualizza_saggio():
-        saggio_id = input.select_saggi_esistenti()
-        if not saggio_id:
-            ui.notification_show("Seleziona un saggio esistente", type="error")
-            return
-        
-        try:
-            saggio_details = query.get_saggio_details(saggio_id)
-            if not saggio_details:
-                ui.notification_show("Saggio non trovato", type="error")
-                return
-            
-            @render.text
-            def saggio_details_nome_saggio():
-                return saggio_details['nome_saggio']
-            
-            @render.image
-            def saggio_details_schema_saggio_img():
-                img = str(Path(__file__).parent / "assets" / "img_saggi" / saggio_details['schema_saggio_img']) if saggio_details['schema_saggio_img'] else None
-                if img is None:
-                    return None
-                return {
-                    "src": img,
-                    "height": "400px",
-                }
-            
-            @render.ui
-            def saggio_details_descrizione_saggio():
-                return ui.HTML(saggio_details['descrizione'].replace("\n", "<br>"))
-            
-            @render.text
-            def reagenti_saggio():
-                reagenti = query.get_reagenti_saggio_new(saggio_id)
-                if not reagenti:
-                    return "Nessun reagente associato a questo saggio."
-                return "Reagenti associati: " + ", ".join(reagenti)
-            
-            @render.text
-            def molecola_trattata():
-                molecola_trattata = saggio_details.get('molecola_trattata')
-                if not molecola_trattata:
-                    return "Nessuna molecola trattata associata a questo saggio."
-                return f"Molecola trattata: {molecola_trattata}"
-
-        except Exception as e:
-            ui.notification_show(f"Errore durante il recupero del saggio: {e}", type="error")
-
-    # Funzione per popolare il select con i saggi esistenti
-    @reactive.effect
-    def select_saggi_esistenti():
-        # Popola il select con i saggi esistenti
-        saggi = query.saggi_new()
-        choices = {saggio[0]: saggio[1] for saggio in saggi}
-        ui.update_select("select_saggi_esistenti", choices=choices)
 
     @reactive.effect
     @reactive.event(input.salva_saggio)
@@ -329,42 +222,7 @@ def server(input, output, session):
         tip = {tip[0]: tip[1] for tip in tipologie}
         ui.update_selectize("tipologia_id", choices = tip)
 
-    @render.ui
-    @reactive.event(input.cerca_reagenti_mol)
-    def reagenti_mol():
-        messaggi = []
-
-        for saggio in val.get():
-            id_saggio = saggio[1]
-            reagenti = query.reagenti_da_saggio(id_saggio)
-            lista_reagenti = reagenti['Reagente'].tolist()
-            
-            if lista_reagenti:
-                reagenti_str = ", ".join(lista_reagenti)
-                messaggi.append(f"Il saggio {saggio[2]} richiede: {reagenti_str}")
-            else:
-                messaggi.append(f"Il saggio {saggio[2]} non richiede reagenti.")
-        
-        # Unisci i messacci con <br> per la separazione
-        html_message = "<br>".join(messaggi)
-
-        return ui.HTML(html_message)
-
-    @render.data_frame
-    @reactive.event(input.cerca_saggi)
-    def saggi_reag():
-        saggi = query.saggi(input.molecole_reagenti())
-        val.set(saggi)
-        df = pd.DataFrame(saggi, columns=['id esito', 'id saggio', 'saggio'])
-        return df
-
-
-    @reactive.effect
-    def molecole_reagenti():
-        molecole = query.molecole()
-        mol = {mol[0]: mol[1] for mol in molecole}
-        ui.update_select("molecole_reagenti", choices = mol)
-
+    
     @render.data_frame
     @reactive.event(input.cerca_reagenti)
     def reagenti():
@@ -393,18 +251,6 @@ def server(input, output, session):
         
         y = {mol[0]: mol[1] for mol in x}
         ui.update_select("molecole", choices = y)
-
-    @render.text()
-    @reactive.event(input.cerca)
-    def esito_saggio():
-        esito = query.esito(input.molecole(), input.saggi())
-        
-        print(esito)
-        
-        if not esito:
-            return "Saggio non fatto"
-        
-        return f"Esito: {esito[3].capitalize()}"
     
     @reactive.effect
     def saggi_2():
@@ -501,14 +347,6 @@ def server(input, output, session):
         
         return render.DataTable(df)
     
-def smiles_to_fp(smiles, radius=3, nBits=1024):
-    """Converte uno SMILES in fingerprint numerico."""
-    mol = Chem.MolFromSmiles(smiles)
-    if mol is None:
-        return None
-    gen = GetMorganGenerator(radius=radius, fpSize=nBits)
-    fp = np.array(gen.GetFingerprint(mol))
-    return fp
 
 
 app = App(app_ui, server)
