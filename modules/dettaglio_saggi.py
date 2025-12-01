@@ -22,13 +22,28 @@ def dettaglio_saggi_ui():
 @module.server
 def dettaglio_saggi_server(input, output, session, query):
 
-    # Funzione per popolare il select con i saggi esistenti
+    nome_saggio = reactive.Value("")
+    descrizione_saggio = reactive.Value("")
+    reagenti_saggio_value = reactive.Value("")
+
     @reactive.effect
-    def select_saggi_esistenti():
+    def initialize():
         # Popola il select con i saggi esistenti
         saggi = cerca_saggi()
         choices = {saggio[0]: saggio[1] for saggio in saggi}
         ui.update_select("select_saggi_esistenti", choices=choices)
+
+        @render.text
+        def saggio_details_nome_saggio():
+            return nome_saggio.get()
+        
+        @render.ui
+        def saggio_details_descrizione_saggio():
+            return descrizione_saggio.get()
+        
+        @render.text
+        def reagenti_saggio():
+            return reagenti_saggio_value.get()
 
     @reactive.effect
     @reactive.event(input.visualizza_saggio)
@@ -44,9 +59,7 @@ def dettaglio_saggi_server(input, output, session, query):
                 ui.notification_show("Saggio non trovato", type="error")
                 return
             
-            @render.text
-            def saggio_details_nome_saggio():
-                return saggio_details['nome_saggio']
+            nome_saggio.set(saggio_details['nome_saggio'])
             
             @render.image
             def saggio_details_schema_saggio_img():
@@ -64,6 +77,7 @@ def dettaglio_saggi_server(input, output, session, query):
             def saggio_details_descrizione_saggio():
                 return ui.HTML(saggio_details['descrizione'].replace("\n", "<br>"))
             
+
             @render.text
             def reagenti_saggio():
                 reagenti = query.get_reagenti_saggio_new(saggio_id)
