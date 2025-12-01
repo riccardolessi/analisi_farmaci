@@ -48,10 +48,15 @@ def predizione_ml_server(input, output, session):
         # Predizione
         try:
             y_pred = model.predict([fp])[0]
+
+            # Probabilità per entrambe le classi
+            proba = model.predict_proba([fp])[0]
+            confidence = [round(x * 100, 2) for x in proba]
+
             if y_pred == 1:
-                return f"Predizione del modello: Positivo"
+                return f"Predizione del modello: Positivo ({confidence[1]}%)"
             else:
-                return f"Predizione del modello: Negativo"
+                return f"Predizione del modello: Negativo ({confidence[0]}%)"
         except Exception as e:
             return f"❌ Errore nella predizione: {e}"
         

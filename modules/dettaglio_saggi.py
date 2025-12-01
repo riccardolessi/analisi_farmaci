@@ -1,5 +1,6 @@
 from shiny import ui, render, reactive, module
 from pathlib import Path
+import sqlite3
 
 @module.ui
 def dettaglio_saggi_ui():
@@ -13,8 +14,8 @@ def dettaglio_saggi_ui():
             ui.output_ui("saggio_details_descrizione_saggio"),
             ui.br(),
             ui.output_text("reagenti_saggio"),
-            ui.br(),
-            ui.output_text("molecola_trattata"),
+            # ui.br(),
+            # ui.output_text("molecola_trattata"),
         ),
     )
 
@@ -25,7 +26,7 @@ def dettaglio_saggi_server(input, output, session, query):
     @reactive.effect
     def select_saggi_esistenti():
         # Popola il select con i saggi esistenti
-        saggi = query.saggi_new()
+        saggi = cerca_saggi()
         choices = {saggio[0]: saggio[1] for saggio in saggi}
         ui.update_select("select_saggi_esistenti", choices=choices)
 
@@ -70,12 +71,22 @@ def dettaglio_saggi_server(input, output, session, query):
                     return "Nessun reagente associato a questo saggio."
                 return "Reagenti associati: " + ", ".join(reagenti)
             
-            @render.text
-            def molecola_trattata():
-                molecola_trattata = saggio_details.get('molecola_trattata')
-                if not molecola_trattata:
-                    return "Nessuna molecola trattata associata a questo saggio."
-                return f"Molecola trattata: {molecola_trattata}"
+            # @render.text
+            # def molecola_trattata():
+            #     molecola_trattata = saggio_details.get('molecola_trattata')
+            #     if not molecola_trattata:
+            #         return "Nessuna molecola trattata associata a questo saggio."
+            #     return f"Molecola trattata: {molecola_trattata}"
 
         except Exception as e:
             ui.notification_show(f"Errore durante il recupero del saggio: {e}", type="error")
+
+def cerca_saggi():
+    conn = sqlite3.connect('analisi_farmaci.db')
+    cursor = conn.cursor()
+
+    cursor.execute("SELECT id, nome_saggio FROM saggi_new WHERE visualizza_dettaglio = 1")
+    saggi = cursor.fetchall()
+    conn.close()
+
+    return saggi
