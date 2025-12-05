@@ -5,8 +5,12 @@ from rdkit import Chem
 from rdkit.Chem.rdFingerprintGenerator import GetMorganGenerator
 import numpy as np
 
+# Path al modello ML
 modello_ml = Path(__file__).parent.parent / "modello.pkl"
 
+# -----------------------------------------
+# Definizione dell'interfaccia utente (UI)
+# -----------------------------------------
 @module.ui
 def predizione_ml_ui():
     return (
@@ -18,6 +22,9 @@ def predizione_ml_ui():
         ui.output_text("result")
     )
 
+# -----------------------------------------
+# Definizione della logica del server
+# -----------------------------------------
 @module.server
 def predizione_ml_server(input, output, session):
     @render.text
@@ -29,7 +36,7 @@ def predizione_ml_server(input, output, session):
 
         smiles = input.smiles().strip()
         if not smiles:
-            return "⚠️ Inserisci uno SMILES valido."
+            return "Inserisci uno SMILES valido."
 
         # Carica il modello solo al clic
         try:
@@ -38,12 +45,12 @@ def predizione_ml_server(input, output, session):
                 model = pickle.load(f)
                 
         except FileNotFoundError:
-            return "❌ Errore: file 'model.pkl' non trovato nella directory."
+            return "Errore: file 'model.pkl' non trovato nella directory."
 
         # Converte SMILES → fingerprint
         fp = smiles_to_fp(smiles)
         if fp is None:
-            return "❌ SMILES non valido."
+            return "SMILES non valido."
 
         # Predizione
         try:
@@ -58,14 +65,26 @@ def predizione_ml_server(input, output, session):
             else:
                 return f"Predizione del modello: Negativo ({confidence[0]}%)"
         except Exception as e:
-            return f"❌ Errore nella predizione: {e}"
+            return f"Errore nella predizione: {e}"
         
 
-def smiles_to_fp(smiles, radius=3, nBits=1024):
-    """Converte uno SMILES in fingerprint numerico."""
+def smiles_to_fp(smiles: str, radius: int=3, nBits: int=1024):
+    """
+    Converte una stringa SMILES in un Morgan Fingerprint numerico di un dato raggio e dimensione.
+
+    Args:
+        smiles: La stringa SMILES della molecola.
+        radius: Il raggio del fingerprint di Morgan (Esempio, 2 o 3).
+        n_bits: La dimensione del fingerprint (numero di bit).
+
+    Returns:
+        Un array numpy (il fingerprint) se la conversione ha successo, altrimenti None.
+    """
+
     mol = Chem.MolFromSmiles(smiles)
     if mol is None:
         return None
-    gen = GetMorganGenerator(radius=radius, fpSize=nBits)
-    fp = np.array(gen.GetFingerprint(mol))
-    return fp
+    
+    fingerprint_generator = GetMorganGenerator(radius=radius, fpSize=nBits)
+    fingerprint = np.array(fingerprint_generator.GetFingerprint(mol))
+    return fingerprint

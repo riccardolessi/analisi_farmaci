@@ -2,36 +2,41 @@ from shiny import ui, render, reactive, module
 from riconoscimento_sottostrutture import trova_saggi_da_smiles
 import pandas as pd
 
-@module.ui
+# -----------------------------------------
+# Definizione dell'interfaccia utente (UI)
+# -----------------------------------------
 def riconoscimento_sottostrutture_ui():
     return (
         ui.layout_sidebar(
+            # Definizione della barra laterale (input controls)
             ui.sidebar(
-                ui.input_text("input_test", "Inserisci SMILES da testare"),
-                ui.input_action_button("test_button", "Testa SMILES"),
+                ui.input_text("smiles_input", "Inserisci SMILES da testare"),
+                ui.input_action_button("testa_smiles", "Testa SMILES"),
             ),
-            ui.output_data_frame("test_output")
+            # Area per l'output
+            ui.output_data_frame("output_saggi_trovati")
         )
     )
 
+# -----------------------------------------
+# Definizione della logica del server
+# -----------------------------------------
 @module.server
 def riconoscimento_sottostrutture_server(input, output, session):
-    output_text = reactive.Value(pd.DataFrame())
+    saggi_output_df = reactive.Value(pd.DataFrame())
 
     @reactive.effect
-    @reactive.event(input.test_button)
+    @reactive.event(input.testa_smiles)
     def _():
-        test_input = input.input_test()
-        saggi, success = trova_saggi_da_smiles(test_input)
-        print(success)
+        saggi, success = trova_saggi_da_smiles(input.smiles_input())
+
         if success:
             # Creiamo un DataFrame dai saggi trovati
             df_saggi = pd.DataFrame(saggi, columns=["Saggi trovati"])
-            
-            output_text.set(df_saggi)
+            saggi_output_df.set(df_saggi)
         else:
-            output_text.set(pd.DataFrame())
+            saggi_output_df.set(pd.DataFrame())
 
     @render.data_frame
-    def test_output():
-        return output_text.get()
+    def output_saggi_trovati():
+        return saggi_output_df.get()
