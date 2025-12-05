@@ -5,6 +5,7 @@ import pandas as pd
 # -----------------------------------------
 # Definizione dell'interfaccia utente (UI)
 # -----------------------------------------
+@module.ui
 def riconoscimento_sottostrutture_ui():
     return (
         ui.layout_sidebar(
