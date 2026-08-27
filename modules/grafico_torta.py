@@ -1,7 +1,7 @@
 from shiny import ui, module
 from pathlib import Path
 
-script_file =  Path(__file__).parent.parent / "script.js"
+script_file = Path(__file__).parent.parent / "assets" / "js" / "script.js"
 
 @module.ui
 def grafico_torta_ui():

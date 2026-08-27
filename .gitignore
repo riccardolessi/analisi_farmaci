@@ -1,8 +1,10 @@
 venv_analisi/
+venv/
 __pycache__/
+*.pyc
+.DS_Store
 conta_py.py
 check_packages.py
 index.html
 index2.html
-venv/
 analisi_codice/
