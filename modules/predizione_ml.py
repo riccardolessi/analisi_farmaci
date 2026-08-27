@@ -41,11 +41,18 @@ def predizione_ml_server(input, output, session):
         # Carica il modello solo al clic
         try:
             with open(modello_ml, "rb") as f:
-                print("Modello caricato con successo.")
                 model = pickle.load(f)
-                
         except FileNotFoundError:
-            return "Errore: file 'model.pkl' non trovato nella directory."
+            return (
+                f"Errore: modello '{modello_ml.name}' non trovato. "
+                "Rigeneralo eseguendo train_ml.py."
+            )
+        except Exception as e:
+            # Tipicamente un pickle salvato con una versione diversa di scikit-learn.
+            return (
+                f"Errore nel caricamento del modello ({type(e).__name__}: {e}). "
+                "Rigenera il modello eseguendo train_ml.py con l'ambiente corrente."
+            )
 
         # Converte SMILES → fingerprint
         fp = smiles_to_fp(smiles)

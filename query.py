@@ -113,7 +113,8 @@ def saggi_reagenti(id_saggio, id_reagente):
             "message": "Associazione inserita nel DB"
         }
     except:
-        result = {
+        conn.close()
+        return {
             "status": "failed",
             "message": "C'è stato un errore"
         }
@@ -166,6 +167,8 @@ def reagenti_da_saggio(id_saggio):
     colonne = ['Id', 'Reagente']
 
     df = pd.DataFrame(reagenti, columns=colonne)
+
+    conn.close()
 
     return df
 
@@ -608,4 +611,5 @@ def test_ricerca_molecole_positive(rif_saggio_temp = 53):
     cursor.close()
     conn.close()
 
-test_ricerca_molecole_positive()
+if __name__ == "__main__":
+    test_ricerca_molecole_positive()

@@ -1,2 +1,8 @@
-/venv_analisi
-/__pycache__
+venv_analisi/
+__pycache__/
+conta_py.py
+check_packages.py
+index.html
+index2.html
+venv/
+analisi_codice/

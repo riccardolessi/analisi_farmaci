@@ -1,11 +1,13 @@
-plotly==5.9.0
-shiny==1.2.1
-pandas==2.1.1
-matplotlib==3.7.0
-shinywidgets==0.5.1
-jcamp==1.2.2
-requests==2.28.1
-rdkit==2023.3.1
-numpy==1.23.5
-scipy==1.10.0
-scikit-learn==1.2.1
+# Versioni installate nel venv del progetto (Python 3.11.6).
+# Rigenerare dopo ogni aggiornamento dei pacchetti: le versioni qui devono
+# combaciare con quelle usate per addestrare modello.pkl (scikit-learn in testa),
+# altrimenti il pickle non si carica più.
+#
+# Rimossi perché non installati e non importati da nessun modulo:
+# plotly, matplotlib, shinywidgets, jcamp, requests.
+
+shiny==1.6.1
+pandas==3.0.3
+rdkit==2026.3.2
+numpy==2.4.5
+scikit-learn==1.8.0
